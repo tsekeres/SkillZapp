@@ -86,7 +86,7 @@ namespace SkillZapp.DataAccess
             using var db = new SqlConnection(_connectionString);
             var sql = @"update Subcomponents 
                         SET SubcomponentName = @SubcomponentName,
-                            componentId = @componentId     
+                            ComponentId = @ComponentId     
                             WHERE Id = @Id";
             subcomponent.Id = id;
             var subcomponentUpdated = db.QuerySingleOrDefault<Subcomponent>(sql, subcomponent);
