@@ -68,6 +68,21 @@ namespace SkillZapp.DataAccess
             var result = db.Query<Student>(sql, parameters);
             return result;
         }
+
+        internal IEnumerable<Student> GetStudentsByStudentName(string studentName)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"SELECT * from Students
+                        WHERE StudentName = @StudentName";
+
+            var parameters = new
+            {
+                StudentName = studentName
+            };
+
+            var result = db.Query<Student>(sql, parameters);
+            return result;
+        }
         internal IEnumerable<Student> GetStudentsByUserId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);

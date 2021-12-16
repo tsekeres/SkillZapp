@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SkillZapp.Controllers
 {
-    [Route("api/subcomponents")]
+    [Route("api/assessments")]
     [ApiController]
-    public class SubcomponentsController : ControllerBase
+    public class AssessmentController : ControllerBase
     {
     }
 }

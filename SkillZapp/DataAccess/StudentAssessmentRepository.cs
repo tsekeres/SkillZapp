@@ -55,35 +55,35 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal IEnumerable<StudentAssessment> GetStudentAssessmentsByGradeLevelId(Guid gradeLevelId)
+        internal IEnumerable<StudentAssessment> GetStudentAssessmentsByAssessmentId(Guid assessmentId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from StudentAssessments
-                        WHERE GradeLevelId = @GradeLevelId";
+                        WHERE AssessmentId = @AssessmentId";
 
             var parameters = new
             {
-                GradeLevelId = gradeLevelId
+                AssessmentId = assessmentId
             };
 
             var result = db.Query<StudentAssessment>(sql, parameters);
             return result;
         }
-        internal IEnumerable<StudentAssessment> GetStudentAssessmentsByClassNameId(Guid classNameId)
+        internal IEnumerable<StudentAssessment> GetStudentAssessmentsByScore(string score)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from StudentAssessments
-                        WHERE ClassNameId = @ClassNameId";
+                        WHERE Score = @Score";
 
             var parameters = new
             {
-                ClassNameId = classNameId
+                Score = score
             };
 
             var result = db.Query<StudentAssessment>(sql, parameters);
             return result;
         }
-        internal IEnumerable<StudentAssessment> GetStudentsByUserId(Guid userId)
+        internal IEnumerable<StudentAssessment> GetStudentAssessmentsByUserId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from StudentAssessments

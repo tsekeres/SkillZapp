@@ -25,7 +25,7 @@ namespace SkillZapp.DataAccess
             return Subcomponents;
         }
 
-        internal Subcomponent GetSubcomponentsById(Guid subcomponentId)
+        internal Subcomponent GetSubcomponentById(Guid subcomponentId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"Select * From Subcomponents where id = @id";
@@ -63,7 +63,7 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void Add(Subcomponent newSubcomponent)
+        internal void Add(Subcomponent subcomponent)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
@@ -77,8 +77,8 @@ namespace SkillZapp.DataAccess
                           )";
 
 
-            id = db.ExecuteScalar<Guid>(sql, newSubcomponent);
-            newSubcomponent.Id = id;
+            id = db.ExecuteScalar<Guid>(sql, subcomponent);
+            subcomponent.Id = id;
         }
 
         internal Subcomponent Update(Guid id, Subcomponent subcomponent)
