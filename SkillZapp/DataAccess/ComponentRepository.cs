@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using SkillZapp.Models;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,26 +55,24 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal Guid AddComponent(Component component)
+        internal void AddComponent(Component newComponent)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"INSERT into Components
-                        ( ComponentName,
-                          StateName )
-                        OUTPUT Inserted.Id
-                        VALUES
-                         (@ComponentName,
-                          @StateName)";
+            Guid id = new Guid();
+            var sql = @"INSERT INTO [dbo].[Components]
+                        ([ComponentName],
+                         [StateName])
+                            OUTPUT inserted.Id
+                            VALUES
+                          (@ComponentName,
+                          @StateName
+                          )";
 
-            var result = db.ExecuteScalar<Guid>(sql, component);
-            if (!result.Equals(Guid.Empty))
-            {
-                component.Id = result;
-            }
-            return result;
+            id = db.ExecuteScalar<Guid>(sql, newComponent);
+            newComponent.Id = id;
         }
 
-        internal Component UpdateStandard(Guid id, Component component)
+        internal Component UpdateComponent(Guid id, Component component)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"update Components 
