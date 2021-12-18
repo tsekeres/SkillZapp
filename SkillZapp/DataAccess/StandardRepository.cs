@@ -63,7 +63,7 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void AddStandard(Standard newStandard)
+        internal void CreateStandard(Standard newStandard)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();

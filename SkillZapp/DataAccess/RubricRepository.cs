@@ -63,7 +63,7 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void AddRubric(Rubric newRubric)
+        internal void CreateRubric(Rubric newRubric)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();

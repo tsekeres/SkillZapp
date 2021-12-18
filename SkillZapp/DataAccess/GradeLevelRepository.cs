@@ -63,7 +63,7 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void AddGradeLevel(GradeLevel newGradeLevel)
+        internal void CreateGradeLevel(GradeLevel newGradeLevel)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
