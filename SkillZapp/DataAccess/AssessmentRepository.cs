@@ -97,7 +97,7 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal Guid AddAssessment(Assessment assessment)
+        internal Guid CreateAssessment(Assessment assessment)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();

@@ -86,7 +86,7 @@ namespace SkillZapp.Controllers
         public IActionResult UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
         {
             _repo.UpdateStudentAssessment(studentAssessmentId, studentAssessment);
-            return Ok($"Order with id {studentAssessmentId} has been updated");
+            return Ok($"Student Assessment with id {studentAssessmentId} has been updated");
         }
     }
 }

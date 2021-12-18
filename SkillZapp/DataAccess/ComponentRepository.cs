@@ -55,7 +55,7 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void AddComponent(Component newComponent)
+        internal void CreateComponent(Component component)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
@@ -68,8 +68,8 @@ namespace SkillZapp.DataAccess
                           @StateName
                           )";
 
-            id = db.ExecuteScalar<Guid>(sql, newComponent);
-            newComponent.Id = id;
+            id = db.ExecuteScalar<Guid>(sql, component);
+            component.Id = id;
         }
 
         internal Component UpdateComponent(Guid id, Component component)

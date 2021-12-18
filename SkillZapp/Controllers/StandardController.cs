@@ -67,7 +67,7 @@ namespace SkillZapp.Controllers
         }
 
         [HttpPut("{standardId}")]
-        public IActionResult UpdateStudentAssessment(Guid standardId, Standard standard)
+        public IActionResult UpdateStandard(Guid standardId, Standard standard)
         {
             _repo.UpdateStandard(standardId, standard);
             return Ok($"Standard with id {standardId} has been updated");

@@ -55,10 +55,10 @@ namespace SkillZapp.DataAccess
             return result;
         }
         
-        internal IEnumerable<Student> GetStudentsByUserId(Guid userId)
+        internal IEnumerable<ClassName> GetClassNamesByUserId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT * from Students
+            var sql = @"SELECT * from ClassNames
                         WHERE UserId = @UserId";
 
             var parameters = new
@@ -66,11 +66,25 @@ namespace SkillZapp.DataAccess
                 UserId = userId
             };
 
-            var result = db.Query<Student>(sql, parameters);
+            var result = db.Query<ClassName>(sql, parameters);
             return result;
         }
 
-        internal Guid AddClassName(ClassName className)
+        internal IEnumerable<ClassName> GetClassNamesByTeacherName(string teacherName)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"SELECT * from ClassNames
+                        WHERE TeacherName = @TeacherName";
+
+            var parameters = new
+            {
+                TeacherName = teacherName
+            };
+
+            var result = db.Query<ClassName>(sql, parameters);
+            return result;
+        }
+        internal Guid CreateClassName(ClassName className)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();

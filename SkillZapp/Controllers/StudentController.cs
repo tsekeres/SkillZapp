@@ -47,9 +47,9 @@ namespace SkillZapp.Controllers
         [HttpGet("{UserId}")]
         public IActionResult GetStudentByUserId(Guid UserId)
         {
-            _repo.GetStudentsByClassNameId(UserId);
+            _repo.GetStudentsByUserId(UserId);
 
-            return Ok(_repo.GetStudentsByClassNameId(UserId));
+            return Ok(_repo.GetStudentsByUserId(UserId));
         }
 
         [HttpGet("{StudentName}")]
@@ -86,7 +86,7 @@ namespace SkillZapp.Controllers
         public IActionResult UpdateStudent(Guid studentId, Student student)
         {
             _repo.UpdateStudent(studentId, student);
-            return Ok($"Order with id {studentId} has been updated");
+            return Ok($"Student with id {studentId} has been updated");
         }
     }
 }
