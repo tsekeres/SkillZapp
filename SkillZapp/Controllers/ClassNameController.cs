@@ -35,7 +35,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetClassNameById(classNameId));
         }
 
-        [HttpGet("{gradeLevelId}")]
+        [HttpGet("gradeLevels/{gradeLevelId}")]
         public IActionResult GetClassNamesByGradeLevelId(Guid gradeLevelId)
         {
             _repo.GetClassNamesByGradeLevelId(gradeLevelId);
@@ -43,7 +43,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetClassNamesByGradeLevelId(gradeLevelId));
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("user/{userId}")]
         public IActionResult GetClassNameByUserId(Guid userId)
         {
             _repo.GetClassNamesByUserId(userId);
@@ -51,7 +51,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetClassNamesByUserId(userId));
         }
 
-        [HttpGet("{teacherName}")]
+        [HttpGet("teacherName/{teacherName}")]
         public IActionResult GetClassNamesByTeacherName(string teacherName)
         {
             _repo.GetClassNamesByTeacherName(teacherName);

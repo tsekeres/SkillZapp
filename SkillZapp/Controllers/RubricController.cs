@@ -35,7 +35,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetRubricsById(rubricId));
         }
 
-        [HttpGet("{rubricName}")]
+        [HttpGet("rubricName/{rubricName}")]
         public IActionResult GetRubricByRubricName(string rubricName)
         {
             _repo.GetRubricByName(rubricName);
@@ -43,7 +43,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetRubricByName(rubricName));
         }
 
-        [HttpGet("{standardId}")]
+        [HttpGet("standard/{standardId}")]
         public IActionResult GetRubricsByStandardId(Guid standardId)
         {
             _repo.GetRubricsByStandardId(standardId);

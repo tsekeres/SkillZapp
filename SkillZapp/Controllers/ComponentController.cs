@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetComponentsById(componentId));
         }
 
-        [HttpGet("{componentName}")]
+        [HttpGet("componentName/{componentName}")]
         public IActionResult GetComponentByName(string componentName)
         {
             _repo.GetComponentByName(componentName);
@@ -44,7 +44,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetComponentByName(componentName));
         }
 
-        [HttpGet("{stateName}")]
+        [HttpGet("stateName/{stateName}")]
         public IActionResult GetComponentByStateName(string stateName)
         {
             _repo.GetComponentByStateName(stateName);

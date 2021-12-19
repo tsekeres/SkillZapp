@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SkillZapp.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,23 +38,23 @@ namespace SkillZapp
             services.AddTransient<StandardRepository>();
             services.AddTransient<StudentAssessmentRepository>();
             services.AddTransient<StudentRepository>();
-            services.AddTransient<SubComponentRepository>();
+            services.AddTransient<SubcomponentRepository>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
-                .AddJwtBearer(options =>
-                {
-                    options.IncludeErrorDetails = true;
-                    options.Authority = "https://securetoken.google.com/SkillZapp";
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateLifetime = true,
-                        ValidateAudience = true,
-                        ValidateIssuer = true,
-                        ValidAudience = "SkillZapp",
-                        ValidIssuer = "https://securetoken.google.com/SkillZapp"
-                    };
-                });
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.IncludeErrorDetails = true;
+            //        options.Authority = "https://securetoken.google.com/SkillZapp";
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateLifetime = true,
+            //            ValidateAudience = true,
+            //            ValidateIssuer = true,
+            //            ValidAudience = "SkillZapp",
+            //            ValidIssuer = "https://securetoken.google.com/SkillZapp"
+            //        };
+            //    });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -28,7 +28,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStandardsById(standardId));
         }
 
-        [HttpGet("{subcomponentId}")]
+        [HttpGet("subcomponent/{subcomponentId}")]
         public IActionResult GetStandardsBySubcomponentId(Guid subcomponentId)
         {
             _repo.GetStandardsBySubcomponentId(subcomponentId);
@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStandardsBySubcomponentId(subcomponentId));
         }
 
-        [HttpGet("{StandardName}")]
+        [HttpGet("standard/{standardName}")]
         public IActionResult GetStandardByName(string standardName)
         {
             _repo.GetStandardByName(standardName);

@@ -28,7 +28,7 @@ namespace SkillZapp.Controllers
             return Ok(_subcomponentRepository.GetSubcomponentById(SubcomponentId));
         }
 
-        [HttpGet("{ComponentId}")]
+        [HttpGet("component/{ComponentId}")]
         public IActionResult GetSubcomponentByComponentId(Guid ComponentId)
         {
             _subcomponentRepository.GetSubcomponentsByComponentId(ComponentId);
@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_subcomponentRepository.GetSubcomponentsByComponentId(ComponentId));
         }
 
-        [HttpGet("{SubcomponentName}")]
+        [HttpGet("subcomponent/{SubcomponentName}")]
         public IActionResult GetSubcomponentBySubcomponentName(string subcomponentName)
         {
             _subcomponentRepository.GetByName(subcomponentName);

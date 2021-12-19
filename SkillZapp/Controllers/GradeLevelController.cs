@@ -35,7 +35,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetGradeLevelsById(gradeLevelId));
         }
 
-        [HttpGet("{standardId}")]
+        [HttpGet("standardId/{standardId}")]
         public IActionResult GetGradeLevelsByStandardId(Guid standardId)
         {
             _repo.GetGradeLevelsByStandardId(standardId);
@@ -43,7 +43,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetGradeLevelsByStandardId(standardId));
         }
 
-        [HttpGet("{gradeLevelNumber}")]
+        [HttpGet("gradeLevelNumber/{gradeLevelNumber}")]
         public IActionResult GetGradeLevelByNumber(string gradeLevelNumber)
         {
             _repo.GetGradeLevelByNumber(gradeLevelNumber);

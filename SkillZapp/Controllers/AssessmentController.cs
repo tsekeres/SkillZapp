@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetAssessmentById(assessmentId));
         }
 
-        [HttpGet("{standardNameId}")]
+        [HttpGet("standardName/{standardNameId}")]
         public IActionResult GetAssessmentsByStandardNameId(Guid standardNameId)
         {
             _repo.GetAssessmentsByStandardNameId(standardNameId);
@@ -44,7 +44,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetAssessmentsByStandardNameId(standardNameId));
         }
 
-        [HttpGet("{classNameId}")]
+        [HttpGet("className/{classNameId}")]
         public IActionResult GetAssessmentsByClassNameId(Guid classNameId)
         {
             _repo.GetAssessmentsByClassNameId(classNameId);
@@ -52,7 +52,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetAssessmentsByClassNameId(classNameId));
         }
 
-        [HttpGet("{rubricId}")]
+        [HttpGet("rubric/{rubricId}")]
         public IActionResult GetAssessmentsByRubricId(Guid rubricId)
         {
             _repo.GetAssessmentsByRubricId(rubricId);
@@ -60,7 +60,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetAssessmentsByRubricId(rubricId));
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("user{userId}")]
         public IActionResult GetAssessmentsByUserId(Guid userId)
         {
             _repo.GetAssessmentsByUserId(userId);

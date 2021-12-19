@@ -28,7 +28,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentById(studentAssessmentId));
         }
 
-        [HttpGet("{studentId}")]
+        [HttpGet("student/{studentId}")]
         public IActionResult GetStudentAssessmentByStudentId(Guid studentId)
         {
             _repo.GetStudentAssessmentsByStudentId(studentId);
@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByStudentId(studentId));
         }
 
-        [HttpGet("{AssessmentId}")]
+        [HttpGet("assessment/{AssessmentId}")]
         public IActionResult GetStudentAssessmentsByAssessmentId(Guid assessmentId)
         {
             _repo.GetStudentAssessmentsByAssessmentId(assessmentId);
@@ -44,7 +44,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByAssessmentId(assessmentId));
         }
 
-        [HttpGet("{Score}")]
+        [HttpGet("{score}")]
         public IActionResult GetStudentAssessmentsByScore(string score)
         {
             _repo.GetStudentAssessmentsByScore(score);
@@ -52,7 +52,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByScore(score));
         }
 
-        [HttpGet("{UserId}")]
+        [HttpGet("user/{userId}")]
         public IActionResult GetStudentAssessmentsByUserId(Guid userId)
         {
             _repo.GetStudentAssessmentsByUserId(userId);

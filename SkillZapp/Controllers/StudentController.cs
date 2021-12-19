@@ -28,7 +28,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentById(studentId));
         }
 
-        [HttpGet("{GradeLevelId}")]
+        [HttpGet("gradeLevel/{gradeLevelId}")]
         public IActionResult GetStudentByGradeLevelId(Guid gradeLevelId)
         {
             _repo.GetStudentsByGradeLevelId(gradeLevelId);
@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentsByGradeLevelId(gradeLevelId));
         }
 
-        [HttpGet("{ClassNameId}")]
+        [HttpGet("className/{classNameId}")]
         public IActionResult GetStudentByClassNameId(Guid ClassNameId)
         {
             _repo.GetStudentsByClassNameId(ClassNameId);
@@ -44,7 +44,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentsByClassNameId(ClassNameId));
         }
 
-        [HttpGet("{UserId}")]
+        [HttpGet("user/{userId}")]
         public IActionResult GetStudentByUserId(Guid UserId)
         {
             _repo.GetStudentsByUserId(UserId);
@@ -52,7 +52,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentsByUserId(UserId));
         }
 
-        [HttpGet("{StudentName}")]
+        [HttpGet("student/{StudentName}")]
         public IActionResult GetStudentsByStudentName(string studentName)
         {
             _repo.GetStudentsByStudentName(studentName);
