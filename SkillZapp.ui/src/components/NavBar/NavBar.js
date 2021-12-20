@@ -1,0 +1,118 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Button,
+} from 'reactstrap';
+import {
+  NavigationBar,
+  NavLeft,
+  NavItemsLeft,
+  DropDown,
+  DropDownContent,
+  NavLink,
+  NavMiddle,
+  NavItemsMiddle,
+  NavRight,
+  NavItemsRight,
+  NavItemsRightFlexDiv,
+  NavRightButtonsDiv,
+  NavBarImg,
+  NavBarImg1,
+  SignIn,
+  MobileIcon,
+  Button,
+} from './NavBarElements';
+import { signInUser, signOutUser } from '../helpers/auth';
+import Logo from '../assets/Logo.png';
+
+const NavBar = ({ user }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  const authenticated = () => (
+    <Link className='nav-link' style={{ color: '#d3910e' }} to='/trip-planner'>
+      Classes
+    </Link>
+  );
+
+  return (
+    <div>
+      <Navbar fixed='top' color='dark' light expand='md'>
+        <NavbarBrand href='/home'>
+          <img className='navLogo' src={Logo}></img>
+        </NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className='mr-auto' navbar>
+            <NavItem>
+              <Link
+                className='nav-link trip-color'
+                style={{ color: '#d3910e' }}
+                to='/trips'
+              >
+                Trips
+              </Link>
+            </NavItem>
+            <NavItem>{(user || admin) && authenticated()}</NavItem>
+            <NavItem>
+              <Link
+                className='nav-link'
+                style={{ color: '#d3910e' }}
+                to='/resources'
+              >
+                Resources
+              </Link>
+            </NavItem>
+          </Nav>
+        </Collapse>
+        {user !== null && (
+          <NavItem className='nav-id-info'>
+            {user || admin ? (
+              <div className='user-info'>
+                <div>
+                  <img
+                    className='profilePic'
+                    src={user.profileImage || admin.profileImage}
+                  ></img>
+                </div>
+                <div className='userInfo'>
+                  <div>{user.fullName || admin.fullName}</div>
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </NavItem>
+        )}
+        {(user || admin) !== null && (
+          <NavItem>
+            {user || admin ? (
+              <Button className='btn-out' onClick={signOutUser}>
+                Sign Out
+              </Button>
+            ) : (
+              <Button className='btn-in' onClick={signInUser}>
+                Sign In
+              </Button>
+            )}
+          </NavItem>
+        )}
+      </Navbar>
+    </div>
+  );
+};
+
+NavBar.propTypes = {
+  user: PropTypes.any,
+  admin: PropTypes.any,
+};
+
+export default NavBar;

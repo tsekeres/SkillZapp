@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebaseConfig from './helpers/apiKeys';
+import { firebaseConfig } from './helpers/apiKeys';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';

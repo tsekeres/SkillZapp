@@ -3,20 +3,22 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../helpers/Routes';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/NavBar/NavBar.js';
 import './App.scss';
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
+    firebase.auth().onAuthStateChanged((userObj) => {
+      if (userObj) {
+        userObj.getIdToken().then((token) => sessionStorage.setItem("token", token));
         const userInfoObj = {
-          fullName: authed.displayName,
+          firstName: authed.firstName,
+          lastName: authed.lastName,
           profileImage: authed.photoURL,
           uid: authed.uid,
-          user: authed.email.split('@')[0],
+          user: authed.email.split("@")[0],
         };
         getPlayers(authed.uid).then((playersArray) => setPlayers(playersArray));
         setUser(userInfoObj);
