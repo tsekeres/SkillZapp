@@ -3,8 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../helpers/Routes';
-import NavBar from '../components/NavBar/NavBar.js';
-import './App.scss';
+import NavBar from '../components/NavBar/NavBar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,19 +11,16 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userObj) => {
       if (userObj) {
-        userObj.getIdToken().then((token) => sessionStorage.setItem("token", token));
+        userObj.getIdToken().then((token) => sessionStorage.setItem('token', token));
         const userInfoObj = {
-          firstName: authed.firstName,
-          lastName: authed.lastName,
-          profileImage: authed.photoURL,
-          uid: authed.uid,
-          user: authed.email.split("@")[0],
+          firstName: userObj.firstName,
+          lastName: userObj.lastName,
+          profileImage: userObj.photoURL,
+          uid: userObj.uid,
+          user: userObj.email.split('@')[0],
         };
-        getPlayers(authed.uid).then((playersArray) => setPlayers(playersArray));
         setUser(userInfoObj);
-      } else if (user || user === null) {
-        setUser(false);
-      }
+      } else setUser(false);
     });
   }, []);
 

@@ -1,29 +1,27 @@
-import styled from "styled-components";
-import { Link as LinkS } from "react-scroll";
+import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const NavigationBar = styled.div`
   display: flex;
   flex-direction: row;
-  background: #fff;
+  background: #C0F3D5;
   height: 100px;
-  margin-top: -80px;
   display: flex;
-  justify-content: center;
-  font-size: 1rem;
+  margin: 10px;
+  // justify-content: center;
+  font-size: 2rem;
   position: sticky;
   top: 0;
   z-index: 10;
 `;
 
-export const NavLeft = styled.div`
+export const NavbarBrand = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
-  width: 40%;
+  margin: 10px;
+  // width: 40%;
 `;
 
-export const NavItemsLeft = styled.div`
+export const NavItem = styled.div`
   display: flex;
   flex-direction: row;
 `;
@@ -38,43 +36,44 @@ export const NavBarImg1 = styled.img`
 `;
 
 export const NavLink = styled.div`
-  font-size: 18px;
+  font-size: 2rem;
   margin-left: 15px;
   margin-right: 15px;
 
-  @media screen and (max-width: 1150px) {
-    font-size: 18px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+    @media screen and (max-width: 1150px) {
+      font-size: 2rem;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
 
-  @media screen and (max-width: 950px) {
-    font-size: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+    @media screen and (max-width: 950px) {
+      font-size: 2rem;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
 
-  @media screen and (max-width: 840px) {
-    font-size: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+    @media screen and (max-width: 840px) {
+      font-size: 1rem;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
 
-  @media screen and (max-width: 720px) {
-    font-size: 15px;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
+    @media screen and (max-width: 720px) {
+      font-size: 1rem;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
 
-  @media screen and (max-width: 650px) {
-    font-size: 12px;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
+    @media screen and (max-width: 650px) {
+      font-size: 1rem;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
 
-  @media screen and (max-width: 525px) {
-    display: none;
-  }
+    @media screen and (max-width: 525px) {
+      display: none;
+    }
+  
 `;
 
 export const NavMiddle = styled.div`
@@ -173,8 +172,8 @@ export const SearchBar = styled.img`
   margin-top: 8px;
   margin-right: 5px;
   transitionL 0.3s ease-in-out;
-//   opacity:  ${({ isOpen2 }) => (isOpen2 ? "100%" : "0")};
-//   top: ${({ isOpen2 }) => (isOpen2 ? "0" : "-100%")};
+//   opacity:  ${({ isOpen2 }) => (isOpen2 ? '100%' : '0')};
+//   top: ${({ isOpen2 }) => (isOpen2 ? '0' : '-100%')};
 `;
 
 export const BagImg = styled.img`
@@ -199,20 +198,6 @@ export const MobileIcon = styled.div`
 
   @media screen and (max-width: 525px) {
     display: flex;
-  }
-`;
-
-export const HashLink = styled(LinkS)`
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 1rem;
-  height: 100%;
-  text-align: center;
-
-  &.activeStyle {
-    border-bottom: 3px solid #fff;
   }
 `;
 
