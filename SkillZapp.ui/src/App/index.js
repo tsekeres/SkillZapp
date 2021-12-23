@@ -13,15 +13,14 @@ function App() {
     firebase.auth().onAuthStateChanged((userObj) => {
       if (userObj) {
         userObj.getIdToken().then((token) => sessionStorage.setItem('token', token));
-        // const userInfoObj = {
-        //   // displayName: user.displayName,
-        //   firstName: user.firstName,
-        //   lastName: user.lastName,
-        //   profileImage: user.photoURL,
-        //   uid: user.uid,
-        //   user: user.email.split('@')[0],
-        // };
-        setUser(userObj);
+        const userInfoObj = {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          profilePicURL: user.profilePicURL,
+          id: user.id,
+          user: user.email.split('@')[0],
+        };
+        setUser(userInfoObj);
       } else setUser(false);
     });
   }, []);

@@ -28,6 +28,7 @@ const signInUser = () => {
           FirstName: user.user?.displayName.split(' ')[0],
           LastName: user.user?.displayName.split(' ')[1],
           profilePicURL: user.user?.photoURL,
+          EmailAddress: user.user?.email,
         };
         addUser(userInfoObj);
       }

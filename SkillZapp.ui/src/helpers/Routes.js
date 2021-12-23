@@ -38,6 +38,12 @@ function Routes({ user }) {
         />
         <Route
           exact
+          path="/Classes/:id"
+          user={user}
+          component={() => <Classes user={user} />}
+        />
+        <Route
+          exact
           path="/Students"
           user={user}
           component={() => <Students user={user} />}

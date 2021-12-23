@@ -1,40 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // import AddClassForm from '../../components/Forms/ProductForms/ProductForm';
-// import ClassCards from '../../components/Cards/ProductCards/ProductCards';
+import ClassCards from '../components/Cards/ClassCards';
+import { getClassNamesByUserId } from '../helpers/data/classNamesData';
 import {
   ClassContainer,
   TitleContainer,
-  ClassSearchContainer,
-  AddClassContainer,
+  // ClassSearchContainer,
+  // AddClassContainer,
   ClassCardContainer,
-  Button,
+  // Button,
 } from './ClassesElements';
 
-function Classes({ user, classNames, setClassNames }) {
-  const [searchWord, setSearchWord] = useState('');
-  const [adding, setAdding] = useState(false);
+function Classes(user) {
+  const [classNames, setClassNames] = useState([]);
+  // const [searchWord, setSearchWord] = useState('');
+  // const [adding, setAdding] = useState(false);
 
+  useEffect(() => {
+    getClassNamesByUserId(user.id).then((response) => setClassNames(response));
+  }, []);
 
-  const handleClick = (type) => {
-    switch (type) {
-      case 'classSearch':
-        searchClassesList(searchWord).then((response) => setTrips(response));
-        break;
-      case 'addClass':
-        setAdding((prevState) => !prevState);
-        break;
-      default:
-        console.warn('error');
-    }
-  };
+  // const handleClick = (type) => {
+  //   switch (type) {
+  //     case 'classSearch':
+  //       searchClassesList(searchWord).then((response) => setTrips(response));
+  //       break;
+  //     case 'addClass':
+  //       setAdding((prevState) => !prevState);
+  //       break;
+  //     default:
+  //       console.warn('error');
+  //   }
+  // };
 
   return (
     <ClassContainer>
       <TitleContainer className='classes-header'>
         <h1>CLASSES</h1>
       </TitleContainer>
-      <ClassSearchContainer className='searchContainer'>
+      {/* <ClassSearchContainer className='searchContainer'>
           <Input
             type='select'
             placeholder='Search by Class Name'
@@ -81,16 +86,15 @@ function Classes({ user, classNames, setClassNames }) {
             setUpdating={setUpdating}
           />
         )}
-      </AddClassContainer>
+      </AddClassContainer> */}
       <ClassCardContainer className='card-container class-view'>
         {classNames?.map((classInfo) => (
           <ClassCards
             key={classInfo.id}
-              id={classInfo.id}              
+              id={classInfo.id}
               setClassNames={setClassNames}
               gradeLevelId={classInfo.gradeLevelId}
               teacherName={classInfo.teacherName}
-              userId={userId}
           />
         ))}
       </ClassCardContainer>
@@ -98,10 +102,8 @@ function Classes({ user, classNames, setClassNames }) {
   );
 }
 
-Trips.propTypes = {
+Classes.propTypes = {
   user: PropTypes.any,
-  classNames: PropTypes.any,
-  setClassNames: PropTypes.func,
 };
 
 export default Classes;
