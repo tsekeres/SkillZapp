@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const NavigationBar = styled.div`
   display: flex;
   flex-direction: row;
-  background: #C0F3D5;
-  height: 100px;
+  background: #c0f3d5;
+  height: 70px;
   display: flex;
   margin: 10px;
-  // justify-content: center;
+  justify-content: center;
   font-size: 2rem;
   position: sticky;
   top: 0;
@@ -18,7 +18,6 @@ export const NavbarBrand = styled.div`
   display: flex;
   flex-direction: row;
   margin: 10px;
-  // width: 40%;
 `;
 
 export const NavItem = styled.div`
@@ -26,85 +25,39 @@ export const NavItem = styled.div`
   flex-direction: row;
 `;
 
-export const NavBarImg1 = styled.img`
-  width: 50px;
-  margin-left: 10px;
-
-  @media screen and (min-width: 526px) {
-    display: none;
-  }
-`;
-
 export const NavLink = styled.div`
   font-size: 2rem;
   margin-left: 15px;
   margin-right: 15px;
 
-    @media screen and (max-width: 1150px) {
-      font-size: 2rem;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    @media screen and (max-width: 950px) {
-      font-size: 2rem;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    @media screen and (max-width: 840px) {
-      font-size: 1rem;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    @media screen and (max-width: 720px) {
-      font-size: 1rem;
-      margin-left: 3px;
-      margin-right: 3px;
-    }
-
-    @media screen and (max-width: 650px) {
-      font-size: 1rem;
-      margin-left: 3px;
-      margin-right: 3px;
-    }
-
-    @media screen and (max-width: 525px) {
-      display: none;
-    }
-  
-`;
-
-export const NavMiddle = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 20%;
-  align-items: center;
-`;
-
-export const NavItemsMiddle = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-
-  @media screen and (max-width: 700px) {
-    display: none;
+  @media screen and (max-width: 1150px) {
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-right: 5px;
   }
-`;
-
-export const NavBarImg = styled.img`
-  width: 100px;
-  align-self: center;
-  margin-top: 5px;
 
   @media screen and (max-width: 950px) {
-    width: 75px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
-  @media screen and (max-width: 700px) {
-    width: 50px;
+  @media screen and (max-width: 840px) {
+    font-size: 1rem;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  @media screen and (max-width: 720px) {
+    font-size: 1rem;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  @media screen and (max-width: 650px) {
+    font-size: 1rem;
+    margin-left: 3px;
+    margin-right: 3px;
   }
 
   @media screen and (max-width: 525px) {
@@ -112,44 +65,32 @@ export const NavBarImg = styled.img`
   }
 `;
 
-export const NavRight = styled.div`
+export const NavItemsMiddle = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  width: 40%;
+  width: 100%;
+  justify-content: space-around;
+  padding: .5em;
 
   @media screen and (max-width: 700px) {
-    width: 60%;
+    display: none;
   }
 `;
 
 export const NavItemsRight = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
-  margin-right: 10px;
-  width: 100%;
-`;
-
-export const NavItemsRightFlexDiv = styled.div`
-  flex-direction: row;
-  display: flex;
-  width: 100%;
-`;
-
-export const NavRightButtonsDiv = styled.div`
-  flex-direction: row;
-  display: flex;
-  width: 100%;
+  justify-content: right;
+  padding: 0.5em;
 `;
 
 export const SignIn = styled.img`
-  width: 20px;
-  // height: 20px;
-  margin-top: -25px;
-  margin-bottom: 33px;
-  margin-right: 30px;
-  margin-left: 30px;
+  width: 30px;
+  // // height: 20px;
+  // margin-top: -25px;
+  margin-bottom: 20px;
+  // margin-right: 30px;
+  // margin-left: 30px;
 
   @media screen and (max-width: 650px) {
     width: 15px;
@@ -160,44 +101,6 @@ export const SignIn = styled.img`
     width: 15px;
     height: 15px;
     margin-right: 15px;
-  }
-`;
-
-export const SearchBar = styled.img`
-  width: 400px;
-  height: 15px;
-  background: #fff;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin-top: 8px;
-  margin-right: 5px;
-  transitionL 0.3s ease-in-out;
-//   opacity:  ${({ isOpen2 }) => (isOpen2 ? '100%' : '0')};
-//   top: ${({ isOpen2 }) => (isOpen2 ? '0' : '-100%')};
-`;
-
-export const BagImg = styled.img`
-  width: 20px;
-  height: 20px;
-  margin-right: 30px;
-
-  @media screen and (max-width: 650px) {
-    width: 15px;
-    height: 15px;
-  }
-
-  @media screen and (max-width: 525px) {
-    width: 15px;
-    height: 15px;
-    margin-right: 15px;
-  }
-`;
-
-export const MobileIcon = styled.div`
-  display: none;
-
-  @media screen and (max-width: 525px) {
-    display: flex;
   }
 `;
 
@@ -208,23 +111,4 @@ export const Button = styled.button`
   cursor: pointer;
   // overflow: hidden;
   // align-items: start;
-`;
-
-export const DropDownContent = styled.div`
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  align-items: center;
-  z-index: 1;
-`;
-
-export const DropDown = styled.div`
-  &:hover ${DropDownContent} {
-    display: flex;
-    flex-direction: column;
-    // color: white;
-  }
 `;
