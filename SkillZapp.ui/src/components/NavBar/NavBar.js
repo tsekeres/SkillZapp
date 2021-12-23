@@ -7,9 +7,12 @@ import {
   NavItem,
   NavLink,
   Button,
+  SignIn,
 } from './NavBarElements';
 import { signInUser, signOutUser } from '../../helpers/auth';
 import Logo from '../../Assets/Logo.png';
+import loggedOut from '../../Assets/LoggedOut.png';
+import loggedIn from '../../Assets/LoggedIn.png';
 
 const NavBar = ({ user }) => (
   <div>
@@ -57,12 +60,12 @@ const NavBar = ({ user }) => (
       {user !== null && (
         <NavItem>
           {user ? (
-            <Button className="btn-out" onClick={signOutUser}>
-              Sign Out
+            <Button id="signOut" onClick={signOutUser}>
+              <SignIn className="SignOut" src={loggedIn}></SignIn>
             </Button>
           ) : (
-            <Button className="btn-in" onClick={signInUser}>
-              Sign In
+            <Button id="signIn" onClick={signInUser}>
+              <SignIn className="SignIn" src={loggedOut}></SignIn>
             </Button>
           )}
         </NavItem>

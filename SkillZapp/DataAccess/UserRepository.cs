@@ -33,12 +33,12 @@ namespace SkillZapp.DataAccess
             var sql = @"INSERT INTO [dbo].[Users]
                         ([FirstName],
                          [LastName],
-                         [ProfilePicUrl])
+                         [ProfilePicURL])
                             OUTPUT inserted.Id
                             VALUES
                          (@FirstName,
                           @LastName,
-                          @ProfilePicUrl)";
+                          @ProfilePicURL)";
 
 
             id = db.ExecuteScalar<Guid>(sql, newUser);

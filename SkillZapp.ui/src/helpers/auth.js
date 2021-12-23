@@ -1,5 +1,7 @@
+/* eslint-disable arrow-body-style */
 import firebase from 'firebase/app';
 import axios from 'axios';
+import addUser from './data/usersData';
 
 axios.interceptors.request.use(
   (request) => {
@@ -17,18 +19,18 @@ axios.interceptors.request.use(
 
 const signInUser = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then((user) => {
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((user) => {
       if (user.additionalUserInfo?.isNewUser) {
-          const userInfoObj = {
-            firstName: user.user?.firstName,
-            lastName: user.user?.lastName,
-            profileImage: user.user?.photoURL,
-            uid: user.user?.uid,
-            user: user.user?.email.split('@')[0],
-          };
-          addUser(userInfoObj);
-          window.location.href = '/';
-        }
+        const userInfoObj = {
+          FirstName: user.user?.displayName.split(' ')[0],
+          LastName: user.user?.displayName.split(' ')[1],
+          profilePicURL: user.user?.photoURL,
+        };
+        addUser(userInfoObj);
+      }
     });
 };
 

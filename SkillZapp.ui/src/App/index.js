@@ -10,17 +10,18 @@ function App() {
   // const [components, setComponents] = useState([]);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        user.getIdToken().then((token) => sessionStorage.setItem('token', token));
-        const userInfoObj = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          profileImage: user.photoURL,
-          uid: user.uid,
-          user: user.email.split('@')[0],
-        };
-        setUser(userInfoObj);
+    firebase.auth().onAuthStateChanged((userObj) => {
+      if (userObj) {
+        userObj.getIdToken().then((token) => sessionStorage.setItem('token', token));
+        // const userInfoObj = {
+        //   // displayName: user.displayName,
+        //   firstName: user.firstName,
+        //   lastName: user.lastName,
+        //   profileImage: user.photoURL,
+        //   uid: user.uid,
+        //   user: user.email.split('@')[0],
+        // };
+        setUser(userObj);
       } else setUser(false);
     });
   }, []);
