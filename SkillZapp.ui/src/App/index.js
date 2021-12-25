@@ -4,6 +4,7 @@ import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../helpers/Routes';
 import NavBar from '../components/NavBar/NavBar';
+import { getUserByEmail } from '../helpers/data/usersData';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -13,15 +14,16 @@ function App() {
     firebase.auth().onAuthStateChanged((userObj) => {
       if (userObj) {
         userObj.getIdToken().then((token) => sessionStorage.setItem('token', token));
-        const userInfoObj = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          profilePicURL: user.profilePicURL,
-          id: user.id,
-          user: user.email.split('@')[0],
-        };
-        setUser(userInfoObj);
-      } else setUser(false);
+        getUserByEmail(userObj.email).then((responseObj) => {
+          if (responseObj !== '') {
+            setUser(responseObj);
+          } else {
+            setUser(false);
+          }
+        });
+      } else {
+        setUser(false);
+      }
     });
   }, []);
 

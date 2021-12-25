@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 import firebase from 'firebase/app';
 import axios from 'axios';
-import addUser from './data/usersData';
+import { addUser } from './data/usersData';
 
 axios.interceptors.request.use(
   (request) => {
@@ -27,7 +27,7 @@ const signInUser = () => {
         const userInfoObj = {
           FirstName: user.user?.displayName.split(' ')[0],
           LastName: user.user?.displayName.split(' ')[1],
-          profilePicURL: user.user?.photoURL,
+          ProfilePicURL: user.user?.photoURL,
           EmailAddress: user.user?.email,
         };
         addUser(userInfoObj);

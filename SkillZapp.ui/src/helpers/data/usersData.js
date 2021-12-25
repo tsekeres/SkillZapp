@@ -9,4 +9,14 @@ const addUser = (user) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default addUser;
+const getUserByEmail = (emailAddress) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/users/emailAddress/${emailAddress}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+export {
+  addUser,
+  getUserByEmail,
+};

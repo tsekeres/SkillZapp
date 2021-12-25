@@ -45,35 +45,17 @@ const NavBar = ({ user }) => (
           </NavLink>
         </NavItem>
       </NavItemsMiddle>
-      {user !== null && (
-        <NavItem className="nav-id-info">
-          {user ? (
-            <div className="user-info">
-              <div>
-                <img className="profilePic" src={user.profilePicURL}></img>
-              </div>
-              <div className="userInfo">
-                <div>{user.firstName}</div>
-              </div>
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </NavItem>
-      )}
-      {user !== null && (
-        <NavItemsRight>
-          {user ? (
-              <Button id="signOut" onClick={signOutUser}>
-                <SignIn className="SignOut" src={loggedIn}></SignIn>
-              </Button>
-          ) : (
-              <Button id="signIn" onClick={signInUser}>
-                <SignIn className="SignIn" src={loggedOut}></SignIn>
-              </Button>
-          )}
-        </NavItemsRight>
-      )}
+      <NavItemsRight>
+        {user ? (
+            <Button id="signOut" onClick={signOutUser}>
+              <SignIn className="SignOut" src={loggedIn}></SignIn>
+            </Button>
+        ) : (
+            <Button id="signIn" onClick={signInUser}>
+              <SignIn className="SignIn" src={loggedOut}></SignIn>
+            </Button>
+        )}
+      </NavItemsRight>
     </NavigationBar>
   </div>
 );
