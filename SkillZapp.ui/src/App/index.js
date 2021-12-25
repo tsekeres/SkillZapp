@@ -3,24 +3,25 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../helpers/Routes';
-import NavBar from '../components/NavBar';
-import './App.scss';
+import NavBar from '../components/NavBar/NavBar';
+import { getUserByEmail } from '../helpers/data/usersData';
 
 function App() {
   const [user, setUser] = useState(null);
+  // const [components, setComponents] = useState([]);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
-        const userInfoObj = {
-          fullName: authed.displayName,
-          profileImage: authed.photoURL,
-          uid: authed.uid,
-          user: authed.email.split('@')[0],
-        };
-        getPlayers(authed.uid).then((playersArray) => setPlayers(playersArray));
-        setUser(userInfoObj);
-      } else if (user || user === null) {
+    firebase.auth().onAuthStateChanged((userObj) => {
+      if (userObj) {
+        userObj.getIdToken().then((token) => sessionStorage.setItem('token', token));
+        getUserByEmail(userObj.email).then((responseObj) => {
+          if (responseObj !== '') {
+            setUser(responseObj);
+          } else {
+            setUser(false);
+          }
+        });
+      } else {
         setUser(false);
       }
     });

@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace SkillZapp
 {
@@ -40,21 +42,21 @@ namespace SkillZapp
             services.AddTransient<StudentRepository>();
             services.AddTransient<SubcomponentRepository>();
 
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
-            //    .AddJwtBearer(options =>
-            //    {
-            //        options.IncludeErrorDetails = true;
-            //        options.Authority = "https://securetoken.google.com/SkillZapp";
-            //        options.TokenValidationParameters = new TokenValidationParameters
-            //        {
-            //            ValidateLifetime = true,
-            //            ValidateAudience = true,
-            //            ValidateIssuer = true,
-            //            ValidAudience = "SkillZapp",
-            //            ValidIssuer = "https://securetoken.google.com/SkillZapp"
-            //        };
-            //    });
+                .AddJwtBearer(options =>
+                {
+                    options.IncludeErrorDetails = true;
+                    options.Authority = "https://securetoken.google.com/skillzapp-88ac5";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateLifetime = true,
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidAudience = "skillzapp-88ac5",
+                        ValidIssuer = "https://securetoken.google.com/skillzapp-88ac5"
+                    };
+                });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -71,6 +73,8 @@ namespace SkillZapp
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SkillZapp v1"));
             }
+
+            app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseHttpsRedirection();
 

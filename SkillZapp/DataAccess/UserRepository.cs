@@ -33,12 +33,14 @@ namespace SkillZapp.DataAccess
             var sql = @"INSERT INTO [dbo].[Users]
                         ([FirstName],
                          [LastName],
-                         [ProfilePicUrl])
+                         [ProfilePicURL],
+                         [EmailAddress])
                             OUTPUT inserted.Id
                             VALUES
                          (@FirstName,
                           @LastName,
-                          @ProfilePicUrl)";
+                          @ProfilePicURL,
+                          @EmailAddress)";
 
 
             id = db.ExecuteScalar<Guid>(sql, newUser);
@@ -54,6 +56,17 @@ namespace SkillZapp.DataAccess
             return user;
         }
 
+        internal User GetByEmail(string emailAddress)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"Select * From Users where EmailAddress = @EmailAddress";
+            var parameter = new
+            {
+                EmailAddress = emailAddress
+            };
+            var user = db.QueryFirstOrDefault<User>(sql, parameter);
+            return user;
+        }
         internal void Delete(Guid id)
         {
             using var db = new SqlConnection(_connectionString);

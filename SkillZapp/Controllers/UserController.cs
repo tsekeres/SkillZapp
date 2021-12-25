@@ -53,6 +53,16 @@ namespace SkillZapp.Controllers
             return Created($"/api/users/{newUser.Id}", newUser);
         }
 
+        [HttpGet("emailAddress/{emailAddress}")]
+        public IActionResult GetUserByEmail(string emailAddress)
+        {
+            var user = _userRepository.GetByEmail(emailAddress);
+            if (user == null)
+            {
+                return NotFound("No user found.");
+            }
+            return Ok(user);
+        }
         [HttpPut("{id}")]
         public IActionResult UpdateUser(Guid id, User user)
         {
