@@ -12,6 +12,7 @@ export const ClassCard = styled.div`
   margin-left: 75px;
   margin-bottom: 75px;
   padding: 10px;
+  background-color: #52abab;
 
   @media screen and (max-width: 525px) {
     margin-left: 25px;
@@ -106,6 +107,7 @@ export const ClassCardBody = styled.div`
   margin-bottom: 5px;
   width: 100%;
   text-transform: lowercase;
+  background-color: #52ABAB;
 
   @media screen and (max-width: 920px) {
     font-size: 10px;

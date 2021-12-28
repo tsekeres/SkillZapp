@@ -7,7 +7,7 @@ import {
   ImageContainer,
   LoginContainer,
   UserName,
-  ProductCardImg,
+  LogoImg,
 } from './HomeElements';
 
 function Home({ user }) {
@@ -33,7 +33,7 @@ function Home({ user }) {
         </UserName>
       )}
       <ImageContainer>
-        <ProductCardImg className='navLogo' src={Logo2}></ProductCardImg>
+        <LogoImg className='navLogo' src={Logo2}></LogoImg>
       </ImageContainer>
       <WelcomeContainer>
         <a>Welcome to SkillZapp!</a>

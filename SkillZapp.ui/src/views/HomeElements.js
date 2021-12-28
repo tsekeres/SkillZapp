@@ -34,7 +34,7 @@ export const ImageContainer = styled.div`
   background: #1a2a2d;
 `;
 
-export const ProductCardImg = styled.img`
+export const LogoImg = styled.img`
   width: 60%;
   // height: 80%;
   object-fit: cover;
