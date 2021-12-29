@@ -16,34 +16,34 @@ import {
 
 function Classes({ user }) {
   const [classNames, setClassNames] = useState(null);
-  // const [searchWord, setSearchWord] = useState('');
+  const [searchWord, setSearchWord] = useState('');
   // const [adding, setAdding] = useState(false);
 
   useEffect(() => {
-    getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
+    if (user) {
+      getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
+    }
   }, []);
 
-  // const handleClick = (type) => {
-  //   switch (type) {
-  //     case 'classSearch':
-  //       searchClassesList(searchWord).then((response) => setTrips(response));
-  //       break;
-  //     case 'addClass':
-  //       setAdding((prevState) => !prevState);
-  //       break;
-  //     default:
-  //       console.warn('error');
-  //   }
-  // };
+  const handleClick = (type) => {
+    switch (type) {
+      case 'classSearch':
+        searchClassesList(searchWord).then((response) => setTrips(response));
+        break;
+      // case 'addClass':
+      //   setAdding((prevState) => !prevState);
+      //   break;
+      default:
+        console.warn('error');
+    }
+  };
 
   return (
-    <div>
-    {
-      classNames && <ClassContainer>
+    <ClassContainer>
         <TitleContainer className="classes-header">
           <h1>CLASSES</h1>
         </TitleContainer>
-        {/* <ClassSearchContainer className='searchContainer'>
+        <ClassSearchContainer className='searchContainer'>
           <Input
             type='select'
             placeholder='Search by Class Name'
@@ -60,7 +60,7 @@ function Classes({ user }) {
             Search
           </Button>
         </ClassSearchContainer>
-        <AddClassContainer>
+        {/* <AddClassContainer>
           <Button color='info' size='sm' onClick={() => handleClick('addClass')}>
             {adding ? 'Close Form' : 'addClass'}
           </Button>
@@ -92,10 +92,10 @@ function Classes({ user }) {
           )}
         </AddClassContainer> */}
         <ClassCardContainer className="card-container class-view">
-          {classNames?.map((classInfo) => (
+          { classNames && classNames.map((classInfo) => (
             <ClassCards
               key={classInfo.id}
-              id={classInfo.id}
+              classNameId={classInfo.id}
               setClassNames={setClassNames}
               gradeLevelId={classInfo.gradeLevelId}
               teacherName={classInfo.teacherName}
@@ -104,8 +104,6 @@ function Classes({ user }) {
           ))}
         </ClassCardContainer>
     </ClassContainer>
-    }
-    </div>
   );
 }
 

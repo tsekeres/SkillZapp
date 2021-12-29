@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const ClassCardContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: row;
+  flex-wrap: wrap;
   padding-top: 50px;
   // align-items: center;
   // justify-content: center;
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
 `;
 
 export const ClassContainer = styled.div`

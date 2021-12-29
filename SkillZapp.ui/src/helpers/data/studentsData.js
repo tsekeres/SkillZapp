@@ -4,18 +4,18 @@ import { SkillZappConfig } from '../apiKeys';
 const apiURL = SkillZappConfig.baseUrl;
 
 const getAllStudents = () => new Promise((resolve, reject) => {
-    axios
-      .get(`${apiURL}/api/students`)
-      .then((response) => resolve(response.data))
-      .catch((error) => reject(error));
-  });
+  axios
+    .get(`${apiURL}/api/students`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 const getStudentsByClassNameId = (classNameId) => new Promise((resolve, reject) => {
-    axios
-      .get(`${apiURL}/api/classNames/${classNameId}`)
-      .then((response) => resolve(response.data))
-      .catch((error) => reject(error));
-  });
+  axios
+    .get(`${apiURL}/api/classNames/${classNameId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 // const getClassNamesByUserId = (userId) =>
 //   new Promise((resolve, reject) => {
@@ -73,13 +73,13 @@ const getStudentsByClassNameId = (classNameId) => new Promise((resolve, reject) 
 // });
 
 export {
-  createClassName,
-  updateClassName,
-  deleteClassName,
+  // createClassName,
+  // updateClassName,
+  // deleteClassName,
   getAllStudents,
   getStudentsByClassNameId,
-  getClassNamesByUserId,
-  getClassNameByTeacherName,
-  getClassNamesWithGradeLevelByUserId,
+  // getClassNamesByUserId,
+  // getClassNameByTeacherName,
+  // getClassNamesWithGradeLevelByUserId,
   // searchClassesList,
 };

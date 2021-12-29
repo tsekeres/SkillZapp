@@ -47,7 +47,7 @@ function NavBar({ user }) {
                     </NavItem>
                     <NavItem>
                       <NavLink>
-                        <Link className="Assess" to="/Assessment">
+                        <Link className="Assess" to="/Assessments">
                           Assessments
                         </Link>
                       </NavLink>

@@ -1,33 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom';
+import StudentNameCards from '../components/Cards/StudentNameCards';
+import {
+  SingleClassContainer,
+  TitleContainer,
+  // ClassSearchContainer,
+  // AddClassContainer,
+  StudentCardContainer,
+  // Button,
+} from './SingleClassElements';
+import { getClassNamesWithGradeLevelByUserId } from '../helpers/data/classNamesData';
+// import { getStudentsByClassNameId } from '../helpers/data/studentsData';
 
-function SingleClass() {
-  <div><h2>Single Class View</h2></div>;
-  // const [className, setClassName] = useState({});
-  // const [students, setStudents] = useState({});
-  // const { id } = useParams();
+function SingleClass({ user }) {
+  const [classNames, setClassNames] = useState([]);
+  const [students, setStudents] = useState([]);
 
-  // useEffect(() => {
-  //   let mounted = true;
-  //   getClassNameById(id).then(setClassName);
-  //   getStudentsByClassNameId(id).then(setStudents);
-  //   return () => {
-  //     mounted = false;
-  //     return mounted;
-  //   };
-  // }, []);
+  useEffect(() => {
+    getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
+    // getStudentsByClassNameId(className.id).then((studentList) => setStudents(studentList));
+  }, []);
 
-  // return (
-  //   // needs title section
-  //   // needs map of class's assessment cards /simple view/ to display
-  //   // needs an add student button for modal and form
-  //   // needs map of student name cards /simple view/ to display
-  //   // needs new assessment button that links to modal form
-  //   <SingleClassContainer className='single-class-view'>
-  //     <SingleClassCard key={id} id={id} className={className} user={user} />
-  //   </SingleClassContainer>
-  // );
+  return (
+    <SingleClassContainer>
+      <TitleContainer className='classes-header'>
+        <h1>
+          {classNames.teacherName}
+          {classNames.gradeLevelDescription}
+        </h1>
+      </TitleContainer>
+      <StudentCardContainer className='card-container class-view'>
+        {students?.map((studentInfo) => (
+          <StudentNameCards
+            key={studentInfo.id}
+            id={studentInfo.id}
+            setStudents={setStudents}
+            gradeLevelId={studentInfo.gradeLevelId}
+            studentName={studentInfo.studentName}
+            // teacherName={classInfo.teacherName}
+            // gradeLevelDescription={classInfo.gradeLevelDescription}
+          />
+        ))}
+      </StudentCardContainer>
+    </SingleClassContainer>
+  );
 }
 
 SingleClass.propTypes = {

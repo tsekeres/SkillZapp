@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 // import { useParams } from "react-router-dom";
 
 function SingleStudent() {
+  return (
+
     <div>
       <h2>Single Student View</h2>
-    </div>;
+    </div>
 
   // const [className, setClassName] = useState({});
   // const [students, setStudents] = useState({});
@@ -31,6 +33,7 @@ function SingleStudent() {
   //     <SingleClassCard key={id} id={id} className={className} user={user} />
   //   </SingleClassContainer>
   // );
+  );
 }
 
 SingleStudent.propTypes = {
