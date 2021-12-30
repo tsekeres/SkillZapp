@@ -1,43 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { getSingleStudentAssessmentsByStudentId } from '../helpers/data/studentsData';
+import AssessmentNameCards from '../components/Cards/AssessmentNameCards';
+import {
+  SingleStudentContainer,
+  CardTitle,
+  CardText,
+  AssessmentCardContainer,
+} from './SingleStudentElements';
 
 function SingleStudent() {
+  const [studentAssessments, setStudentAssessments] = useState(null);
+  const { id } = useParams();
+  useEffect(() => {
+    if (id) {
+      getSingleStudentAssessmentsByStudentId(id).then((resp) => setStudentAssessments(resp));
+    }
+  }, []);
+
+  // const handleClick = (type) => {
+  //   switch (type) {
+  //     // case 'view':
+  //     //   history.push(`/StudentAssessment/${id}`);
+  //     //   break;
+  //     case 'delete':
+  //       deleteStudent(id).then(() =>
+  //         getAllStudents().then((response) => setAllStudents(response))
+  //       );
+  //       history.push(`/Classes/${id}`);
+  //       break;
+  //     default:
+  //       console.warn('nothing selected');
+  //   }
+  // };
   return (
-
-    <div>
-      <h2>Single Student View</h2>
-    </div>
-
-  // const [className, setClassName] = useState({});
-  // const [students, setStudents] = useState({});
-  // const { id } = useParams();
-
-  // useEffect(() => {
-  //   let mounted = true;
-  //   getClassNameById(id).then(setClassName);
-  //   getStudentsByClassNameId(id).then(setStudents);
-  //   return () => {
-  //     mounted = false;
-  //     return mounted;
-  //   };
-  // }, []);
-
-  // return (
-  //   // needs title section
-  //   // needs map of class's assessment cards /simple view/ to display
-  //   // needs an add student button for modal and form
-  //   // needs map of student name cards /simple view/ to display
-  //   // needs new assessment button that links to modal form
-  //   <SingleClassContainer className="single-class-view">
-  //     <SingleClassCard key={id} id={id} className={className} user={user} />
-  //   </SingleClassContainer>
-  // );
+    <SingleStudentContainer>
+      {studentAssessments
+        && <>
+      {/* <Button1 id='deleteSingleStudent' onClick={() => handleClick('delete')}>
+        <SingleStudentDelete
+          className='SingleStudentCardDelete'
+          src={deleted}
+        ></SingleStudentDelete>
+      </Button1> */}
+      <CardTitle tag='h1'>{studentAssessments.studentName}</CardTitle>
+      <CardText tag='h5'>{studentAssessments.gradeLevelDescription}</CardText>
+      <CardTitle tag='h5'>
+        Teacher Name: {studentAssessments.teacherName}
+      </CardTitle>
+      <CardText tag='h2'>Assessments</CardText>
+      <AssessmentCardContainer className='card-container student-view'>
+        {studentAssessments?.map((assessmentInfo, index) => (
+          <AssessmentNameCards
+            key={index}
+            id={assessmentInfo.id}
+            setStudentAssessments={setStudentAssessments}
+            studentName={assessmentInfo.studentName}
+            teacherName={assessmentInfo.teacherName}
+            gradeLevelDescription={assessmentInfo.gradeLevelDescription}
+            score={assessmentInfo.score}
+            standardName={assessmentInfo.standardName}
+          />
+        ))}
+      </AssessmentCardContainer>
+      </>}
+    </SingleStudentContainer>
   );
 }
 
 SingleStudent.propTypes = {
-  user: PropTypes.any,
+  id: PropTypes.any,
 };
 
 export default SingleStudent;

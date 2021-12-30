@@ -31,6 +31,13 @@ const getClassNamesWithGradeLevelByUserId = (userId) => new Promise((resolve, re
     .catch((error) => reject(error));
 });
 
+const getClassNameWithStudentsByTeacherName = (classNameId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/ClassNameWithStudents/className/${classNameId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const createClassName = (className) => new Promise((resolve, reject) => {
   axios
     .post(`${apiURL}/api/classNames`, className)
@@ -59,13 +66,6 @@ const getClassNameByTeacherName = (teacherName) => new Promise((resolve, reject)
     .catch((error) => reject(error));
 });
 
-const searchClassesList = (teacherName) => new Promise((resolve, reject) => {
-  getAllClassNames().then((classNamesArray) => {
-    const searchItems = classNamesArray.filter((class) => class.teacherName.includes(teacherName));
-    resolve(searchItems);
-  }).catch((error) => reject(error))
-});
-
 export {
   getAllClassNames,
   createClassName,
@@ -75,5 +75,5 @@ export {
   getClassNamesByUserId,
   getClassNameByTeacherName,
   getClassNamesWithGradeLevelByUserId,
-  // searchClassesList,
+  getClassNameWithStudentsByTeacherName,
 };

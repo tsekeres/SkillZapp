@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import StudentNameCards from '../components/Cards/StudentNameCards';
 import {
   SingleClassContainer,
@@ -9,45 +10,48 @@ import {
   StudentCardContainer,
   // Button,
 } from './SingleClassElements';
-import { getClassNamesWithGradeLevelByUserId } from '../helpers/data/classNamesData';
+import { getClassNameWithStudentsByTeacherName } from '../helpers/data/classNamesData';
 // import { getStudentsByClassNameId } from '../helpers/data/studentsData';
 
-function SingleClass({ user }) {
-  const [classNames, setClassNames] = useState([]);
-  const [students, setStudents] = useState([]);
+function SingleClass() {
+  const [className, setClassName] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
-    getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
-    // getStudentsByClassNameId(className.id).then((studentList) => setStudents(studentList));
+    if (id) {
+      getClassNameWithStudentsByTeacherName(id).then((resp) => setClassName(resp));
+    }
   }, []);
-
   return (
     <SingleClassContainer>
-      <TitleContainer className='classes-header'>
-        <h1>
-          {classNames.teacherName}
-          {classNames.gradeLevelDescription}
-        </h1>
-      </TitleContainer>
-      <StudentCardContainer className='card-container class-view'>
-        {students?.map((studentInfo) => (
-          <StudentNameCards
-            key={studentInfo.id}
-            id={studentInfo.id}
-            setStudents={setStudents}
-            gradeLevelId={studentInfo.gradeLevelId}
-            studentName={studentInfo.studentName}
-            // teacherName={classInfo.teacherName}
-            // gradeLevelDescription={classInfo.gradeLevelDescription}
-          />
-        ))}
-      </StudentCardContainer>
+      {className
+        && <><TitleContainer className='classes-header'>
+          <h1>
+            {className.teacherName}
+            {className.gradeLevelDescription}
+          </h1>
+        </TitleContainer>
+        <StudentCardContainer className='card-container class-view'>
+          {className?.map((studentInfo, index) => (
+            <StudentNameCards
+              key={index}
+              id={studentInfo.studentId}
+              gradeLevelId={studentInfo.gradeLevelId}
+              studentName={studentInfo.studentName}
+              teacherName={studentInfo.teacherName}
+              gradeLevelDescription={studentInfo.gradeLevelDescription}
+            />
+          ))}
+        </StudentCardContainer>
+        </>
+      }
     </SingleClassContainer>
   );
 }
 
 SingleClass.propTypes = {
   user: PropTypes.any,
+  id: PropTypes.any
 };
 
 export default SingleClass;

@@ -14,10 +14,9 @@ import {
 const ClassCards = ({
   gradeLevelDescription,
   teacherName,
-  id,
+  id
 }) => {
   const history = useHistory();
-
   const handleClick = (type) => {
     switch (type) {
       case 'view':

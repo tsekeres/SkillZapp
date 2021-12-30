@@ -17,6 +17,13 @@ const getStudentsByClassNameId = (classNameId) => new Promise((resolve, reject) 
     .catch((error) => reject(error));
 });
 
+const getSingleStudentAssessmentsByStudentId = (studentId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/SingleStudentAssessments/studentId/${studentId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 // const getClassNamesByUserId = (userId) =>
 //   new Promise((resolve, reject) => {
 //     axios
@@ -78,6 +85,7 @@ export {
   // deleteClassName,
   getAllStudents,
   getStudentsByClassNameId,
+  getSingleStudentAssessmentsByStudentId,
   // getClassNamesByUserId,
   // getClassNameByTeacherName,
   // getClassNamesWithGradeLevelByUserId,

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SkillZapp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/classNameWithGL")]
     [ApiController]
     public class ClassNameWithGLController : ControllerBase
     {

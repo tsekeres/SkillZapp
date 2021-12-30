@@ -8,12 +8,16 @@ import {
   StudentNameCard,
   StudentNameCardBody,
   CardTitle,
-  // CardText,
+  CardText,
 } from './StudentNameCardsElements';
 
-const StudentNameCards = ({ StudentName, id }) => {
+const StudentNameCards = ({
+  studentName,
+  teacherName,
+  gradeLevelDescription,
+  id
+}) => {
   const history = useHistory();
-
   const handleClick = (type) => {
     switch (type) {
       case 'view':
@@ -27,13 +31,14 @@ const StudentNameCards = ({ StudentName, id }) => {
   return (
     // this card needs delete student button
     <StudentNameCard
-      className='ClassCard'
-      id='ClassCard'
+      className='StudentCard'
+      id='StudentCard'
       onClick={() => handleClick('view')}
     >
       <StudentNameCardBody>
-        <CardTitle tag='h5'>{StudentName}</CardTitle>
-        {/* <CardText tag='h5'>{gradeLevelDescription}</CardText> */}
+        <CardTitle tag='h2'>{studentName}</CardTitle>
+        <CardText tag='h5'>{teacherName}</CardText>
+        <CardText tag='h5'>{gradeLevelDescription}</CardText>
       </StudentNameCardBody>
     </StudentNameCard>
   );
@@ -41,7 +46,8 @@ const StudentNameCards = ({ StudentName, id }) => {
 
 StudentNameCards.propTypes = {
   gradeLevelDescription: PropTypes.any,
-  StudentName: PropTypes.string,
+  studentName: PropTypes.string,
+  teacherName: PropTypes.string,
   id: PropTypes.string,
   user: PropTypes.any,
 };
