@@ -22,7 +22,6 @@ function Classes({ user }) {
       getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
     }
   }, []);
-
   // const handleClick = (type) => {
   //   switch (type) {
   //     // case 'addClass':
@@ -38,7 +37,7 @@ function Classes({ user }) {
       <TitleContainer className="classes-header">
         <h1>CLASSES</h1>
       </TitleContainer>
-      <SearchBar />
+      <SearchBar user={user} />
       {/* <AddClassContainer>
           <Button color='info' size='sm' onClick={() => handleClick('addClass')}>
             {adding ? 'Close Form' : 'addClass'}

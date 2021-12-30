@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import { SearchBarBar } from './SearchBarElements';
-import { getAllClassNames } from '../../helpers/data/classNamesData';
+import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 
-const SearchBar = () => {
+const SearchBar = ({ user }) => {
   const history = useHistory();
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     const optionsArr = [];
-    getAllClassNames()
+    getClassNamesByUserId(user.id)
       .then((resultArr) => {
         for (let i = 0; i < resultArr.length; i += 1) {
           const option = {
@@ -38,6 +39,10 @@ const SearchBar = () => {
       />
     </SearchBarBar>
   );
+};
+
+SearchBar.propTypes = {
+  user: PropTypes.any,
 };
 
 export default SearchBar;

@@ -22,6 +22,7 @@ function SingleClass() {
       getClassNameWithStudentsByTeacherName(id).then((resp) => setClassName(resp));
     }
   }, []);
+
   return (
     <SingleClassContainer>
       {className

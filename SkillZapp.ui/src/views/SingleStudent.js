@@ -13,11 +13,13 @@ import {
 function SingleStudent() {
   const [studentAssessments, setStudentAssessments] = useState(null);
   const { id } = useParams();
+
   useEffect(() => {
     if (id) {
       getSingleStudentAssessmentsByStudentId(id).then((resp) => setStudentAssessments(resp));
     }
   }, []);
+  console.warn(studentAssessments);
 
   // const handleClick = (type) => {
   //   switch (type) {
