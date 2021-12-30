@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Classes from '../views/Classes';
 import Students from '../views/Students';
+import SingleClass from '../views/SingleClass';
+import SingleStudent from '../views/SingleStudent';
+import Assessments from '../views/Assessments';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   // eslint-disable-next-line no-confusing-arrow
@@ -26,29 +29,41 @@ function Routes({ user }) {
       <Switch>
         <Route
           exact
-          path="/"
-          user={user}
+          path='/'
+          // user={user}
           component={() => <Home user={user} />}
         />
         <Route
           exact
-          path="/Classes"
-          user={user}
+          path='/Classes'
+          // user={user}
           component={() => <Classes user={user} />}
         />
         <Route
           exact
-          path="/Classes/:id"
+          path='/Classes/:id'
           user={user}
-          component={() => <Classes user={user} />}
+          component={() => <SingleClass user={user} />}
         />
         <Route
           exact
-          path="/Students"
+          path='/Students'
           user={user}
           component={() => <Students user={user} />}
         />
-        <Route path="*" component={Home} />
+        <Route
+          exact
+          path='/Students/:id'
+          user={user}
+          component={() => <SingleStudent user={user} />}
+        />
+        <Route
+          exact
+          path='/Assessments'
+          user={user}
+          component={() => <Assessments user={user} />}
+        />
+        <Route path='*' component={Home} />
       </Switch>
     </div>
   );

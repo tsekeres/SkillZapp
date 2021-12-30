@@ -68,7 +68,7 @@ namespace SkillZapp.Controllers
         }
 
         [HttpDelete("{classNameId}")]
-        public IActionResult DeleteStudent(Guid classNameId)
+        public IActionResult DeleteClassName(Guid classNameId)
         {
             _repo.DeleteClassName(classNameId);
             return Ok($"ClassName with Id {classNameId} was deleted");

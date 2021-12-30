@@ -3,6 +3,13 @@ import { SkillZappConfig } from '../apiKeys';
 
 const apiURL = SkillZappConfig.baseUrl;
 
+const getAllClassNames = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/classNames`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const getClassNameById = (classNameId) => new Promise((resolve, reject) => {
   axios
     .get(`${apiURL}/api/classNames/${classNameId}`)
@@ -12,7 +19,21 @@ const getClassNameById = (classNameId) => new Promise((resolve, reject) => {
 
 const getClassNamesByUserId = (userId) => new Promise((resolve, reject) => {
   axios
-    .get(`${apiURL}/api/classNames/${userId}`)
+    .get(`${apiURL}/api/classNames/user/${userId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+const getClassNamesWithGradeLevelByUserId = (userId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/ClassNameWithGL/user/${userId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+const getClassNameWithStudentsByTeacherName = (classNameId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/ClassNameWithStudents/className/${classNameId}`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
@@ -45,19 +66,14 @@ const getClassNameByTeacherName = (teacherName) => new Promise((resolve, reject)
     .catch((error) => reject(error));
 });
 
-// const searchClassesList = (teacherName) => new Promise((resolve, reject) => {
-//   GetClassNamesByUserId(userId).then((classNamesArray) => {
-//     const searchItems = classNamesArray.filter((class) => class.teacherName.includes(teacherName));
-//     resolve(searchItems);
-//   }).catch((error) => reject(error));
-// });
-
 export {
+  getAllClassNames,
   createClassName,
   updateClassName,
   deleteClassName,
   getClassNameById,
   getClassNamesByUserId,
   getClassNameByTeacherName,
-  // searchClassesList,
+  getClassNamesWithGradeLevelByUserId,
+  getClassNameWithStudentsByTeacherName,
 };

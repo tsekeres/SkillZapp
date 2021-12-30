@@ -37,19 +37,19 @@ namespace SkillZapp.Controllers
         }
 
         [HttpGet("className/{classNameId}")]
-        public IActionResult GetStudentByClassNameId(Guid ClassNameId)
+        public IActionResult GetStudentsByClassNameId(Guid classNameId)
         {
-            _repo.GetStudentsByClassNameId(ClassNameId);
+            _repo.GetStudentsByClassNameId(classNameId);
 
-            return Ok(_repo.GetStudentsByClassNameId(ClassNameId));
+            return Ok(_repo.GetStudentsByClassNameId(classNameId));
         }
 
         [HttpGet("user/{userId}")]
-        public IActionResult GetStudentByUserId(Guid UserId)
+        public IActionResult GetStudentByUserId(Guid userId)
         {
-            _repo.GetStudentsByUserId(UserId);
+            _repo.GetStudentsByUserId(userId);
 
-            return Ok(_repo.GetStudentsByUserId(UserId));
+            return Ok(_repo.GetStudentsByUserId(userId));
         }
 
         [HttpGet("student/{StudentName}")]

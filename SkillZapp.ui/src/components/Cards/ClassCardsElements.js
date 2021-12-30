@@ -2,16 +2,17 @@ import styled from 'styled-components';
 
 export const ClassCard = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: row-wrap;
   align-items: center;
-  border: 1px solid black;
+  border: 3px solid black;
   border-radius: 10px;
-  width: 20%;
-  height: 20%;
+  width: 30%;
+  height: 100px;
   opacity: 0.5;
   margin-left: 75px;
   margin-bottom: 75px;
   padding: 10px;
+  background-color: #52abab;
 
   @media screen and (max-width: 525px) {
     margin-left: 25px;
@@ -100,17 +101,22 @@ export const Modal1 = styled.div``;
 
 export const ClassCardBody = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  // margin-top: 5px;
+  // margin-bottom: 5px;
   width: 100%;
-  text-transform: lowercase;
+  // text-transform: lowercase;
+  background-color: #52ABAB;
 
   @media screen and (max-width: 920px) {
     font-size: 10px;
   }
 `;
 
-export const CardTitle = styled.div``;
-export const CardText = styled.div``;
+export const CardTitle = styled.div`
+  font-size: 2rem;
+`;
+export const CardText = styled.div`
+  font-size: 2rem;
+`;

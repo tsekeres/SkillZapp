@@ -5,9 +5,8 @@ export const NavigationBar = styled.div`
   flex-direction: row;
   background: #c0f3d5;
   height: 70px;
-  display: flex;
   margin: 10px;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 2rem;
   position: sticky;
   top: 0;
@@ -15,14 +14,23 @@ export const NavigationBar = styled.div`
 `;
 
 export const NavbarBrand = styled.div`
-  display: flex;
-  flex-direction: row;
+  // display: flex;
+  // flex-direction: row;
+  justify-content: flex-start;
+`;
+
+export const NavBarImage = styled.img`
+  // display: flex;
+  // flex-direction: row;
+  height: 50px;
   margin: 10px;
 `;
 
 export const NavItem = styled.div`
   display: flex;
   flex-direction: row;
+  padding-left: 55px;
+  padding-right: 55px;
 `;
 
 export const NavLink = styled.div`
