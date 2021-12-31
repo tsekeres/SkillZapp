@@ -5,8 +5,9 @@ import Home from '../views/Home';
 import Classes from '../views/Classes';
 import Students from '../views/Students';
 import SingleClass from '../views/SingleClass';
-import SingleStudent from '../views/SingleStudent';
+// import SingleStudent from '../views/SingleStudent';
 import Assessments from '../views/Assessments';
+import SingleStudent from '../views/SingleStudent';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   // eslint-disable-next-line no-confusing-arrow
