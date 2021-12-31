@@ -1,9 +1,10 @@
 // needs an add a new class button that opens modal form
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ClassForm from '../components/Forms/ClassForm';
 import ClassCards from '../components/Cards/ClassCards';
 import { getClassNamesWithGradeLevelByUserId } from '../helpers/data/classNamesData';
-import SearchBar from '../components/Searchbar/SearchBar';
+import SearchBarClasses from '../components/Searchbar/SearchBarClasses';
 import {
   ClassContainer,
   TitleContainer,
@@ -12,66 +13,60 @@ import {
   ClassCardContainer,
   // Button,
 } from './ClassesElements';
+import add from '../Assets/Add.png';
+import deleted from '../Assets/Delete.png';
 
 function Classes({ user }) {
   const [classNames, setClassNames] = useState(null);
-  // const [adding, setAdding] = useState(false);
+  const [gradeLevels, setGradeLevels] =useState([])
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     if (user) {
       getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
+      
     }
   }, []);
-  // const handleClick = (type) => {
-  //   switch (type) {
-  //     // case 'addClass':
-  //     //   setAdding((prevState) => !prevState);
-  //     //   break;
-  //     default:
-  //       console.warn('error');
-  //   }
-  // };
 
   return (
     <ClassContainer>
       <TitleContainer className="classes-header">
         <h1>CLASSES</h1>
       </TitleContainer>
-      <SearchBar user={user} />
-      {/* <AddClassContainer>
-          <Button color='info' size='sm' onClick={() => handleClick('addClass')}>
-            {adding ? 'Close Form' : 'addClass'}
-          </Button>
-          {adding && (
-            <AddClassForm
-              formTitle='Adding New Class'
-              user={user}
-              setUser={setUser}
-              admin={admin}
-              setAdmin={setAdmin}
-              setTrips={setTrips}
-              setUserTrips={setUserTrips}
-              firebaseKey={trip.firebaseKey}
-              camping={trip.camping}
-              creator={trip.creator}
-              description={trip.description}
-              difficulty={trip.difficulty}
-              distance={trip.distance}
-              fees={trip.fees}
-              image={trip.image}
-              nearestHospital={trip.nearestHospital}
-              parkName={trip.parkName}
-              parkWebLink={trip.parkWebLink}
-              reservations={trip.reservations}
-              trailName={trip.trailName}
-              trailMap={trip.trailMap}
-              setUpdating={setUpdating}
-            />
-          )}
-        </AddClassContainer> */}
+
+      <SearchBarClasses user={user} />
+
+      <AddButtonContainer className="AddButtonContainer">
+          <AddClassButton className="addClass" onClick={openModal}>
+            <AddClassButtonImg
+              className="AddClassButtonImg"
+              src={add}
+            ></AddClassButtonImg>
+          </AddClassButton>
+      </AddButtonContainer>
+      <Modal isOpen={modalIsOpen} className="Modal">
+        <Button className="modalClose" onClick={closeModal}>
+          <ButtonImg src={deleted} />
+        </Button>
+        <ClassForm
+          ClassFormTitle="Create Class"
+          setClassNames={setClassNames}
+          classNames={classNames}
+          user={user}
+        />
+      </Modal>
+
       <ClassCardContainer className="card-container class-view">
-        {classNames
-          && classNames.map((classInfo) => (
+        {classNames &&
+          classNames.map((classInfo) => (
             <ClassCards
               key={classInfo.id}
               id={classInfo.id}

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SkillZapp.Models
 {
-    public class SingleStudentAssessments
+    public class SingleStudentsWithAssessments
     {
         public Guid ClassNameId { get; set; }
         public Guid StudentId { get; set; }

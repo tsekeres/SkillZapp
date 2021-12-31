@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import { getSingleStudentAssessmentsByStudentId } from '../helpers/data/studentsData';
+import { getSingleStudentWithAssessmentsByStudentId } from '../helpers/data/studentsData';
 import AssessmentNameCards from '../components/Cards/AssessmentNameCards';
 import {
   SingleStudentContainer,
-  CardTitle,
+  // CardTitle,
   CardText,
   AssessmentCardContainer,
 } from './SingleStudentElements';
@@ -16,7 +16,7 @@ function SingleStudent() {
 
   useEffect(() => {
     if (id) {
-      getSingleStudentAssessmentsByStudentId(id).then((resp) => setStudentAssessments(resp));
+      getSingleStudentWithAssessmentsByStudentId(id).then((resp) => setStudentAssessments(resp));
     }
   }, []);
   console.warn(studentAssessments);
@@ -46,11 +46,11 @@ function SingleStudent() {
           src={deleted}
         ></SingleStudentDelete>
       </Button1> */}
-      <CardTitle tag='h1'>{studentAssessments.studentName}</CardTitle>
+      {/* <CardTitle tag='h1'>{studentAssessments.studentName}</CardTitle>
       <CardText tag='h5'>{studentAssessments.gradeLevelDescription}</CardText>
       <CardTitle tag='h5'>
         Teacher Name: {studentAssessments.teacherName}
-      </CardTitle>
+      </CardTitle> */}
       <CardText tag='h2'>Assessments</CardText>
       <AssessmentCardContainer className='card-container student-view'>
         {studentAssessments?.map((assessmentInfo, index) => (

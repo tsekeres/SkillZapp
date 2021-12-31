@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace SkillZapp.DataAccess
 {
-    public class SingleStudentAssessmentsRepository
+    public class SingleStudentsWithAssessmentsRepository
     {
         readonly string _connectionString;
-        public SingleStudentAssessmentsRepository(IConfiguration config)
+        public SingleStudentsWithAssessmentsRepository(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("SkillZapp");
         }
 
-        internal IEnumerable<SingleStudentAssessments> GetSingleStudentAssessmentsByStudentId(Guid studentId)
+        internal IEnumerable<SingleStudentsWithAssessments> GetSingleStudentsWithAssessmentsByStudentId(Guid studentId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT CN.Id as ClassNameId, STU.Id as StudentId, STU.UserId, TeacherName, StudentName,
@@ -39,7 +39,7 @@ namespace SkillZapp.DataAccess
                 StudentId = studentId
             };
 
-            var result = db.Query<SingleStudentAssessments>(sql, parameters);
+            var result = db.Query<SingleStudentsWithAssessments>(sql, parameters);
             return result;
         }
     }

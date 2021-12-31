@@ -27,10 +27,8 @@ function SingleClass() {
     <SingleClassContainer>
       {className
         && <><TitleContainer className='classes-header'>
-          <h1>
             {className.teacherName}
             {className.gradeLevelDescription}
-          </h1>
         </TitleContainer>
         <StudentCardContainer className='card-container class-view'>
           {className?.map((studentInfo, index) => (
