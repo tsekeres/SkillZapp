@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const AssessmentNameCard = styled.div`
+export const AssessmentCard = styled.div`
   display: flex;
-  // flex-direction: row-wrap;
+  // flex-direction: column;
   align-items: center;
   border: 3px solid black;
   border-radius: 10px;
-  width: 30%;
-  height: 100px;
+  // width: 30%;
+  // height: 80%;
   opacity: 0.5;
   margin-left: 75px;
   margin-bottom: 75px;
@@ -65,13 +65,6 @@ export const Button2 = styled.button`
   overflow: hidden;
 `;
 
-export const ProductCardImg = styled.img`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
 export const ProductCardHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -99,10 +92,11 @@ export const ProductCardDelete = styled.img`
 
 export const Modal1 = styled.div``;
 
-export const AssessmentNameCardBody = styled.div`
+export const AssessmentCardBody = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
   // margin-top: 5px;
   // margin-bottom: 5px;
   width: 100%;

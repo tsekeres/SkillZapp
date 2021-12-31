@@ -11,11 +11,11 @@ import {
   CardText,
 } from './ClassCardsElements';
 
-const ClassCards = ({
+function ClassCards({
   gradeLevelDescription,
   teacherName,
   id
-}) => {
+}) {
   const history = useHistory();
   const handleClick = (type) => {
     switch (type) {
@@ -39,7 +39,7 @@ const ClassCards = ({
       </ClassCardBody>
     </ClassCard>
   );
-};
+}
 
 ClassCards.propTypes = {
   gradeLevelDescription: PropTypes.any,
