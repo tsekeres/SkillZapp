@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import { getSingleStudentAssessmentsByStudentId } from '../helpers/data/studentsData';
-import AssessmentNameCards from '../components/Cards/AssessmentNameCards';
+import { getSingleStudentWithAssessmentsByStudentId } from '../helpers/data/studentsData';
+import AssessmentCards from '../components/Cards/AssessmentCards';
 import {
   SingleStudentContainer,
   // CardTitle,

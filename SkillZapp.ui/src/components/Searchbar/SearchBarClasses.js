@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { SearchBarBar } from './SearchBarClassesElements';
 import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 
-const SearchBar = ({ user }) => {
+const SearchBarClasses = ({ user }) => {
   const history = useHistory();
   const [options, setOptions] = useState([]);
 
@@ -41,8 +41,8 @@ const SearchBar = ({ user }) => {
   );
 };
 
-SearchBar.propTypes = {
+SearchBarClasses.propTypes = {
   user: PropTypes.any,
 };
 
-export default SearchBar;
+export default SearchBarClasses;

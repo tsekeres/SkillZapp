@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AddProductForm = styled.div``;
+export const AddClassForm = styled.div``;
 
 export const Form = styled.form`
   display: flex;
@@ -10,7 +10,11 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const ProductFormTitle = styled.div`
+export const ClassFormTitle = styled.div`
+  padding-bottom: 75px;
+`;
+
+export const FormHeader = styled.div`
   padding-bottom: 75px;
 `;
 
@@ -41,4 +45,10 @@ export const ButtonImg = styled.img`
 
 export const Option = styled.option`
   height: 15px;
+`;
+
+export const Select = styled.select`
+  border-radius: 5px;
+  margin-left: 10px;
+  width: 75%;
 `;

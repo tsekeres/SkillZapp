@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const ClassCard = styled.div`
   display: flex;
-  // flex-direction: row-wrap;
+  flex-direction: column;
   align-items: center;
   border: 3px solid black;
   border-radius: 10px;
-  width: 30%;
+  width: 23%;
   height: 100px;
   opacity: 0.5;
-  margin-left: 75px;
-  margin-bottom: 75px;
+  margin: 30px;
+  // margin-bottom: 75px;
   padding: 10px;
   background-color: #52abab;
 
@@ -72,7 +72,7 @@ export const ProductCardImg = styled.img`
   object-fit: cover;
 `;
 
-export const ProductCardHeader = styled.div`
+export const ClassCardHeader = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
@@ -80,7 +80,7 @@ export const ProductCardHeader = styled.div`
   justify-content: flex-end;
 `;
 
-export const ProductCardButtons = styled.div`
+export const ClassCardButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -92,7 +92,7 @@ export const ProductCardEdit = styled.img`
   height: 15px;
 `;
 
-export const ProductCardDelete = styled.img`
+export const ClassCardDelete = styled.img`
   height: 13px;
   margin-right: 5px;
 `;
@@ -101,7 +101,7 @@ export const Modal1 = styled.div``;
 
 export const ClassCardBody = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   // margin-top: 5px;
   // margin-bottom: 5px;
@@ -115,8 +115,8 @@ export const ClassCardBody = styled.div`
 `;
 
 export const CardTitle = styled.div`
-  font-size: 2rem;
+  font-size: 1rem;
 `;
 export const CardText = styled.div`
-  font-size: 2rem;
+  font-size: 1rem;
 `;

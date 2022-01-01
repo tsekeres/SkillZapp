@@ -9,6 +9,7 @@ namespace SkillZapp.Models
     {
         public Guid ClassNameId { get; set; }
         public Guid StudentId { get; set; }
+        public Guid GradeLevelId { get; set; }
         public Guid UserId { get; set; }
         public string TeacherName { get; set; }
         public string StudentName { get; set; }

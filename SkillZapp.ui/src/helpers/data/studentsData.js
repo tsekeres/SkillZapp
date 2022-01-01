@@ -19,50 +19,31 @@ const getStudentsByClassNameId = (classNameId) => new Promise((resolve, reject) 
 
 const getSingleStudentWithAssessmentsByStudentId = (studentId) => new Promise((resolve, reject) => {
   axios
-    .get(`${apiURL}/api/SingleStudentsWithAssessments/studentId/${studentId}`)
+    .get(`${apiURL}/api/SingleStudentWithAssessments/studentId/${studentId}`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
-// const getClassNamesByUserId = (userId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames/user/${userId}`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
+const createStudent = (student) => new Promise((resolve, reject) => {
+  axios
+    .post(`${apiURL}/api/students`, student)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
-// const getClassNamesWithGradeLevelByUserId = (userId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames/user/${userId}`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
+const updateStudent = (studentId, studentObj) => new Promise((resolve, reject) => {
+  axios
+    .put(`${apiURL}/api/students/${studentId}`, studentObj)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
-// const createClassName = (className) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .post(`${apiURL}/api/classNames`, className)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
-
-// const updateClassName = (classNameId, classNameObj) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .put(`${apiURL}/api/classNames/${classNameId}`, classNameObj)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
-
-// const deleteClassName = (classNameId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .delete(`${apiURL}/api/classNames/${classNameId}`)
-//       .then((response) => resolve(response))
-//       .catch((error) => reject(error));
-//   });
+const deleteStudent = (studentId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${apiURL}/api/students/${studentId}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
 
 // const getClassNameByTeacherName = (teacherName) =>
 //   new Promise((resolve, reject) => {
@@ -80,9 +61,9 @@ const getSingleStudentWithAssessmentsByStudentId = (studentId) => new Promise((r
 // });
 
 export {
-  // createClassName,
-  // updateClassName,
-  // deleteClassName,
+  createStudent,
+  updateStudent,
+  deleteStudent,
   getAllStudentsWithDataByUserId,
   getStudentsByClassNameId,
   getSingleStudentWithAssessmentsByStudentId,

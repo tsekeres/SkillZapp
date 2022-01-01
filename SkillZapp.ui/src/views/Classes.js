@@ -8,19 +8,22 @@ import SearchBarClasses from '../components/Searchbar/SearchBarClasses';
 import {
   ClassContainer,
   TitleContainer,
-  // ClassSearchContainer,
-  // AddClassContainer,
+  AddButtonContainer,
+  AddClassButton,
+  // AddClassButtonImg,
   ClassCardContainer,
-  // Button,
+  Modal,
+  Button,
+  ButtonImg,
 } from './ClassesElements';
-import add from '../Assets/Add.png';
+// import add from '../Assets/Add.png';
 import deleted from '../Assets/Delete.png';
+import getAllGradeLevels from '../helpers/data/gradeLevelsData';
 
 function Classes({ user }) {
   const [classNames, setClassNames] = useState(null);
-  const [gradeLevels, setGradeLevels] =useState([])
+  const [gradeLevels, setGradeLevels] = useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
   function openModal() {
     setIsOpen(true);
   }
@@ -32,51 +35,56 @@ function Classes({ user }) {
   useEffect(() => {
     if (user) {
       getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
-      
+      getAllGradeLevels().then((gradeLevelsList) => setGradeLevels(gradeLevelsList));
     }
   }, []);
 
   return (
     <ClassContainer>
-      <TitleContainer className="classes-header">
-        <h1>CLASSES</h1>
-      </TitleContainer>
+      {classNames && gradeLevels && (
+        <>
+          <TitleContainer className="classes-header">
+            <h1>CLASSES</h1>
+          </TitleContainer>
 
-      <SearchBarClasses user={user} />
+          <SearchBarClasses user={user} />
 
-      <AddButtonContainer className="AddButtonContainer">
-          <AddClassButton className="addClass" onClick={openModal}>
-            <AddClassButtonImg
-              className="AddClassButtonImg"
-              src={add}
-            ></AddClassButtonImg>
-          </AddClassButton>
-      </AddButtonContainer>
-      <Modal isOpen={modalIsOpen} className="Modal">
-        <Button className="modalClose" onClick={closeModal}>
-          <ButtonImg src={deleted} />
-        </Button>
-        <ClassForm
-          ClassFormTitle="Create Class"
-          setClassNames={setClassNames}
-          classNames={classNames}
-          user={user}
-        />
-      </Modal>
-
-      <ClassCardContainer className="card-container class-view">
-        {classNames &&
-          classNames.map((classInfo) => (
-            <ClassCards
-              key={classInfo.id}
-              id={classInfo.id}
+          <AddButtonContainer className="AddButtonContainer">
+            <AddClassButton className="addClass" onClick={openModal}>
+              Add a New Class
+            </AddClassButton>
+          </AddButtonContainer>
+          <Modal isOpen={modalIsOpen} className="Modal">
+            <Button className="modalClose" onClick={closeModal}>
+              <ButtonImg src={deleted} />
+            </Button>
+            <ClassForm
+              classFormTitle="Create Class"
               setClassNames={setClassNames}
-              gradeLevelId={classInfo.gradeLevelId}
-              teacherName={classInfo.teacherName}
-              gradeLevelDescription={classInfo.gradeLevelDescription}
+              classNames={classNames}
+              setGradeLevels={setGradeLevels}
+              gradeLevels={gradeLevels}
+              user={user}
+              closeModal={closeModal}
             />
-          ))}
-      </ClassCardContainer>
+          </Modal>
+
+          <ClassCardContainer className="card-container class-view">
+            {classNames
+              && classNames.map((classInfo) => (
+                <ClassCards
+                  key={classInfo.id}
+                  id={classInfo.id}
+                  setClassNames={setClassNames}
+                  gradeLevelId={classInfo.gradeLevelId}
+                  teacherName={classInfo.teacherName}
+                  gradeLevelDescription={classInfo.gradeLevelDescription}
+                  user={user}
+                />
+              ))}
+          </ClassCardContainer>
+        </>
+      )}
     </ClassContainer>
   );
 }
