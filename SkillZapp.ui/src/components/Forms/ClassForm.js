@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { createClassName, updateClassName, getClassNamesWithGradeLevelByUserId } from '../../helpers/data/classNamesData';
 import {
   ClassFormTitle,
-  FormHeader,
   Button,
   Form,
   Label,
@@ -17,6 +16,7 @@ import add from '../../Assets/Add.png';
 const ClassForm = ({
   classFormTitle,
   gradeLevels,
+  // classNames,
   teacherName,
   id,
   gradeLevelId,
@@ -24,6 +24,7 @@ const ClassForm = ({
   setClassNames,
   closeModal,
 }) => {
+  // console.warn(teacherName);
   const [className, setClassName] = useState({
     gradeLevelId: gradeLevelId || '',
     teacherName: teacherName || '',
@@ -56,8 +57,8 @@ const ClassForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (className.id) {
-      updateClassName(className.id, className).then(() => getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList)));
+    if (id) {
+      updateClassName(id, className).then(() => getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList)));
       closeModal();
     } else {
       const classNameObj = {
@@ -70,13 +71,11 @@ const ClassForm = ({
       closeModal();
     }
   };
+  // console.warn(className);
 
   return (
     <Form id='addClassNameForm' autoComplete='off' onSubmit={handleSubmit}>
       <ClassFormTitle id='ClassFormTitle'>{classFormTitle}</ClassFormTitle>
-      <FormHeader>
-        <h2>Add your new class with the form below.</h2>
-      </FormHeader>
       <Label className='ClassNameNameLabel'> Teacher Name:</Label>
       <Input
         name='teacherName'
@@ -114,6 +113,7 @@ const ClassForm = ({
 ClassForm.propTypes = {
   classFormTitle: PropTypes.string.isRequired,
   gradeLevels: PropTypes.any,
+  classNames: PropTypes.any,
   teacherName: PropTypes.string,
   gradeLevelId: PropTypes.string,
   id: PropTypes.string,

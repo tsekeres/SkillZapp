@@ -8,8 +8,8 @@ export const SingleClassContainer = styled.div`
 `;
 
 export const StudentCardContainer = styled.div`
-  display: flex;
-  flex-direction: wrap;
+  // display: flex;
+  // flex-direction: row;
   padding-top; 10px;
   justify-content: center;
 `;

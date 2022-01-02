@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import StudentForm from '../components/Forms/StudentForm';
 import StudentNameCards from '../components/Cards/StudentNameCards';
+import StudentForm from '../components/Forms/StudentForm';
 import {
   SingleClassContainer,
   TitleContainer,

@@ -76,6 +76,9 @@ function Classes({ user }) {
                   key={classInfo.id}
                   id={classInfo.id}
                   setClassNames={setClassNames}
+                  classNames={classNames}
+                  setGradeLevels={setGradeLevels}
+                  gradeLevels={gradeLevels}
                   gradeLevelId={classInfo.gradeLevelId}
                   teacherName={classInfo.teacherName}
                   gradeLevelDescription={classInfo.gradeLevelDescription}

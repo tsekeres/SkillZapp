@@ -7,22 +7,24 @@ import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 
 const SearchBarClasses = ({ user }) => {
   const history = useHistory();
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState(null);
 
   useEffect(() => {
     const optionsArr = [];
-    getClassNamesByUserId(user.id)
-      .then((resultArr) => {
-        for (let i = 0; i < resultArr.length; i += 1) {
-          const option = {
-            value: resultArr[i].id,
-            label: `${resultArr[i].teacherName}`,
-          };
-          optionsArr.push(option);
-        }
-        setOptions(optionsArr);
-      })
-      .catch(setOptions([]));
+    if (user) {
+      getClassNamesByUserId(user.id)
+        .then((resultArr) => {
+          for (let i = 0; i < resultArr.length; i += 1) {
+            const option = {
+              value: resultArr[i].id,
+              label: `${resultArr[i].teacherName}`,
+            };
+            optionsArr.push(option);
+          }
+          setOptions(optionsArr);
+        })
+        .catch(setOptions([]));
+    }
   }, []);
 
   const handleSelectClick = (e) => {
@@ -32,11 +34,13 @@ const SearchBarClasses = ({ user }) => {
 
   return (
     <SearchBarBar>
-      <Select
-        options={options}
-        onChange={handleSelectClick}
-        defaultValue={{ value: '', label: 'Search By Teacher Name' }}
-      />
+      {options
+        && <Select
+            options={options}
+            onChange={handleSelectClick}
+            defaultValue={{ value: '', label: 'Search By Teacher Name' }}
+          />
+      }
     </SearchBarBar>
   );
 };

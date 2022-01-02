@@ -25,27 +25,27 @@ const StudentForm = ({
   gradeLevels,
   classNames,
   classNameId,
-  user,
+  userId,
   className,
   setClassName,
   closeModal,
 }) => {
+  // console.warn(studentName);
   const [student, setStudent] = useState({
     gradeLevelId: gradeLevelId || '',
     classNameId: classNameId || '',
     studentName: studentName || '',
-    id: className.id || '',
-    userId: user.id || '',
+    id: className.studentId || '',
+    userId: userId || '',
   });
-  console.warn(className.id);
   useEffect(() => {
     let mounted = true;
     const studentObj = {
       gradeLevelId: gradeLevelId || '',
       classNameId: classNameId || '',
       studentName: studentName || '',
-      id: className.id || '',
-      userId: user.id || '',
+      id: className.studentId || '',
+      userId: userId || '',
     };
     if (mounted) {
       setStudent(studentObj);
@@ -73,7 +73,7 @@ const StudentForm = ({
         gradeLevelId: gradeLevelId || '',
         classNameId: classNameId || '',
         studentName: studentName || '',
-        userId: user.id || '',
+        userId: userId || '',
       };
       createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
 
@@ -145,7 +145,7 @@ StudentForm.propTypes = {
   studentName: PropTypes.string,
   gradeLevelId: PropTypes.string,
   id: PropTypes.string,
-  user: PropTypes.any,
+  userId: PropTypes.any,
   setClassName: PropTypes.func,
   closeModal: PropTypes.func,
   classNames: PropTypes.any,

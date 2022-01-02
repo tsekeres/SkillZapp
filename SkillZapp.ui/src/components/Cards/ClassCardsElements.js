@@ -88,7 +88,7 @@ export const ClassCardButtons = styled.div`
   height: 100%;
 `;
 
-export const ProductCardEdit = styled.img`
+export const ClassCardEdit = styled.img`
   height: 15px;
 `;
 
