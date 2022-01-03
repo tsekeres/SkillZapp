@@ -105,14 +105,12 @@ namespace SkillZapp.DataAccess
                         ([StandardNameId], 
                          [ClassNameId],
                          [RubricId],
-                         [AssessmentDate],
                          [UserId])
                         OUTPUT inserted.Id
                         VALUES
                        (@StandardNameId,
                         @ClassNameId,
                         @RubricId
-		                @AssessmentDate,
                         @UserId)";
 
             id = db.ExecuteScalar<Guid>(sql, assessment);

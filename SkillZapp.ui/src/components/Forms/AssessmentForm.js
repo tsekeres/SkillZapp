@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { createAssessment } from '../../helpers/data/assessmentsData';
+import { createAssessment, updateAssessment, getAssessmentsByUserId } from '../../helpers/data/assessmentsData';
 import {
-  assessmentFormTitle,
+  AssessmentFormTitle,
   Button,
   Form,
   Label,
@@ -11,18 +11,18 @@ import {
   Select,
 } from './AssessmentFormElements';
 import add from '../../Assets/Add.png';
-import { classNames } from 'react-select/dist/declarations/src/utils';
 
 const AssessmentForm = ({
   assessmentFormTitle,
-  setRubrics,
-  setStandards,
+  setAssessments,
   standards,
+  standardId,
   rubrics,
+  rubricId,
   classNames,
+  classNameId,
   user,
   id,
-  setClassNames,
   closeModal,
 }) => {
   const [assessment, setAssessment] = useState({
@@ -51,7 +51,7 @@ const AssessmentForm = ({
   }, [standardId, classNameId, rubricId, id]);
 
   const handleInputChange = (e) => {
-    setClassName((prevState) => ({
+    setAssessment((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -60,7 +60,7 @@ const AssessmentForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (id) {
-      updateAssessment(id, assessment).then(() => getAssessmentsWithStudentScoresByAssessmentId(assessmentId).then((assessList) => setAssessments(assessList)));
+      updateAssessment(id, assessment).then(() => getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList)));
       closeModal();
     } else {
       const assessmentObj = {
@@ -69,7 +69,7 @@ const AssessmentForm = ({
         rubricId: assessment.rubricId,
         userId: user.id,
       };
-      createAssessment(assessmentObj).then(() => getAssessmentsWithStudentScoresByAssessmentId(assessmentId).then((assessList) => setAssessments(assessList)));
+      createAssessment(assessmentObj).then(() => getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
       closeModal();
     }
@@ -78,7 +78,7 @@ const AssessmentForm = ({
   return (
     <Form id="addAssessmentForm" autoComplete="off" onSubmit={handleSubmit}>
       <AssessmentFormTitle id="AssessmentFormTitle">
-        {classFormTitle}
+        {assessmentFormTitle}
       </AssessmentFormTitle>
 
       <Label>Class Name:</Label>
@@ -144,13 +144,17 @@ const AssessmentForm = ({
 AssessmentForm.propTypes = {
   assessmentFormTitle: PropTypes.string.isRequired,
   rubrics: PropTypes.any,
+  rubricId: PropTypes.any,
+  classNameId: PropTypes.any,
   classNames: PropTypes.any,
+  standardId: PropTypes.any,
   standards: PropTypes.any,
   user: PropTypes.any,
   id: PropTypes.string,
   setClassNames: PropTypes.func,
   setStandards: PropTypes.func,
   setRubrics: PropTypes.func,
+  setAssessments: PropTypes.func,
   closeModal: PropTypes.func,
 };
 

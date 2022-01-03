@@ -3,13 +3,12 @@ import { SkillZappConfig } from '../apiKeys';
 
 const apiURL = SkillZappConfig.baseUrl;
 
-// const getAllClassNames = () =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
+const getAssessmentsByUserId = (userId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/assessments/user/${userId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 // const getClassNameById = (classNameId) =>
 //   new Promise((resolve, reject) => {
@@ -50,7 +49,7 @@ const createAssessment = (assessmentObj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateAssessment = (asssessmentId, assessmentObj) => new Promise((resolve, reject) => {
+const updateAssessment = (assessmentId, assessmentObj) => new Promise((resolve, reject) => {
   axios
     .put(`${apiURL}/api/assessments/${assessmentId}`, assessmentObj)
     .then((response) => resolve(response.data))
@@ -76,4 +75,5 @@ const updateAssessment = (asssessmentId, assessmentObj) => new Promise((resolve,
 export {
   createAssessment,
   updateAssessment,
+  getAssessmentsByUserId,
 };

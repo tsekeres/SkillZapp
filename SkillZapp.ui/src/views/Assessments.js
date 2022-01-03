@@ -1,15 +1,18 @@
 // needs map of class's assessment cards /simple view/ to display
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import NewAssessmentForm from '../components/Forms/AssessmentForm';
+import AssessmentForm from '../components/Forms/AssessmentForm';
 // import AssessmentCards from '../components/Cards/AssessmentCards';
-import { getAllClassNames } from '../helpers/data/classNamesData';
+import { getClassNamesByUserId } from '../helpers/data/classNamesData';
 import getAllStandards from '../helpers/data/standardsData';
+import getAllRubrics from '../helpers/data/rubricsData';
 // import SearchBarAssessments from '../components/Searchbar/SearchBarClasses';
+import { getAssessmentsByUserId } from '../helpers/data/assessmentsData';
 import {
   AssessmentContainer,
   TitleContainer,
   AddAssessmentButton,
+  AddButtonContainer,
   Modal,
   Button,
   ButtonImg,
@@ -17,7 +20,7 @@ import {
 import deleted from '../Assets/Delete.png';
 
 function Assessments({ user }) {
-  // const [assessments, setAssessments] = useState(null);
+  const [assessments, setAssessments] = useState(null);
   const [standards, setStandards] = useState(null);
   const [rubrics, setRubrics] = useState(null);
   const [classNames, setClassNames] = useState(null);
@@ -32,11 +35,11 @@ function Assessments({ user }) {
 
   useEffect(() => {
     if (user) {
-      // getAssessmentsWithStudentScoresByUserId(UserId).then((assessList) => setAssessments(assessList));
+      getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList));
       getAllStandards().then((standardsList) => setStandards(standardsList));
       getAllRubrics().then((rubricsList) => setRubrics(rubricsList));
-      getAllClassNames().then((classNames) => setClassNames(classNames));
-;    }
+      getClassNamesByUserId(user.id).then((classList) => setClassNames(classList));
+    }
   }, []);
 
   return (
@@ -58,8 +61,10 @@ function Assessments({ user }) {
             <Button className="modalClose" onClick={closeModal}>
               <ButtonImg src={deleted} />
             </Button>
-            <NewAssessmentForm
+            <AssessmentForm
               assessmentFormTitle="Create Class"
+              setAssessments={setAssessments}
+              assessments={assessments}
               setClassNames={setClassNames}
               classNames={classNames}
               setStandards={setStandards}
