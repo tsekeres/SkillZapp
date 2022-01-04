@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const SingleClassContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
   align-items: center;
+  padding-top: 50px;
 `;
 
 export const StudentCardContainer = styled.div`
-  // display: flex;
-  // flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
   padding-top; 10px;
   justify-content: center;
 `;
@@ -23,7 +23,6 @@ export const TitleContainer = styled.div`
   // justify-content: center;
   color: #ffb400;
   margin-bottom: 20px;
-  font-size: 55px;
 `;
 
 export const Modal = styled.div`

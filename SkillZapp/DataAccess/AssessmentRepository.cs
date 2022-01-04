@@ -86,7 +86,7 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from Assessments
-                        WHERE UserId = @UserId";
+                            WHERE A.UserId = @UserId";
 
             var parameters = new
             {
@@ -102,15 +102,15 @@ namespace SkillZapp.DataAccess
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
             var sql = @"INSERT INTO [dbo].[Assessments]
-                        ([StandardNameId], 
+                        ([StandardId], 
                          [ClassNameId],
                          [RubricId],
-                         [UserId])
+                         [UserId]),
                         OUTPUT inserted.Id
                         VALUES
-                       (@StandardNameId,
+                       (@StandardId,
                         @ClassNameId,
-                        @RubricId
+                        @RubricId,
                         @UserId)";
 
             id = db.ExecuteScalar<Guid>(sql, assessment);
@@ -145,9 +145,9 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"UPDATE Assessments
-                        SET AssessmentDate = @AssessmentDate,
+                        SET RubricId = @RubricId,
                             UserId = @UserId,
-                            StandardNameId = @StandardNameId,
+                            StandardId = @StandardNameId,
                             ClassNameId = @ClassNameId
                         OUTPUT Inserted.*
                         WHERE Id = @Id";

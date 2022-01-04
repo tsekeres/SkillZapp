@@ -1,15 +1,15 @@
-// needs map of class's assessment cards /simple view/ to display
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AssessmentForm from '../components/Forms/AssessmentForm';
-// import AssessmentCards from '../components/Cards/AssessmentCards';
+import AssessmentCards from '../components/Cards/AssessmentCards';
 import { getClassNamesByUserId } from '../helpers/data/classNamesData';
 import getAllStandards from '../helpers/data/standardsData';
 import getAllRubrics from '../helpers/data/rubricsData';
 // import SearchBarAssessments from '../components/Searchbar/SearchBarClasses';
-import { getAssessmentsByUserId } from '../helpers/data/assessmentsData';
+import { getAssessmentsWithDetailsByUserId } from '../helpers/data/assessmentsData';
 import {
   AssessmentContainer,
+  AssessmentCardContainer,
   TitleContainer,
   AddAssessmentButton,
   AddButtonContainer,
@@ -35,7 +35,7 @@ function Assessments({ user }) {
 
   useEffect(() => {
     if (user) {
-      getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList));
+      getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList));
       getAllStandards().then((standardsList) => setStandards(standardsList));
       getAllRubrics().then((rubricsList) => setRubrics(rubricsList));
       getClassNamesByUserId(user.id).then((classList) => setClassNames(classList));
@@ -44,14 +44,14 @@ function Assessments({ user }) {
 
   return (
     <AssessmentContainer>
-      <TitleContainer className="classes-header">
-        <h1>ASSESSMENTS</h1>
-      </TitleContainer>
-
-      {/* <SearchBarClasses user={user} /> */}
-
       {classNames && rubrics && standards && (
         <>
+          <TitleContainer className="assessment-header">
+            <h1>{user.firstName}&apos;s Assessments</h1>
+          </TitleContainer>
+
+          {/* <SearchBarClasses user={user} /> */}
+
           <AddButtonContainer className="AddButtonContainer">
             <AddAssessmentButton className="addClass" onClick={openModal}>
               Create a new Assessment
@@ -62,7 +62,7 @@ function Assessments({ user }) {
               <ButtonImg src={deleted} />
             </Button>
             <AssessmentForm
-              assessmentFormTitle="Create Class"
+              assessmentFormTitle="Create New Assessment"
               setAssessments={setAssessments}
               assessments={assessments}
               setClassNames={setClassNames}
@@ -75,6 +75,21 @@ function Assessments({ user }) {
               closeModal={closeModal}
             />
           </Modal>
+
+          <AssessmentCardContainer className="card-container assessment-view">
+            {assessments
+              && assessments?.map((assessmentInfo, index) => (
+                <AssessmentCards
+                  key={index}
+                  id={assessmentInfo.id}
+                  studentName={assessmentInfo.studentName}
+                  teacherName={assessmentInfo.teacherName}
+                  gradeLevelDescription={assessmentInfo.gradeLevelDescription}
+                  score={assessmentInfo.score}
+                  standardName={assessmentInfo.standardName}
+                />
+              ))}
+          </AssessmentCardContainer>
         </>
       )}
     </AssessmentContainer>

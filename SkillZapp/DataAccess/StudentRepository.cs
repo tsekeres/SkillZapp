@@ -98,7 +98,7 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal Guid AddStudent(Student student)
+        internal Guid CreateStudent(Student student)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();

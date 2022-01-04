@@ -3,14 +3,12 @@ import styled from 'styled-components';
 export const StudentNameCard = styled.div`
   display: flex;
   flex-direction: column;
-  // align-items: center;
+  align-items: center;
   border: 3px solid black;
-  border-radius: 10px;
-  width: 23%;
-  height: 150px;
-  opacity: 0.5;
+  border-radius: 15px;
+  width: 200px;
+  height: 100px;
   margin: 30px;
-  // margin-bottom: 75px;
   padding: 10px;
   background-color: #52abab;
 

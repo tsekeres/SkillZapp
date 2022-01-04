@@ -1,4 +1,3 @@
-// needs an add a new class button that opens modal form
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ClassForm from '../components/Forms/ClassForm';
@@ -41,10 +40,11 @@ function Classes({ user }) {
 
   return (
     <ClassContainer>
-      {classNames && gradeLevels && (
+      {classNames && gradeLevels
+      && (
         <>
           <TitleContainer className="classes-header">
-            <h1>CLASSES</h1>
+            <h1>{user.firstName}&apos;s Classes</h1>
           </TitleContainer>
 
           <SearchBarClasses user={user} />
@@ -71,7 +71,7 @@ function Classes({ user }) {
 
           <ClassCardContainer className="card-container class-view">
             {classNames
-              && classNames.map((classInfo) => (
+            && classNames.map((classInfo) => (
                 <ClassCards
                   key={classInfo.id}
                   id={classInfo.id}
@@ -84,7 +84,7 @@ function Classes({ user }) {
                   gradeLevelDescription={classInfo.gradeLevelDescription}
                   user={user}
                 />
-              ))}
+            ))}
           </ClassCardContainer>
         </>
       )}

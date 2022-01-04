@@ -69,6 +69,7 @@ const AssessmentForm = ({
         rubricId: assessment.rubricId,
         userId: user.id,
       };
+      console.warn(assessmentObj);
       createAssessment(assessmentObj).then(() => getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
       closeModal();
@@ -80,24 +81,6 @@ const AssessmentForm = ({
       <AssessmentFormTitle id="AssessmentFormTitle">
         {assessmentFormTitle}
       </AssessmentFormTitle>
-
-      <Label>Class Name:</Label>
-      <Select
-        className="item"
-        type="select"
-        name="className"
-        placeholder="Class Name"
-        id="exampleSelect"
-        onChange={handleInputChange}
-      >
-        <Option value="">Select Class Name</Option>
-        {classNames?.map((classNameObj) => (
-          <Option key={classNameObj.id} value={classNameObj.id}>
-            {classNameObj.teacherName}
-          </Option>
-        ))}
-        ;
-      </Select>
 
       <Label>Standard:</Label>
       <Select
@@ -130,6 +113,23 @@ const AssessmentForm = ({
         {rubrics?.map((rubricObj) => (
           <Option key={rubricObj.id} value={rubricObj.id}>
             {rubricObj.rubricName}
+          </Option>
+        ))}
+        ;
+      </Select>
+      <Label>Class Name:</Label>
+      <Select
+        className="item"
+        type="select"
+        name="classNameId"
+        placeholder="Class Name"
+        id="exampleSelect"
+        onChange={handleInputChange}
+      >
+        <Option value="">Select Class Name</Option>
+        {classNames?.map((classNameObj) => (
+          <Option key={classNameObj.id} value={classNameObj.id}>
+            {classNameObj.teacherName}
           </Option>
         ))}
         ;

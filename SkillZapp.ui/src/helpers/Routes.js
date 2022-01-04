@@ -41,7 +41,7 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path='/Classes/:id'
+          path='/Classes/:teacherName/:gradeLevelDescription/:id'
           user={user}
           component={() => <SingleClass user={user} />}
         />
@@ -53,7 +53,7 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path='/Students/:id'
+          path='/Students/:studentName/:teacherName/:id'
           user={user}
           component={() => <SingleStudent user={user} />}
         />

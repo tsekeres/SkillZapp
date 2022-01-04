@@ -21,7 +21,7 @@ function SingleClass({ user }) {
   const [className, setClassName] = useState(null);
   const [gradeLevels, setGradeLevels] = useState(null);
   const [classNames, setClassNames] = useState(null);
-  const { id } = useParams();
+  const { teacherName, gradeLevelDescription, id } = useParams();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
@@ -44,9 +44,9 @@ function SingleClass({ user }) {
       {className && (
         <>
           <TitleContainer className="classes-header">
-            {className && className[0].teacherName}
+            <h1>{teacherName}</h1>
             <hr></hr>
-            {className && className[0].gradeLevelDescription}
+            <h1>{gradeLevelDescription}</h1>
           </TitleContainer>
           <AddButtonContainer className="AddButtonContainer">
             <AddStudentButton className="addStudent" onClick={openModal}>

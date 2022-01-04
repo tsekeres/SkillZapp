@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 
-export const ClassCard = styled.div`
+export const StudentAssessmentCard = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
   border: 3px solid black;
-  border-radius: 15px;
-  // elevation: 10px;
-  // shadowOffset: {width: 2, height: 2};
-  // shadowColor: #52abab;
-  // shadowOpacity: 0.5;
-  // shadowRadius: 2px;
+  border-radius: 10px;
   width: 200px;
-  height: 100px;
-  margin: 30px;
+  height: 200px;
+  // opacity: 0.5;
+  margin: 10px;
   padding: 10px;
   background-color: #52abab;
 
@@ -68,14 +64,7 @@ export const Button2 = styled.button`
   overflow: hidden;
 `;
 
-export const ProductCardImg = styled.img`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-export const ClassCardHeader = styled.div`
+export const ProductCardHeader = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
@@ -83,7 +72,7 @@ export const ClassCardHeader = styled.div`
   justify-content: flex-end;
 `;
 
-export const ClassCardButtons = styled.div`
+export const ProductCardButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -91,26 +80,27 @@ export const ClassCardButtons = styled.div`
   height: 100%;
 `;
 
-export const ClassCardEdit = styled.img`
+export const ProductCardEdit = styled.img`
   height: 15px;
 `;
 
-export const ClassCardDelete = styled.img`
+export const ProductCardDelete = styled.img`
   height: 13px;
   margin-right: 5px;
 `;
 
 export const Modal1 = styled.div``;
 
-export const ClassCardBody = styled.div`
+export const StudentAssessmentCardBody = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  // justify-content: center;
   // margin-top: 5px;
   // margin-bottom: 5px;
   width: 100%;
   // text-transform: lowercase;
-  background-color: #52ABAB;
+  background-color: #52abab;
 
   @media screen and (max-width: 920px) {
     font-size: 10px;

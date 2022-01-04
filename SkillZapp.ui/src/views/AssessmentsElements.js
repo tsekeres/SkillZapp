@@ -51,14 +51,6 @@ top: ${({ isOpen }) => (isOpen ? '0' : '100%')};
 //   height: 15px;
 // `;
 
-export const AssessmentCardHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 15%;
-  width: 100%;
-  justify-content: flex-end;
-`;
-
 export const AddButtonContainer = styled.div`
   display: flex;
   flex-direction: row;

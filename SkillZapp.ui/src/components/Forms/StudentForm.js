@@ -25,7 +25,7 @@ const StudentForm = ({
   gradeLevels,
   classNames,
   classNameId,
-  userId,
+  user,
   className,
   setClassName,
   closeModal,
@@ -36,8 +36,9 @@ const StudentForm = ({
     classNameId: classNameId || '',
     studentName: studentName || '',
     id: className.studentId || '',
-    userId: userId || '',
+    userId: user.id || '',
   });
+  console.warn(classNameId);
   useEffect(() => {
     let mounted = true;
     const studentObj = {
@@ -45,7 +46,7 @@ const StudentForm = ({
       classNameId: classNameId || '',
       studentName: studentName || '',
       id: className.studentId || '',
-      userId: userId || '',
+      userId: user.id || '',
     };
     if (mounted) {
       setStudent(studentObj);
@@ -70,10 +71,10 @@ const StudentForm = ({
       closeModal();
     } else {
       const studentObj = {
-        gradeLevelId: gradeLevelId || '',
-        classNameId: classNameId || '',
-        studentName: studentName || '',
-        userId: userId || '',
+        gradeLevelId: student.gradeLevelId || '',
+        classNameId: student.classNameId || '',
+        studentName: student.studentName || '',
+        userId: user.id || '',
       };
       createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
 
@@ -82,32 +83,32 @@ const StudentForm = ({
   };
 
   return (
-    <Form id="addStudentForm" autoComplete="off" onSubmit={handleSubmit}>
-      <StudentFormTitle id="StudentFormTitle">
+    <Form id='addStudentForm' autoComplete='off' onSubmit={handleSubmit}>
+      <StudentFormTitle id='StudentFormTitle'>
         {studentFormTitle}
       </StudentFormTitle>
       <FormHeader>
         <h2>Add a new student with the form below.</h2>
       </FormHeader>
-      <Label studentName="StudentNameLabel"> Student Name:</Label>
+      <Label studentName='StudentNameLabel'> Student Name:</Label>
       <Input
-        name="studentName"
-        id="studentName"
+        name='studentName'
+        id='studentName'
         value={student.studentName}
-        type="text"
-        placeholder="Enter a Student Name"
+        type='text'
+        placeholder='Enter a Student Name'
         onChange={handleInputChange}
       ></Input>
       <Label>Grade Level:</Label>
       <Select
-        className="item"
-        type="select"
-        name="gradeLevelId"
-        placeholder="Grade Level"
-        id="exampleSelect"
+        className='item'
+        type='select'
+        name='gradeLevelId'
+        placeholder='Grade Level'
+        id='exampleSelect'
         onChange={handleInputChange}
       >
-        <Option value="">Select Grade Level</Option>
+        <Option value=''>Select Grade Level</Option>
         {gradeLevels?.map((gradeLevel) => (
           <Option key={gradeLevel.id} value={gradeLevel.id}>
             {gradeLevel.gradeLevelNumber}
@@ -117,14 +118,14 @@ const StudentForm = ({
       </Select>
       <Label>Teacher Name:</Label>
       <Select
-        className="item"
-        type="select"
-        name="classNameId"
-        placeholder="Teacher Name"
-        id="exampleSelect"
+        className='item'
+        type='select'
+        name='classNameId'
+        placeholder='Teacher Name'
+        id='exampleSelect'
         onChange={handleInputChange}
       >
-        <Option value="">Select Teacher Name</Option>
+        <Option value=''>Select Teacher Name</Option>
         {classNames?.map((teacherName) => (
           <Option key={teacherName.id} value={teacherName.id}>
             {teacherName.teacherName}
@@ -132,7 +133,7 @@ const StudentForm = ({
         ))}
         ;
       </Select>
-      <Button className="addStudent" type="submit">
+      <Button className='addStudent' type='submit'>
         <ButtonImg src={add}></ButtonImg>
       </Button>
     </Form>
@@ -145,7 +146,7 @@ StudentForm.propTypes = {
   studentName: PropTypes.string,
   gradeLevelId: PropTypes.string,
   id: PropTypes.string,
-  userId: PropTypes.any,
+  user: PropTypes.any,
   setClassName: PropTypes.func,
   closeModal: PropTypes.func,
   classNames: PropTypes.any,

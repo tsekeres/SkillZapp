@@ -46,7 +46,7 @@ function Students({ user }) {
   return (
     <StudentContainer>
       <TitleContainer className="classes-header">
-        <h1>STUDENTS</h1>
+        <h1>All Students</h1>
       </TitleContainer>
       {/* <SearchBarStudents user={user} /> */}
       {/* <AddButtonContainer className="AddButtonContainer">

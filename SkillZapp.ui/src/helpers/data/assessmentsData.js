@@ -10,6 +10,13 @@ const getAssessmentsByUserId = (userId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAssessmentsWithDetailsByUserId = (userId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/AssessmentsWithDetails/user/${userId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 // const getClassNameById = (classNameId) =>
 //   new Promise((resolve, reject) => {
 //     axios
@@ -76,4 +83,5 @@ export {
   createAssessment,
   updateAssessment,
   getAssessmentsByUserId,
+  getAssessmentsWithDetailsByUserId,
 };
