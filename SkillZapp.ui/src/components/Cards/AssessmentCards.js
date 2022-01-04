@@ -7,36 +7,30 @@ import {
   AssessmentCard,
   AssessmentCardBody,
   CardTitle,
-  CardText
+  CardText,
 } from './AssessmentCardsElements';
 
 function AssessmentCards({
-  studentName,
   teacherName,
   gradeLevelDescription,
   standardName,
-  score,
 }) {
   return (
-    // this card needs delete student button
+    // this card needs delete assessment button
     <AssessmentCard className="AssessmentCard" id="AssessmentCard">
       <AssessmentCardBody>
-        <CardTitle tag="h2">{studentName}</CardTitle>
-        <CardText tag="h2">{teacherName}</CardText>
-        <CardText tag="h2">{gradeLevelDescription}</CardText>
-        <CardText tag="h2">{standardName}</CardText>
-        <CardText tag="h2">{score}</CardText>
+        <CardTitle>{standardName}</CardTitle>
+        <CardText>{teacherName}</CardText>
+        <CardText>{gradeLevelDescription}</CardText>
       </AssessmentCardBody>
     </AssessmentCard>
   );
 }
 
 AssessmentCards.propTypes = {
-  studentName: PropTypes.string,
-  teacherName: PropTypes.string,
-  gradeLevelDescription: PropTypes.string,
-  standardName: PropTypes.string,
-  score: PropTypes.any,
+  teacherName: PropTypes.any,
+  gradeLevelDescription: PropTypes.any,
+  standardName: PropTypes.any,
 };
 
 export default AssessmentCards;

@@ -60,7 +60,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetAssessmentsByRubricId(rubricId));
         }
 
-        [HttpGet("user{userId}")]
+        [HttpGet("user/{userId}")]
         public IActionResult GetAssessmentsByUserId(Guid userId)
         {
             _repo.GetAssessmentsByUserId(userId);

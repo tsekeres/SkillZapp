@@ -21,7 +21,7 @@ function StudentNameCards({
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/Students/${id}`);
+        history.push(`/Students/${studentName}/${teacherName}/${id}`);
         break;
       default:
         console.warn('nothing selected');
@@ -36,9 +36,9 @@ function StudentNameCards({
       onClick={() => handleClick('view')}
     >
       <StudentNameCardBody>
-        <CardTitle tag='h2'>{studentName}</CardTitle>
-        <CardText tag='h5'>{teacherName}</CardText>
-        <CardText tag='h5'>{gradeLevelDescription}</CardText>
+        <CardTitle>{studentName}</CardTitle>
+        <CardText>{teacherName}</CardText>
+        <CardText>{gradeLevelDescription}</CardText>
       </StudentNameCardBody>
     </StudentNameCard>
   );

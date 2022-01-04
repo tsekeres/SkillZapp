@@ -43,7 +43,11 @@ namespace SkillZapp
             services.AddTransient<SubcomponentRepository>();
             services.AddTransient<ClassNameWithGLRepository>();
             services.AddTransient<ClassNameWithStudentsRepository>();
-            services.AddTransient<SingleStudentAssessmentsRepository>();
+            services.AddTransient<SingleStudentsWithAssessmentsRepository>();
+            services.AddTransient<StudentWithDetailsRepository>();
+            services.AddTransient<AssessmentsWithDetailsRepository>();
+
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 

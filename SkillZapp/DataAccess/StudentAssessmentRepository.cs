@@ -98,20 +98,20 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal Guid AddStudent(StudentAssessment studentAssessment)
+        internal Guid AddStudentAssessment(StudentAssessment studentAssessment)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
             var sql = @"INSERT INTO [dbo].[StudentAssessments]
                         ([Score], 
                          [AssessmentId],
-                         [StudentNameId],
+                         [StudentId],
                          [UserId])
                         OUTPUT inserted.Id
                         VALUES
                        (@Score,
                         @AssessmentId,
-		                @StudentNameId,
+		                @StudentId,
                         @UserId)";
 
             id = db.ExecuteScalar<Guid>(sql, studentAssessment);

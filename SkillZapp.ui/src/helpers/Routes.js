@@ -5,9 +5,8 @@ import Home from '../views/Home';
 import Classes from '../views/Classes';
 import Students from '../views/Students';
 import SingleClass from '../views/SingleClass';
-// import SingleStudent from '../views/SingleStudent';
-import Assessments from '../views/Assessments';
 import SingleStudent from '../views/SingleStudent';
+import Assessments from '../views/Assessments';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   // eslint-disable-next-line no-confusing-arrow
@@ -42,7 +41,7 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path='/Classes/:id'
+          path='/Classes/:teacherName/:gradeLevelDescription/:id'
           user={user}
           component={() => <SingleClass user={user} />}
         />
@@ -54,7 +53,7 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path='/Students/:id'
+          path='/Students/:studentName/:teacherName/:id'
           user={user}
           component={() => <SingleStudent user={user} />}
         />

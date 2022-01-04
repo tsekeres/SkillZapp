@@ -20,7 +20,7 @@ namespace SkillZapp.DataAccess
         internal IEnumerable<ClassNameWithStudents> GetClassNameWithStudentsByTeacherName(Guid classNameId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT CN.Id as ClassNameId, S.Id as StudentId, S.UserId, TeacherName, StudentName, GradeLevelNumber, GradeLevelDescription FROM Students S
+            var sql = @"SELECT CN.Id as ClassNameId, S.Id as StudentId, S.UserId, TeacherName, StudentName, GL.Id as GradeLevelId, GradeLevelNumber, GradeLevelDescription FROM Students S
                             JOIN ClassNames CN
 							ON S.ClassNameId = CN.ID
 							JOIN GradeLevels GL

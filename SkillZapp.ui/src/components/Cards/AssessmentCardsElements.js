@@ -2,15 +2,13 @@ import styled from 'styled-components';
 
 export const AssessmentCard = styled.div`
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   align-items: center;
   border: 3px solid black;
-  border-radius: 10px;
-  // width: 30%;
-  // height: 80%;
-  opacity: 0.5;
-  margin-left: 75px;
-  margin-bottom: 75px;
+  border-radius: 15px;
+  width: 300px;
+  height: 100px;
+  margin: 30px;
   padding: 10px;
   background-color: #52abab;
 
@@ -65,7 +63,7 @@ export const Button2 = styled.button`
   overflow: hidden;
 `;
 
-export const ProductCardHeader = styled.div`
+export const AssessmentCardHeader = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
@@ -73,7 +71,7 @@ export const ProductCardHeader = styled.div`
   justify-content: flex-end;
 `;
 
-export const ProductCardButtons = styled.div`
+export const AssessmentCardButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -81,11 +79,11 @@ export const ProductCardButtons = styled.div`
   height: 100%;
 `;
 
-export const ProductCardEdit = styled.img`
+export const AssessmentCardEdit = styled.img`
   height: 15px;
 `;
 
-export const ProductCardDelete = styled.img`
+export const AssessmentCardDelete = styled.img`
   height: 13px;
   margin-right: 5px;
 `;
@@ -109,8 +107,8 @@ export const AssessmentCardBody = styled.div`
 `;
 
 export const CardTitle = styled.div`
-  font-size: 2rem;
+  font-size: 1rem;
 `;
 export const CardText = styled.div`
-  font-size: 2rem;
+  font-size: 1rem;
 `;

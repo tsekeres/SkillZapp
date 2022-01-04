@@ -70,7 +70,7 @@ namespace SkillZapp.Controllers
         [HttpPost]
         public IActionResult CreateStudentAssessment(StudentAssessment studentAssessment)
         {
-            _repo.AddStudent(studentAssessment);
+            _repo.AddStudentAssessment(studentAssessment);
 
             return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
         }

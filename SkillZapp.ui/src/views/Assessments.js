@@ -1,37 +1,98 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom';
+import AssessmentForm from '../components/Forms/AssessmentForm';
+import AssessmentCards from '../components/Cards/AssessmentCards';
+import { getClassNamesByUserId } from '../helpers/data/classNamesData';
+import getAllStandards from '../helpers/data/standardsData';
+import getAllRubrics from '../helpers/data/rubricsData';
+// import SearchBarAssessments from '../components/Searchbar/SearchBarClasses';
+import { getAssessmentsWithDetailsByUserId } from '../helpers/data/assessmentsData';
+import {
+  AssessmentContainer,
+  AssessmentCardContainer,
+  TitleContainer,
+  AddAssessmentButton,
+  AddButtonContainer,
+  Modal,
+  Button,
+  ButtonImg,
+} from './AssessmentsElements';
+import deleted from '../Assets/Delete.png';
 
-function Assessments() {
+function Assessments({ user }) {
+  const [assessments, setAssessments] = useState(null);
+  const [standards, setStandards] = useState(null);
+  const [rubrics, setRubrics] = useState(null);
+  const [classNames, setClassNames] = useState(null);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  useEffect(() => {
+    if (user) {
+      getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList));
+      getAllStandards().then((standardsList) => setStandards(standardsList));
+      getAllRubrics().then((rubricsList) => setRubrics(rubricsList));
+      getClassNamesByUserId(user.id).then((classList) => setClassNames(classList));
+    }
+  }, []);
+
   return (
-  <div>
-    <h2> Assessments View</h2>
-  </div>
+    <AssessmentContainer>
+      {classNames && rubrics && standards && (
+        <>
+          <TitleContainer className="assessment-header">
+            <h1>{user.firstName}&apos;s Assessments</h1>
+          </TitleContainer>
 
-  // const [className, setClassName] = useState({});
-  // const [students, setStudents] = useState({});
-  // const { id } = useParams();
+          {/* <SearchBarClasses user={user} /> */}
 
-  // useEffect(() => {
-  //   let mounted = true;
-  //   getClassNameById(id).then(setClassName);
-  //   getStudentsByClassNameId(id).then(setStudents);
-  //   return () => {
-  //     mounted = false;
-  //     return mounted;
-  //   };
-  // }, []);
+          <AddButtonContainer className="AddButtonContainer">
+            <AddAssessmentButton className="addClass" onClick={openModal}>
+              Create a new Assessment
+            </AddAssessmentButton>
+          </AddButtonContainer>
+          <Modal isOpen={modalIsOpen} className="Modal">
+            <Button className="modalClose" onClick={closeModal}>
+              <ButtonImg src={deleted} />
+            </Button>
+            <AssessmentForm
+              assessmentFormTitle="Create New Assessment"
+              setAssessments={setAssessments}
+              assessments={assessments}
+              setClassNames={setClassNames}
+              classNames={classNames}
+              setStandards={setStandards}
+              standards={standards}
+              setRubrics={setRubrics}
+              rubrics={rubrics}
+              user={user}
+              closeModal={closeModal}
+            />
+          </Modal>
 
-  // return (
-  //   // needs title section
-  //   // needs map of class's assessment cards /simple view/ to display
-  //   // needs an add student button for modal and form
-  //   // needs map of student name cards /simple view/ to display
-  //   // needs new assessment button that links to modal form
-  //   <SingleClassContainer className='single-class-view'>
-  //     <SingleClassCard key={id} id={id} className={className} user={user} />
-  //   </SingleClassContainer>
-  // );
+          <AssessmentCardContainer className="card-container assessment-view">
+            {assessments
+              && assessments?.map((assessmentInfo, index) => (
+                <AssessmentCards
+                  key={index}
+                  id={assessmentInfo.id}
+                  studentName={assessmentInfo.studentName}
+                  teacherName={assessmentInfo.teacherName}
+                  gradeLevelDescription={assessmentInfo.gradeLevelDescription}
+                  score={assessmentInfo.score}
+                  standardName={assessmentInfo.standardName}
+                />
+              ))}
+          </AssessmentCardContainer>
+        </>
+      )}
+    </AssessmentContainer>
   );
 }
 

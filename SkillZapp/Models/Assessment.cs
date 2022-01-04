@@ -8,10 +8,9 @@ namespace SkillZapp.Models
     public class Assessment
     {
         public Guid Id { get; set; }
-        public Guid StandardNameId { get; set; }
-        public Guid ClassId { get; set; }
+        public Guid StandardId { get; set; }
+        public Guid ClassNameId { get; set; }
         public Guid RubricId { get; set; }
         public Guid UserId { get; set; }
-        public string AssessmentDate { get; set; }
     }
 }

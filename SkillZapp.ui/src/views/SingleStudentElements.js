@@ -2,13 +2,10 @@ import styled from 'styled-components';
 
 export const SingleStudentContainer = styled.div`
   display: flex;
-  // flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding-top: 50px;
-  // align-items: center;
-  // justify-content: center;
-  // width: 100%;
-  // height: 100%;
+  align-items: center;
+  text-align: center;
 `;
 
 export const AssessmentCardContainer = styled.div`
@@ -18,6 +15,11 @@ export const AssessmentCardContainer = styled.div`
   padding-top: 125px;
   // height: 1000px;
   // padding-bottom: 125px;
+`;
+
+export const TitleContainer = styled.div`
+  color: #ffb400;
+  margin-bottom: 20px;
 `;
 
 export const CardText = styled.div``;
