@@ -41,7 +41,7 @@ function Assessments({ user }) {
       getClassNamesByUserId(user.id).then((classList) => setClassNames(classList));
     }
   }, []);
-
+  console.warn(assessments);
   return (
     <AssessmentContainer>
       {classNames && rubrics && standards && (
@@ -87,6 +87,7 @@ function Assessments({ user }) {
                   gradeLevelDescription={assessmentInfo.gradeLevelDescription}
                   score={assessmentInfo.score}
                   standardName={assessmentInfo.standardName}
+                  assessmentDate={assessmentInfo.assessmentDate}
                 />
               ))}
           </AssessmentCardContainer>

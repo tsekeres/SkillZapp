@@ -9,34 +9,39 @@ using System.Threading.Tasks;
 
 namespace SkillZapp.DataAccess
 {
-    public class AssessmentsWithDetailsRepository
+    public class TakeAssessmentRepository
     {
         readonly string _connectionString;
-        public AssessmentsWithDetailsRepository(IConfiguration config)
+        public TakeAssessmentRepository(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("SkillZapp");
         }
 
-        internal IEnumerable<AssessmentsWithDetails> GetAssessmentsWithDetailsByUserId(Guid userId)
+        internal IEnumerable<TakeAssessment> GetTakeAssessmentByAssessmentId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT A.Id, A.UserId, A.StandardId, A.AssessmentDate,
-                        ClassNameId, RubricId, CN.TeacherName, GL.GradeLevelDescription,
-                        S.StandardName FROM Assessments A
+            var sql = @"SELECT A.Id, A.UserId, A.StandardId, A.AssessmentDate, A.ClassNameId,
+                        RubricName, CN.TeacherName, GL.GradeLevelDescription, GL.GradeLevelNumber, S.StandardName, 
+                        S.StandardDescription, ST.Id as StudentId, ST.StudentName, R.RubricLevelA, R.RubricLevelB,
+                        R.RubricLevelB, R.RubricLevelC, R.RubricLevelD FROM Assessments A
 		                    JOIN ClassNames CN
 		                    ON A.ClassNameId = CN.ID
 		                    JOIN GradeLevels GL
 		                    ON CN.GradeLevelId = GL.ID
 		                    JOIN Standards S
 		                    ON A.StandardId = S.ID
-                            WHERE A.UserId = @UserId";
+							JOIN Students ST
+							ON CN.Id = ST.ClassNameId
+							Join Rubrics R
+							ON A.RubricId = R.Id
+                            WHERE A.Id = @AssessmentId";
 
             var parameters = new
             {
                 UserId = userId
             };
 
-            var result = db.Query<AssessmentsWithDetails>(sql, parameters);
+            var result = db.Query<TakeAssessment>(sql, parameters);
             return result;
         }
     }

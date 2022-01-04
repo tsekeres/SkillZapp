@@ -46,6 +46,8 @@ namespace SkillZapp
             services.AddTransient<SingleStudentsWithAssessmentsRepository>();
             services.AddTransient<StudentWithDetailsRepository>();
             services.AddTransient<AssessmentsWithDetailsRepository>();
+            services.AddTransient<TakeAssessmentRepository>();
+
 
 
 
