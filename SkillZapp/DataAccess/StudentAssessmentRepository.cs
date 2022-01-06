@@ -106,13 +106,23 @@ namespace SkillZapp.DataAccess
                         ([Score], 
                          [AssessmentId],
                          [StudentId],
+                         [ClassNameId],
+                         [StudentName],
+                         [TeacherName],
+                         [GradeLevelDescription],
+                         [StandardName],
                          [UserId])
                         OUTPUT inserted.Id
                         VALUES
                        (@Score,
                         @AssessmentId,
 		                @StudentId,
-                        @UserId)";
+                        @UserId,
+                        @ClassNameId,
+                        @StudentName,
+                        @TeacherName,
+                        @GradeLevelDescription,
+                        @StandardName)";
 
             id = db.ExecuteScalar<Guid>(sql, studentAssessment);
             if (!id.Equals(Guid.Empty))
@@ -149,7 +159,12 @@ namespace SkillZapp.DataAccess
                         SET Score = @Score,
                             UserId = @UserId,
                             AssessmentId = @AssessmentId,
-                            StudentNameId = @StudentNameId
+                            StudentId = @StudentId,
+                            ClassName = @ClassNameId,
+                            StudentName = @StudentName,
+                            TeacherName = @TeacherName,
+                            GradeLevelDescription = @GradeLevelDescription,
+                            StandardName = @StandardName
                         OUTPUT Inserted.*
                         WHERE Id = @Id";
 

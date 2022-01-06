@@ -82,7 +82,7 @@ namespace SkillZapp.Controllers
             return Ok($"Student with Id {studentAssessmentId} was deleted");
         }
 
-        [HttpPut("{StudentId}")]
+        [HttpPut("{StudentAssessmentId}")]
         public IActionResult UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
         {
             _repo.UpdateStudentAssessment(studentAssessmentId, studentAssessment);

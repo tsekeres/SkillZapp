@@ -7,6 +7,7 @@ import Students from '../views/Students';
 import SingleClass from '../views/SingleClass';
 import SingleStudent from '../views/SingleStudent';
 import Assessments from '../views/Assessments';
+import TakeAssessment from '../views/TakeAssessment';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   // eslint-disable-next-line no-confusing-arrow
@@ -62,6 +63,12 @@ function Routes({ user }) {
           path='/Assessments'
           user={user}
           component={() => <Assessments user={user} />}
+        />
+        <Route
+          exact
+          path='/TakeAssessment/:id'
+          user={user}
+          component={() => <TakeAssessment user={user} />}
         />
         <Route path='*' component={Home} />
       </Switch>
