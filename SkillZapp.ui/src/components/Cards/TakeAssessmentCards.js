@@ -9,15 +9,18 @@ import {
 import { updateStudentAssessment, createStudentAssessment } from '../../helpers/data/studentAssessmentData';
 
 function TakeAssessmentCards({
-  takeAssessments
+  takeAssessments,
+  id,
+  classNameId,
+  studentName
 }) {
   const [finAssess, setFinAssess] = useState({
-    studentId: takeAssessments.studentId || '',
-    classNameId: takeAssessments.classNameId || '',
-    id: takeAssessments.Id || '',
+    studentId: id || '',
+    classNameId: classNameId || '',
+    id: takeAssessments.studentAssessmentId || '',
     userId: takeAssessments.userId || '',
     assessmentId: takeAssessments.assessmentId || '',
-    studentName: takeAssessments.studentName || '',
+    studentName: studentName || '',
     teacherName: takeAssessments.teacherName || '',
     gradeLevelDescription: takeAssessments.gradeLevelDescription || '',
     standardName: takeAssessments.standardName || '',
@@ -27,12 +30,12 @@ function TakeAssessmentCards({
   useEffect(() => {
     let mounted = true;
     const studentAssessmentObj = {
-      studentId: takeAssessments.studentId || '',
-      classNameId: takeAssessments.classNameId || '',
+      studentId: id || '',
+      classNameId: classNameId || '',
       id: takeAssessments.Id || '',
       userId: takeAssessments.userId || '',
       assessmentId: takeAssessments.assessmentId || '',
-      studentName: takeAssessments.studentName || '',
+      studentName: studentName || '',
       teacherName: takeAssessments.teacherName || '',
       gradeLevelDescription: takeAssessments.gradeLevelDescription || '',
       standardName: takeAssessments.standardName || '',
@@ -128,6 +131,9 @@ function TakeAssessmentCards({
 
 TakeAssessmentCards.propTypes = {
   takeAssessments: PropTypes.any,
+  id: PropTypes.any,
+  classNameId: PropTypes.any,
+  studentName: PropTypes.any,
 };
 
 export default TakeAssessmentCards;

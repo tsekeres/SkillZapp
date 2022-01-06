@@ -31,6 +31,7 @@ const ClassForm = ({
     id: id || '',
     userId: user.id || '',
   });
+
   useEffect(() => {
     let mounted = true;
     const classNameObj = {

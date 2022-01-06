@@ -105,7 +105,7 @@ namespace SkillZapp.DataAccess
                         ([StandardId], 
                          [ClassNameId],
                          [RubricId],
-                         [UserId]),
+                         [UserId])
                         OUTPUT inserted.Id
                         VALUES
                        (@StandardId,

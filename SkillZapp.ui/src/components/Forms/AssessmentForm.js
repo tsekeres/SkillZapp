@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import {
   createAssessment,
-  getAssessmentsWithDetailsByUserId,
 } from '../../helpers/data/assessmentsData';
 import {
   AssessmentFormTitle,
@@ -19,7 +18,6 @@ import add from '../../Assets/Add.png';
 const AssessmentForm = ({
   assessmentFormTitle,
   assessmentDate,
-  setAssessments,
   standards,
   standardId,
   rubrics,
@@ -74,9 +72,7 @@ const AssessmentForm = ({
       rubricId: assessment.rubricId,
       userId: user.id,
     };
-    createAssessment(assessmentObj).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
-
-    history.push(`/TakeAssessment/${assessment.id}`);
+    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.rubricId.rubricName}/${resp.teacherName}/${resp.standardDescription}/${resp.standardName}/${resp.classNameId}/${resp.id}`));
 
     closeModal();
   };

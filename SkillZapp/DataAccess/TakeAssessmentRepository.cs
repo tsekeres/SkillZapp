@@ -20,9 +20,9 @@ namespace SkillZapp.DataAccess
         internal IEnumerable<TakeAssessment> GetTakeAssessmentByAssessmentId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT A.Id as AssessmentId, A.UserId, A.StandardId, A.AssessmentDate, A.ClassNameId,
+            var sql = @"SELECT A.Id as AssessmentId, A.UserId, A.StandardId, A.AssessmentDate,
                         RubricName, CN.TeacherName, GL.GradeLevelDescription, GL.GradeLevelNumber, S.StandardName, 
-                        ST.Id as StudentId, ST.StudentName, R.RubricLevelA, R.RubricLevelB, R.RubricLevelC,
+                        R.RubricLevelA, R.RubricLevelB, R.RubricLevelC,
                         R.RubricLevelD, STA.Id as Id, STA.Score FROM Assessments A
 		                    JOIN ClassNames CN
 		                    ON A.ClassNameId = CN.ID
