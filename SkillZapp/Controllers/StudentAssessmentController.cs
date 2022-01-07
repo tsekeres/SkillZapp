@@ -79,7 +79,14 @@ namespace SkillZapp.Controllers
         public IActionResult DeleteStudentAssessment(Guid studentAssessmentId)
         {
             _repo.DeleteStudentAssessment(studentAssessmentId);
-            return Ok($"Student with Id {studentAssessmentId} was deleted");
+            return Ok($"Student Assessment with Id {studentAssessmentId} was deleted");
+        }
+
+        [HttpDelete("{assessmentId}")]
+        public IActionResult DeleteStudentAssessmentByAssessmentId(Guid assessmentId)
+        {
+            _repo.DeleteStudentAssessmentByAssessmentId(assessmentId);
+            return Ok($"Student Assessment with Assessment Id {assessmentId} was deleted");
         }
 
         [HttpPut("{StudentAssessmentId}")]

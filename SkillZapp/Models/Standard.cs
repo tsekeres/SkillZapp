@@ -9,6 +9,8 @@ namespace SkillZapp.Models
     {
         public Guid Id { get; set; }
         public Guid SubcomponentId { get; set; }
+        public Guid GradeLevelId { get; set; }
         public string StandardName { get; set; }
+        public string StandardDescription { get; set; }
     }
 }

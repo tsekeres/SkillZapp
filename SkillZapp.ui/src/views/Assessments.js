@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import AssessmentForm from '../components/Forms/AssessmentForm';
 import AssessmentCards from '../components/Cards/AssessmentCards';
 import { getClassNamesByUserId } from '../helpers/data/classNamesData';
-import getAllStandards from '../helpers/data/standardsData';
-import getAllRubrics from '../helpers/data/rubricsData';
+import { getAllStandards } from '../helpers/data/standardsData';
+import { getAllRubrics } from '../helpers/data/rubricsData';
 // import SearchBarAssessments from '../components/Searchbar/SearchBarClasses';
 import { getAssessmentsWithDetailsByUserId } from '../helpers/data/assessmentsData';
 import {
@@ -81,6 +81,8 @@ function Assessments({ user }) {
                 <AssessmentCards
                   key={index}
                   id={assessmentInfo.id}
+                  user={user}
+                  setAssessments={setAssessments}
                   studentName={assessmentInfo.studentName}
                   teacherName={assessmentInfo.teacherName}
                   gradeLevelDescription={assessmentInfo.gradeLevelDescription}

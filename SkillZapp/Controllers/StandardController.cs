@@ -20,12 +20,12 @@ namespace SkillZapp.Controllers
             _repo = repo;
         }
 
-        [HttpGet("{StandardId}")]
+        [HttpGet("{standardId}")]
         public IActionResult GetStandardById(Guid standardId)
         {
-            _repo.GetStandardsById(standardId);
+            _repo.GetStandardById(standardId);
 
-            return Ok(_repo.GetStandardsById(standardId));
+            return Ok(_repo.GetStandardById(standardId));
         }
 
         [HttpGet("subcomponent/{subcomponentId}")]

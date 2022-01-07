@@ -37,7 +37,6 @@ function Classes({ user }) {
       getAllGradeLevels().then((gradeLevelsList) => setGradeLevels(gradeLevelsList));
     }
   }, []);
-
   return (
     <ClassContainer>
       {classNames && gradeLevels

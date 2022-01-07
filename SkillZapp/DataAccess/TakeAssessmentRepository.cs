@@ -17,7 +17,7 @@ namespace SkillZapp.DataAccess
             _connectionString = config.GetConnectionString("SkillZapp");
         }
 
-        internal IEnumerable<TakeAssessment> GetTakeAssessmentByAssessmentId(Guid userId)
+        internal IEnumerable<TakeAssessment> GetTakeAssessmentByAssessmentId(Guid assessmentId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT A.Id as AssessmentId, A.UserId, A.StandardId, A.AssessmentDate,
@@ -40,7 +40,7 @@ namespace SkillZapp.DataAccess
 
             var parameters = new
             {
-                UserId = userId
+                AssessmentId = assessmentId
             };
 
             var result = db.Query<TakeAssessment>(sql, parameters);

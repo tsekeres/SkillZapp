@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Input, FormGroup, Label } from 'reactstrap';
+import getTakeAssessmentByAssessmentId from '../../helpers/data/takeAssessmentsData';
 import {
   TakeAssessmentCard,
   TakeAssessmentCardHeader,
@@ -9,11 +10,12 @@ import {
 import { updateStudentAssessment, createStudentAssessment } from '../../helpers/data/studentAssessmentData';
 
 function TakeAssessmentCards({
-  takeAssessments,
+  user,
   id,
   classNameId,
-  studentName
+  studentName,
 }) {
+  const [takeAssessments, setTakeAssessments] = useState(null);
   const [finAssess, setFinAssess] = useState({
     studentId: id || '',
     classNameId: classNameId || '',
@@ -26,6 +28,12 @@ function TakeAssessmentCards({
     standardName: takeAssessments.standardName || '',
     score: takeAssessments.score || '',
   });
+  console.warn(id);
+  useEffect(() => {
+    if (user) {
+      getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList));
+    }
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -78,53 +86,50 @@ function TakeAssessmentCards({
 
   return (
     <TakeAssessmentCard>
-      <TakeAssessmentCardHeader className='ClassCardHeader'>
+      <TakeAssessmentCardHeader className="ClassCardHeader">
         <h1>{takeAssessments.studentName}</h1>
       </TakeAssessmentCardHeader>
-      <TakeAssessmentCardBody
-        className='ClassCard'
-        id='ClassCard'
-      ></TakeAssessmentCardBody>
-      <FormGroup tag='fieldset'>
-        <legend>Rubric Score</legend>
-        <FormGroup check>
-          <Input
-            name='score'
-            type='radio'
-            value={takeAssessments.rubricLevelA}
-            onChange={handleInputChange}
-          />
-          <Label check>Excellent</Label>
+      <TakeAssessmentCardBody className="ClassCard" id="ClassCard">
+        <FormGroup tag="fieldset">
+          <legend>Rubric Score</legend>
+          <FormGroup check>
+            <Input
+              name="score"
+              type="radio"
+              value={takeAssessments.rubricLevelA}
+              onChange={handleInputChange}
+            />
+            <Label check>Excellent</Label>
+          </FormGroup>
+          <FormGroup check>
+            <Input
+              name="score"
+              type="radio"
+              value={takeAssessments.rubricLevelB}
+              onChange={handleInputChange}
+            />
+            <Label check>Satisfactory</Label>
+          </FormGroup>
+          <FormGroup check>
+            <Input
+              name="score"
+              type="radio"
+              value={takeAssessments.rubricLevelC}
+              onChange={handleInputChange}
+            />
+            <Label check>Needs Improvement</Label>
+          </FormGroup>
+          <FormGroup check>
+            <Input
+              name="score"
+              type="radio"
+              value={takeAssessments.rubricLevelD}
+              onChange={handleInputChange}
+            />
+            <Label check>Not Tested</Label>
+          </FormGroup>
         </FormGroup>
-        <FormGroup check>
-          <Input
-            name='score'
-            type='radio'
-            value={takeAssessments.rubricLevelB}
-            onChange={handleInputChange}
-          />
-          <Label check>Satisfactory</Label>
-        </FormGroup>
-        <FormGroup check>
-          <Input
-            name='score'
-            type='radio'
-            value={takeAssessments.rubricLevelC}
-            onChange={handleInputChange}
-          />
-          <Label check>Needs Improvement</Label>
-        </FormGroup>
-        <FormGroup check>
-          <Input
-            name='score'
-            type='radio'
-            value={takeAssessments.rubricLevelD}
-            onChange={handleInputChange}
-          />
-          <Label check>Not Tested</Label>
-        </FormGroup>
-      </FormGroup>
-      ;
+      </TakeAssessmentCardBody>
     </TakeAssessmentCard>
   );
 }
@@ -134,6 +139,7 @@ TakeAssessmentCards.propTypes = {
   id: PropTypes.any,
   classNameId: PropTypes.any,
   studentName: PropTypes.any,
+  user: PropTypes.any,
 };
 
 export default TakeAssessmentCards;

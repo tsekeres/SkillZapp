@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import {
-  createAssessment,
+  createAssessment, getAssessmentsWithDetailsByUserId
 } from '../../helpers/data/assessmentsData';
 import {
   AssessmentFormTitle,
@@ -27,6 +27,7 @@ const AssessmentForm = ({
   user,
   id,
   closeModal,
+  setAssessments,
 }) => {
   const history = useHistory();
   const [assessment, setAssessment] = useState({
@@ -72,7 +73,8 @@ const AssessmentForm = ({
       rubricId: assessment.rubricId,
       userId: user.id,
     };
-    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.rubricId.rubricName}/${resp.teacherName}/${resp.standardDescription}/${resp.standardName}/${resp.classNameId}/${resp.id}`));
+    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.rubricId}/${resp.standardId}/${resp.classNameId}/${resp.id}`))
+      .then(getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
     closeModal();
   };

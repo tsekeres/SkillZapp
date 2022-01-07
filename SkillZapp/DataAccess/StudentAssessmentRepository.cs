@@ -152,6 +152,27 @@ namespace SkillZapp.DataAccess
             return returnVal;
         }
 
+
+        internal bool DeleteStudentAssessmentByAssessmentId(Guid assessmentId)
+        {
+            bool returnVal = false;
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"DELETE FROM StudentAssessments
+                        OUTPUT Deleted.Id
+                        WHERE AssessmentId = @AssessementId";
+            var parameters = new
+            {
+                AssessmentId = assessmentId
+            };
+
+            var result = db.Query(sql, parameters);
+            if (result.Count() > 0)
+            {
+                returnVal = true;
+            }
+            return returnVal;
+        }
+
         internal StudentAssessment UpdateStudentAssessment(Guid id, StudentAssessment studentAssessment)
         {
             using var db = new SqlConnection(_connectionString);

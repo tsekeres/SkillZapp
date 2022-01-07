@@ -10,4 +10,11 @@ const getAllRubrics = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getAllRubrics;
+const getRubricById = (rubricId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/rubrics/${rubricId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+export { getAllRubrics, getRubricById };

@@ -4,19 +4,23 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Form } from 'reactstrap';
 import TakeAssessmentCards from '../components/Cards/TakeAssessmentCards';
 import { getStudentsByClassNameId } from '../helpers/data/studentsData';
-import getTakeAssessmentByAssessmentId from '../helpers/data/takeAssessmentsData';
 import {
   TakeAssessmentContainer,
   TakeAssessmentCardContainer,
   TitleContainer,
   Button,
 } from './TakeAssessmentElements';
+import { getRubricById } from '../helpers/data/rubricsData';
+import { getStandardById } from '../helpers/data/standardsData';
+import { getClassNameById } from '../helpers/data/classNamesData';
 
 function TakeAssessments({ user }) {
   const [className, setClassName] = useState(null);
-  const [takeAssessments, setTakeAssessments] = useState(null);
+  const [rubric, setRubric] = useState(null);
+  const [standard, setStandard] = useState(null);
+  const [classObj, setClassObj] = useState(null);
   const {
-    rubricName, teacherName, standardDescription, standardName, classNameId, id
+    rubricId, standardId, classNameId, id
   } = useParams();
   const history = useHistory();
 
@@ -33,30 +37,33 @@ function TakeAssessments({ user }) {
   useEffect(() => {
     if (user) {
       getStudentsByClassNameId(classNameId).then((resp) => setClassName(resp));
-      getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList));
+      getRubricById(rubricId).then((rubricObj) => setRubric(rubricObj));
+      getStandardById(standardId).then((standardObj) => setStandard(standardObj));
+      getClassNameById(classNameId).then((classNameObj) => setClassObj(classNameObj));
     }
   }, []);
-  console.warn(className);
   return (
     <TakeAssessmentContainer>
-      <TitleContainer className='assessment-header'>
-        <h1>{standardName} Assessment</h1>
-        <h1>{teacherName}</h1>
-        <h1>{standardDescription}</h1>
-        <h1>
-          Choose student&apos;s score for {rubricName} Assessment
-        </h1>
-      </TitleContainer>
+      {standard && classObj && rubric
+        && <TitleContainer className='assessment-header'>
+          <h1>{standard.standardName} Assessment</h1>
+          <h1>{classObj.teacherName}</h1>
+          <h1>{standard.standardDescription}</h1>
+          <h1>
+            Choose student&apos;s score for {rubric.rubricName} Assessment
+          </h1>
+        </TitleContainer>
+      }
       <Form id='addClassNameForm' autoComplete='off' >
         <TakeAssessmentCardContainer>
           {className
           && className?.map((takeAssessmentInfo, index) => (
               <TakeAssessmentCards
                 key={index}
-                id={takeAssessmentInfo.id}
+                id={id}
+                user={user}
                 studentName={className.studentName}
                 classNameId={className.classNameId}
-                takeAssessments={takeAssessments}
               />
           ))}
         </TakeAssessmentCardContainer>

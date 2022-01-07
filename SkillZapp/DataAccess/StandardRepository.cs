@@ -25,12 +25,17 @@ namespace SkillZapp.DataAccess
             return Standards;
         }
 
-        internal Standard GetStandardsById(Guid standardId)
+        internal Standard GetStandardById(Guid id)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"Select * From Standards where id = @id";
-            var Standard = db.QuerySingleOrDefault<Standard>(sql, new { id = standardId });
-            return Standard;
+            var sql = @"Select * From Standards where Id = @Id";
+            var parameters = new
+            {
+                Id = id
+            };
+
+            var result = db.QuerySingleOrDefault<Standard>(sql, parameters);
+            return result;
         }
 
         internal Standard GetStandardByName(string standardName)
@@ -63,22 +68,28 @@ namespace SkillZapp.DataAccess
             db.Execute(sql, new { id });
         }
 
-        internal void CreateStandard(Standard newStandard)
+        internal Guid CreateStandard(Standard newStandard)
         {
             using var db = new SqlConnection(_connectionString);
             Guid id = new Guid();
             var sql = @"INSERT INTO [dbo].[Standards]
                         ([SubcomponentId],
-                         [StandardName])
+                         [StandardName],
+                         [GradeLevelId],
+                         [StandardDescription])
                             OUTPUT inserted.Id
                             VALUES
                           (@SubcomponentId,
-                          @StandardName
-                          )";
-
+                          @StandardName,
+                          @GradeLevelId,
+                         @StandardDescription)";
 
             id = db.ExecuteScalar<Guid>(sql, newStandard);
-            newStandard.Id = id;
+            if (!id.Equals(Guid.Empty))
+            {
+                newStandard.Id = id;
+            }
+            return id;
         }
 
         internal Standard UpdateStandard(Guid id, Standard standard)
@@ -86,7 +97,10 @@ namespace SkillZapp.DataAccess
             using var db = new SqlConnection(_connectionString);
             var sql = @"update Standards 
                         SET StandardName = @StandardName,
-                            SubcomponentId = @SubcomponentId     
+                            SubcomponentId = @SubcomponentId,
+                            GradeLevelId = @GradeLevelId,
+                            StandardDescription = @StandardDescription
+                            OUTPUT Inserted.*
                             WHERE Id = @Id";
             standard.Id = id;
             var standardUpdated = db.QuerySingleOrDefault<Standard>(sql, standard);

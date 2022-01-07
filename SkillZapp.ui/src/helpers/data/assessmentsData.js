@@ -62,13 +62,12 @@ const updateAssessment = (assessmentId, assessmentObj) => new Promise((resolve, 
     .catch((error) => reject(error));
 });
 
-// const deleteClassName = (classNameId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .delete(`${apiURL}/api/classNames/${classNameId}`)
-//       .then((response) => resolve(response))
-//       .catch((error) => reject(error));
-//   });
+const deleteAssessment = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${apiURL}/api/assessments/${assessmentId}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
 
 // const getClassNameByTeacherName = (teacherName) =>
 //   new Promise((resolve, reject) => {
@@ -84,4 +83,5 @@ export {
   getAssesmentById,
   getAssessmentsByUserId,
   getAssessmentsWithDetailsByUserId,
+  deleteAssessment,
 };

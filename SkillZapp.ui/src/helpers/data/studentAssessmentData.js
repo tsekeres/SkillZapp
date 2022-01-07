@@ -17,13 +17,19 @@ const updateStudentAssessment = (studentAssessmentId, studentAssessmentObj) => n
     .catch((error) => reject(error));
 });
 
-// const deleteClassName = (classNameId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .delete(`${apiURL}/api/classNames/${classNameId}`)
-//       .then((response) => resolve(response))
-//       .catch((error) => reject(error));
-//   });
+const deleteStudentAssessment = (studentAssessmentId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${apiURL}/api/studentAssessments/${studentAssessmentId}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+const deleteStudentAssessmentByAssessmentId = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${apiURL}/api/studentAssessments/${assessmentId}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
 
 // const getClassNameByTeacherName = (teacherName) =>
 //   new Promise((resolve, reject) => {
@@ -36,4 +42,6 @@ const updateStudentAssessment = (studentAssessmentId, studentAssessmentObj) => n
 export {
   createStudentAssessment,
   updateStudentAssessment,
+  deleteStudentAssessment,
+  deleteStudentAssessmentByAssessmentId,
 };
