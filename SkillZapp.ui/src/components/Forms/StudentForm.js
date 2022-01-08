@@ -20,31 +20,27 @@ import { getClassNameWithStudentsByTeacherName } from '../../helpers/data/classN
 
 const StudentForm = ({
   studentFormTitle,
-  studentName,
-  gradeLevelId,
   gradeLevels,
   classNames,
-  classNameId,
   user,
+  id,
   className,
   setClassName,
   closeModal,
 }) => {
-  // console.warn(studentName);
   const [student, setStudent] = useState({
-    gradeLevelId: gradeLevelId || '',
-    classNameId: classNameId || '',
-    studentName: studentName || '',
+    gradeLevelId: className.gradeLevelId || '',
+    classNameId: className.classNameId || '',
+    studentName: className.studentName || '',
     id: className.studentId || '',
     userId: user.id || '',
   });
-  console.warn(classNameId);
   useEffect(() => {
     let mounted = true;
     const studentObj = {
-      gradeLevelId: gradeLevelId || '',
-      classNameId: classNameId || '',
-      studentName: studentName || '',
+      gradeLevelId: className.gradeLevelId || '',
+      classNameId: className.classNameId || '',
+      studentName: className.studentName || '',
       id: className.studentId || '',
       userId: user.id || '',
     };
@@ -55,7 +51,7 @@ const StudentForm = ({
       mounted = false;
       return mounted;
     };
-  }, [gradeLevelId, classNameId, studentName, className.id]);
+  }, []);
 
   const handleInputChange = (e) => {
     setStudent((prevState) => ({
@@ -67,7 +63,7 @@ const StudentForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (student.id) {
-      updateStudent(student.id, student).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
+      updateStudent(student.id, student).then(() => getClassNameWithStudentsByTeacherName(id).then((classList) => setClassName(classList)));
       closeModal();
     } else {
       const studentObj = {
@@ -76,7 +72,7 @@ const StudentForm = ({
         studentName: student.studentName || '',
         userId: user.id || '',
       };
-      createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
+      createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(id).then((classList) => setClassName(classList)));
 
       closeModal();
     }

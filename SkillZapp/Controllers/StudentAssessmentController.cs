@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByStudentId(studentId));
         }
 
-        [HttpGet("assessment/{AssessmentId}")]
+        [HttpGet("assessment/{assessmentId}")]
         public IActionResult GetStudentAssessmentsByAssessmentId(Guid assessmentId)
         {
             _repo.GetStudentAssessmentsByAssessmentId(assessmentId);
@@ -68,25 +68,31 @@ namespace SkillZapp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStudentAssessment(StudentAssessment studentAssessment)
+        public void CreateStudentAssessment(StudentAssessment studentAssessment)
         {
             _repo.AddStudentAssessment(studentAssessment);
 
-            return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
+            //return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
         }
 
         [HttpDelete("{studentAssessmentId}")]
         public IActionResult DeleteStudentAssessment(Guid studentAssessmentId)
         {
             _repo.DeleteStudentAssessment(studentAssessmentId);
-            return Ok($"Student with Id {studentAssessmentId} was deleted");
+            return Ok($"Student Assessment with Id {studentAssessmentId} was deleted");
         }
 
-        [HttpPut("{StudentId}")]
-        public IActionResult UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
+        [HttpDelete("{assessmentId}")]
+        public IActionResult DeleteStudentAssessmentByAssessmentId(Guid assessmentId)
+        {
+            _repo.DeleteStudentAssessmentByAssessmentId(assessmentId);
+            return Ok($"Student Assessment with Assessment Id {assessmentId} was deleted");
+        }
+
+        [HttpPut("{studentAssessmentId}")]
+        public void UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
         {
             _repo.UpdateStudentAssessment(studentAssessmentId, studentAssessment);
-            return Ok($"Student Assessment with id {studentAssessmentId} has been updated");
         }
     }
 }

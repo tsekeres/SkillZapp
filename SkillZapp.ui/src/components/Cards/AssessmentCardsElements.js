@@ -7,7 +7,7 @@ export const AssessmentCard = styled.div`
   border: 3px solid black;
   border-radius: 15px;
   width: 300px;
-  height: 100px;
+  height: 150px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;
@@ -107,6 +107,7 @@ export const AssessmentCardBody = styled.div`
 `;
 
 export const CardTitle = styled.div`
+  margin-bottom: 10px;
   font-size: 1rem;
 `;
 export const CardText = styled.div`

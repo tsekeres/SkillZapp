@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { createAssessment, updateAssessment, getAssessmentsByUserId } from '../../helpers/data/assessmentsData';
+import { useHistory } from 'react-router-dom';
+import {
+  createAssessment, getAssessmentsWithDetailsByUserId
+} from '../../helpers/data/assessmentsData';
 import {
   AssessmentFormTitle,
   Button,
@@ -14,7 +17,7 @@ import add from '../../Assets/Add.png';
 
 const AssessmentForm = ({
   assessmentFormTitle,
-  setAssessments,
+  assessmentDate,
   standards,
   standardId,
   rubrics,
@@ -24,11 +27,14 @@ const AssessmentForm = ({
   user,
   id,
   closeModal,
+  setAssessments,
 }) => {
+  const history = useHistory();
   const [assessment, setAssessment] = useState({
     standardId: standardId || '',
     classNameId: classNameId || '',
     rubricId: rubricId || '',
+    assessmentDate: assessmentDate || '',
     id: id || '',
     userId: user.id || '',
   });
@@ -38,6 +44,7 @@ const AssessmentForm = ({
       standardId: standardId || '',
       classNameId: classNameId || '',
       rubricId: rubricId || '',
+      assessmentDate: assessmentDate || '',
       id: id || '',
       userId: user.id || '',
     };
@@ -59,39 +66,35 @@ const AssessmentForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (id) {
-      updateAssessment(id, assessment).then(() => getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList)));
-      closeModal();
-    } else {
-      const assessmentObj = {
-        standardId: assessment.standardId,
-        classNameId: assessment.classNameId,
-        rubricId: assessment.rubricId,
-        userId: user.id,
-      };
-      console.warn(assessmentObj);
-      createAssessment(assessmentObj).then(() => getAssessmentsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
-      closeModal();
-    }
+    const assessmentObj = {
+      standardId: assessment.standardId,
+      classNameId: assessment.classNameId,
+      rubricId: assessment.rubricId,
+      userId: user.id,
+    };
+    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.standardId}/${resp.classNameId}/${resp.id}`))
+      .then(getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
+
+    closeModal();
   };
 
   return (
-    <Form id="addAssessmentForm" autoComplete="off" onSubmit={handleSubmit}>
-      <AssessmentFormTitle id="AssessmentFormTitle">
+    <Form id='addAssessmentForm' autoComplete='off' onSubmit={handleSubmit}>
+      <AssessmentFormTitle id='AssessmentFormTitle'>
         {assessmentFormTitle}
       </AssessmentFormTitle>
 
       <Label>Standard:</Label>
       <Select
-        className="item"
-        type="select"
-        name="standardId"
-        placeholder="Standard"
-        id="exampleSelect"
+        className='item'
+        type='select'
+        name='standardId'
+        placeholder='Standard'
+        id='exampleSelect'
         onChange={handleInputChange}
       >
-        <Option value="">Select Standard</Option>
+        <Option value=''>Select Standard</Option>
         {standards?.map((standardObj) => (
           <Option key={standardObj.id} value={standardObj.id}>
             {standardObj.standardName}
@@ -102,14 +105,14 @@ const AssessmentForm = ({
 
       <Label>Rubric:</Label>
       <Select
-        className="item"
-        type="select"
-        name="rubricId"
-        placeholder="Rubric"
-        id="exampleSelect"
+        className='item'
+        type='select'
+        name='rubricId'
+        placeholder='Rubric'
+        id='exampleSelect'
         onChange={handleInputChange}
       >
-        <Option value="">Select Rubric</Option>
+        <Option value=''>Select Rubric</Option>
         {rubrics?.map((rubricObj) => (
           <Option key={rubricObj.id} value={rubricObj.id}>
             {rubricObj.rubricName}
@@ -119,14 +122,14 @@ const AssessmentForm = ({
       </Select>
       <Label>Class Name:</Label>
       <Select
-        className="item"
-        type="select"
-        name="classNameId"
-        placeholder="Class Name"
-        id="exampleSelect"
+        className='item'
+        type='select'
+        name='classNameId'
+        placeholder='Class Name'
+        id='exampleSelect'
         onChange={handleInputChange}
       >
-        <Option value="">Select Class Name</Option>
+        <Option value=''>Select Class Name</Option>
         {classNames?.map((classNameObj) => (
           <Option key={classNameObj.id} value={classNameObj.id}>
             {classNameObj.teacherName}
@@ -134,7 +137,7 @@ const AssessmentForm = ({
         ))}
         ;
       </Select>
-      <Button className="addAssessment" type="submit">
+      <Button className='addAssessment' type='submit'>
         <ButtonImg src={add}></ButtonImg>
       </Button>
     </Form>
@@ -143,6 +146,7 @@ const AssessmentForm = ({
 
 AssessmentForm.propTypes = {
   assessmentFormTitle: PropTypes.string.isRequired,
+  assessmentDate: PropTypes.any,
   rubrics: PropTypes.any,
   rubricId: PropTypes.any,
   classNameId: PropTypes.any,

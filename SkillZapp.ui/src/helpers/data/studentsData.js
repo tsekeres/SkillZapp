@@ -12,7 +12,7 @@ const getAllStudentsWithDataByUserId = (userId) => new Promise((resolve, reject)
 
 const getStudentsByClassNameId = (classNameId) => new Promise((resolve, reject) => {
   axios
-    .get(`${apiURL}/api/classNames/${classNameId}`)
+    .get(`${apiURL}/api/students/className/${classNameId}`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });

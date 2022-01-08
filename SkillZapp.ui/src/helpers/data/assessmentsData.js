@@ -17,13 +17,12 @@ const getAssessmentsWithDetailsByUserId = (userId) => new Promise((resolve, reje
     .catch((error) => reject(error));
 });
 
-// const getClassNameById = (classNameId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames/${classNameId}`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
+const getAssesmentById = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/assessments/${assessmentId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 // const getClassNamesByUserId = (userId) =>
 //   new Promise((resolve, reject) => {
@@ -63,13 +62,12 @@ const updateAssessment = (assessmentId, assessmentObj) => new Promise((resolve, 
     .catch((error) => reject(error));
 });
 
-// const deleteClassName = (classNameId) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .delete(`${apiURL}/api/classNames/${classNameId}`)
-//       .then((response) => resolve(response))
-//       .catch((error) => reject(error));
-//   });
+const deleteAssessment = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${apiURL}/api/assessments/${assessmentId}`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
 
 // const getClassNameByTeacherName = (teacherName) =>
 //   new Promise((resolve, reject) => {
@@ -82,6 +80,8 @@ const updateAssessment = (assessmentId, assessmentObj) => new Promise((resolve, 
 export {
   createAssessment,
   updateAssessment,
+  getAssesmentById,
   getAssessmentsByUserId,
   getAssessmentsWithDetailsByUserId,
+  deleteAssessment,
 };

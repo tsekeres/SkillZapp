@@ -15,5 +15,7 @@ namespace SkillZapp.Models
         public string TeacherName { get; set; }
         public string GradeLevelDescription { get; set; }
         public string StandardName { get; set; }
+        public DateTime AssessmentDate { get; set; }
+
     }
 }

@@ -1,4 +1,4 @@
-// needs each card to have a delete button
+// need delete buttons
 // needs to be clickable to view single class
 // needs to display teacher name and gradelevel description or number
 import React from 'react';

@@ -98,28 +98,40 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal Guid AddStudentAssessment(StudentAssessment studentAssessment)
+        internal void AddStudentAssessment(StudentAssessment studentAssessment)
         {
             using var db = new SqlConnection(_connectionString);
-            Guid id = new Guid();
+            //Guid id = new Guid();
             var sql = @"INSERT INTO [dbo].[StudentAssessments]
-                        ([Score], 
-                         [AssessmentId],
-                         [StudentId],
-                         [UserId])
+                             ([StudentId]
+                           ,[ClassNameId]
+                           ,[AssessmentId]
+                           ,[StudentName]
+                           ,[TeacherName]
+                           ,[GradeLevelDescription]
+                           ,[StandardName]
+                           ,[Score]
+                           ,[AssessmentDate]
+                           ,[UserId])
                         OUTPUT inserted.Id
                         VALUES
-                       (@Score,
-                        @AssessmentId,
-		                @StudentId,
-                        @UserId)";
-
-            id = db.ExecuteScalar<Guid>(sql, studentAssessment);
-            if (!id.Equals(Guid.Empty))
-            {
-                studentAssessment.Id = id;
-            }
-            return id;
+                       (@StudentId
+                           ,@ClassNameId
+                           ,@AssessmentId
+                           ,@StudentName
+                           ,@TeacherName
+                           ,@GradeLevelDescription
+                           ,@StandardName
+                           ,@Score
+                           ,@AssessmentDate
+                           ,@UserId)";
+            db.Execute(sql, studentAssessment);
+            //id = db.ExecuteScalar<Guid>(sql, studentAssessment);
+            //if (!id.Equals(Guid.Empty))
+            //{
+            //    studentAssessment.Id = id;
+            //}
+            //return id;
         }
 
         internal bool DeleteStudentAssessment(Guid id)
@@ -142,21 +154,35 @@ namespace SkillZapp.DataAccess
             return returnVal;
         }
 
-        internal StudentAssessment UpdateStudentAssessment(Guid id, StudentAssessment studentAssessment)
+
+        internal bool DeleteStudentAssessmentByAssessmentId(Guid assessmentId)
+        {
+            bool returnVal = false;
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"DELETE FROM StudentAssessments
+                        OUTPUT Deleted.Id
+                        WHERE AssessmentId = @AssessementId";
+            var parameters = new
+            {
+                AssessmentId = assessmentId
+            };
+
+            var result = db.Query(sql, parameters);
+            if (result.Count() > 0)
+            {
+                returnVal = true;
+            }
+            return returnVal;
+        }
+
+        internal void UpdateStudentAssessment(Guid id, StudentAssessment studentAssessment)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"UPDATE StudentAssessments
-                        SET Score = @Score,
-                            UserId = @UserId,
-                            AssessmentId = @AssessmentId,
-                            StudentNameId = @StudentNameId
-                        OUTPUT Inserted.*
+                        SET Score = @Score
                         WHERE Id = @Id";
 
-            studentAssessment.Id = id;
-            var updatedStudentAssessment = db.QuerySingleOrDefault<StudentAssessment>(sql, studentAssessment);
-
-            return updatedStudentAssessment;
+            db.Execute(sql, studentAssessment);
         }
     }
 }

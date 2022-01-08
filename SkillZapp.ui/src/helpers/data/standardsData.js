@@ -10,4 +10,11 @@ const getAllStandards = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getAllStandards;
+const getStandardById = (standardId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/standards/${standardId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+export { getAllStandards, getStandardById };

@@ -12,5 +12,6 @@ namespace SkillZapp.Models
         public Guid ClassNameId { get; set; }
         public Guid RubricId { get; set; }
         public Guid UserId { get; set; }
+        public DateTime AssessmentDate { get; set; }
     }
 }

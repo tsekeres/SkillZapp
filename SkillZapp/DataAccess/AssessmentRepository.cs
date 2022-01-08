@@ -86,7 +86,7 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from Assessments
-                            WHERE A.UserId = @UserId";
+                            WHERE UserId = @UserId";
 
             var parameters = new
             {
@@ -105,7 +105,7 @@ namespace SkillZapp.DataAccess
                         ([StandardId], 
                          [ClassNameId],
                          [RubricId],
-                         [UserId]),
+                         [UserId])
                         OUTPUT inserted.Id
                         VALUES
                        (@StandardId,

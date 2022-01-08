@@ -31,6 +31,7 @@ const ClassForm = ({
     id: id || '',
     userId: user.id || '',
   });
+
   useEffect(() => {
     let mounted = true;
     const classNameObj = {
@@ -67,7 +68,7 @@ const ClassForm = ({
         userId: user.id,
       };
       createClassName(classNameObj).then(() => getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList)));
-      
+
       closeModal();
     }
   };

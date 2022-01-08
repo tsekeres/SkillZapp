@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-export const StudentNameCard = styled.div`
+export const TakeAssessmentCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 3px solid black;
   border-radius: 15px;
-  width: 150px;
-  height: 120px;
+  // elevation: 10px;
+  // shadowOffset: {width: 2, height: 2};
+  // shadowColor: #52abab;
+  // shadowOpacity: 0.5;
+  // shadowRadius: 2px;
+  width: 200px;
+  height: 250px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;
@@ -70,15 +75,15 @@ export const ProductCardImg = styled.img`
   object-fit: cover;
 `;
 
-export const StudentNameCardHeader = styled.div`
+export const TakeAssessmentCardHeader = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
-export const StudentNameCardButtons = styled.div`
+export const ClassCardButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -86,21 +91,21 @@ export const StudentNameCardButtons = styled.div`
   height: 100%;
 `;
 
-export const ProductCardEdit = styled.img`
+export const ClassCardEdit = styled.img`
   height: 15px;
 `;
 
-export const StudentNameCardDelete = styled.img`
+export const ClassCardDelete = styled.img`
   height: 13px;
   margin-right: 5px;
 `;
 
 export const Modal1 = styled.div``;
 
-export const StudentNameCardBody = styled.div`
+export const TakeAssessmentCardBody = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   // margin-top: 5px;
   // margin-bottom: 5px;
   width: 100%;
