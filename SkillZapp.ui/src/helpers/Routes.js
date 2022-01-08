@@ -8,6 +8,7 @@ import SingleClass from '../views/SingleClass';
 import SingleStudent from '../views/SingleStudent';
 import Assessments from '../views/Assessments';
 import TakeAssessment from '../views/TakeAssessment';
+import SingleAssessment from '../views/SingleAssessment';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   // eslint-disable-next-line no-confusing-arrow
@@ -30,47 +31,53 @@ function Routes({ user }) {
       <Switch>
         <Route
           exact
-          path='/'
+          path="/"
           // user={user}
           component={() => <Home user={user} />}
         />
         <Route
           exact
-          path='/Classes'
+          path="/Classes"
           // user={user}
           component={() => <Classes user={user} />}
         />
         <Route
           exact
-          path='/Classes/:teacherName/:gradeLevelDescription/:id'
+          path="/Classes/:teacherName/:gradeLevelDescription/:id"
           user={user}
           component={() => <SingleClass user={user} />}
         />
         <Route
           exact
-          path='/Students'
+          path="/Students"
           user={user}
           component={() => <Students user={user} />}
         />
         <Route
           exact
-          path='/Students/:studentName/:teacherName/:id'
+          path="/Students/:studentName/:teacherName/:id"
           user={user}
           component={() => <SingleStudent user={user} />}
         />
         <Route
           exact
-          path='/Assessments'
+          path="/Assessments"
           user={user}
           component={() => <Assessments user={user} />}
         />
         <Route
           exact
-          path='/TakeAssessment/:rubricId/:standardId/:classNameId/:id'
+          path="/Assessments/:id"
+          user={user}
+          component={() => <SingleAssessment user={user} />}
+        />
+        <Route
+          exact
+          path="/TakeAssessment/:standardId/:classNameId/:id"
           user={user}
           component={() => <TakeAssessment user={user} />}
         />
-        <Route path='*' component={Home} />
+        <Route path="*" component={Home} />
       </Switch>
     </div>
   );

@@ -11,8 +11,8 @@ export const ClassCard = styled.div`
   // shadowColor: #52abab;
   // shadowOpacity: 0.5;
   // shadowRadius: 2px;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 120px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;

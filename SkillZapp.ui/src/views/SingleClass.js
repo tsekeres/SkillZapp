@@ -30,7 +30,6 @@ function SingleClass({ user }) {
   function closeModal() {
     setIsOpen(false);
   }
-
   useEffect(() => {
     if (id) {
       getClassNameWithStudentsByTeacherName(id).then((resp) => setClassName(resp));

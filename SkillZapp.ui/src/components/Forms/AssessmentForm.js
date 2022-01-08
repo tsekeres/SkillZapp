@@ -73,7 +73,7 @@ const AssessmentForm = ({
       rubricId: assessment.rubricId,
       userId: user.id,
     };
-    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.rubricId}/${resp.standardId}/${resp.classNameId}/${resp.id}`))
+    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.standardId}/${resp.classNameId}/${resp.id}`))
       .then(getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
     closeModal();

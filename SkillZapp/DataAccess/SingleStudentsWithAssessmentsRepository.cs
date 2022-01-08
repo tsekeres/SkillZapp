@@ -20,19 +20,9 @@ namespace SkillZapp.DataAccess
         internal IEnumerable<SingleStudentsWithAssessments> GetSingleStudentsWithAssessmentsByStudentId(Guid studentId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT CN.Id as ClassNameId, STU.Id as StudentId, STU.UserId, TeacherName, StudentName,
-		                GradeLevelNumber, GradeLevelDescription, AssessmentId, Score, StandardName FROM StudentAssessments SA
-		                        JOIN Students STU
-		                        ON SA.StudentId = STU.ID
-		                        JOIN ClassNames CN
-		                        ON STU.ClassNameId = CN.ID
-		                        JOIN GradeLevels GL
-		                        ON CN.GradeLevelId = GL.ID
-		                        JOIN Assessments A
-		                        ON SA.AssessmentId = A.ID
-		                        JOIN Standards STA
-		                        ON A.StandardId = STA.ID
-                                WHERE StudentId = @StudentId";
+            var sql = @"SELECT TeacherName, StudentName, GradeLevelDescription, AssessmentDate, 
+						Score, StandardName FROM StudentAssessments
+                        WHERE StudentId = @StudentId";
 
             var parameters = new
             {

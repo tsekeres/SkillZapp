@@ -2,7 +2,7 @@
 // needs to be clickable to view single class
 // needs to display teacher name and gradelevel description or number
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteAssessment, getAssessmentsWithDetailsByUserId } from '../../helpers/data/assessmentsData';
 import { deleteStudentAssessmentByAssessmentId } from '../../helpers/data/studentAssessmentData';
@@ -27,13 +27,14 @@ function AssessmentCards({
   assessmentDate,
   setAssessments,
 }) {
-  const [date] = useState(assessmentDate.split('T'));
+  const history = useHistory();
 
+  const [date] = useState(assessmentDate.split('T'));
   const handleClick = (type) => {
     switch (type) {
-      // case 'view':
-      //   history.push(`/AssessmentResults/${id}`);
-      //   break;
+      case 'view':
+        history.push(`/Assessments/${id}`);
+        break;
       case 'delete':
         deleteStudentAssessmentByAssessmentId(id).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
         deleteAssessment(id).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
@@ -62,7 +63,7 @@ function AssessmentCards({
           </Button1>
         </AssessmentCardButtons>
       </AssessmentCardHeader>
-      <AssessmentCardBody>
+      <AssessmentCardBody onClick={() => handleClick('view')}>
         <CardTitle>{standardName}</CardTitle>
         <CardText>Teacher: {teacherName}</CardText>
         <CardText>Grade Level: {gradeLevelDescription}</CardText>

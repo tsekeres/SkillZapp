@@ -20,22 +20,22 @@ namespace SkillZapp.DataAccess
         internal IEnumerable<TakeAssessment> GetTakeAssessmentByAssessmentId(Guid assessmentId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT A.Id as AssessmentId, A.UserId, A.StandardId, A.AssessmentDate,
-                        RubricName, CN.TeacherName, GL.GradeLevelDescription, GL.GradeLevelNumber, S.StandardName, 
-                        R.RubricLevelA, R.RubricLevelB, R.RubricLevelC,
-                        R.RubricLevelD, STA.Id as Id, STA.Score FROM Assessments A
-		                    JOIN ClassNames CN
-		                    ON A.ClassNameId = CN.ID
-		                    JOIN GradeLevels GL
-		                    ON CN.GradeLevelId = GL.ID
-		                    JOIN Standards S
-		                    ON A.StandardId = S.ID
-							JOIN Students ST
-							ON CN.Id = ST.ClassNameId
-							Join Rubrics R
+            var sql = @"SELECT CN.Id as ClassNameId, S.Id as StudentId, S.UserId, CN.TeacherName, S.StudentName, 
+            GL.Id as GradeLevelId, GradeLevelNumber, GL.GradeLevelDescription, SA.Id as StudentAssessmentId, 
+            SA.AssessmentId as Test, A.Id as AssessmentId, ST.StandardName, SA.Score, A.AssessmentDate, R.RubricName, R.RubricLevelA, 
+            R.RubricLevelB, R.RubricLevelC, R.RubricLevelD FROM Assessments A
+                            JOIN ClassNames CN
+							ON A.ClassNameId = CN.ID
+							JOIN GradeLevels GL
+							ON CN.GradeLevelId = GL.ID
+							JOIN Students S
+							ON CN.Id = S.ClassNameId
+							LEFT JOIN StudentAssessments SA
+							ON S.Id = SA.StudentId
+							JOIN Rubrics R
 							ON A.RubricId = R.Id
-							Join StudentAssessments STA
-							ON ST.Id = STA.StudentId
+							JOIN Standards ST
+							ON A.StandardId = ST.Id
                             WHERE A.Id = @AssessmentId";
 
             var parameters = new

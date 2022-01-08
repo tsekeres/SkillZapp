@@ -36,7 +36,7 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByStudentId(studentId));
         }
 
-        [HttpGet("assessment/{AssessmentId}")]
+        [HttpGet("assessment/{assessmentId}")]
         public IActionResult GetStudentAssessmentsByAssessmentId(Guid assessmentId)
         {
             _repo.GetStudentAssessmentsByAssessmentId(assessmentId);
@@ -68,11 +68,11 @@ namespace SkillZapp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStudentAssessment(StudentAssessment studentAssessment)
+        public void CreateStudentAssessment(StudentAssessment studentAssessment)
         {
             _repo.AddStudentAssessment(studentAssessment);
 
-            return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
+            //return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
         }
 
         [HttpDelete("{studentAssessmentId}")]
@@ -89,11 +89,10 @@ namespace SkillZapp.Controllers
             return Ok($"Student Assessment with Assessment Id {assessmentId} was deleted");
         }
 
-        [HttpPut("{StudentAssessmentId}")]
-        public IActionResult UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
+        [HttpPut("{studentAssessmentId}")]
+        public void UpdateStudentAssessment(Guid studentAssessmentId, StudentAssessment studentAssessment)
         {
             _repo.UpdateStudentAssessment(studentAssessmentId, studentAssessment);
-            return Ok($"Student Assessment with id {studentAssessmentId} has been updated");
         }
     }
 }

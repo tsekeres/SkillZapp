@@ -3,16 +3,23 @@ import { SkillZappConfig } from '../apiKeys';
 
 const apiURL = SkillZappConfig.baseUrl;
 
+const getStudentAssessmentsByAssessmentId = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/studentsAssessments/assessment/${assessmentId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const createStudentAssessment = (studentAssessmentObj) => new Promise((resolve, reject) => {
   axios
-    .post(`${apiURL}/api/studentAssessments`, studentAssessmentObj)
+    .post(`${apiURL}/api/studentsAssessments`, studentAssessmentObj)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
 const updateStudentAssessment = (studentAssessmentId, studentAssessmentObj) => new Promise((resolve, reject) => {
   axios
-    .put(`${apiURL}/api/studentAssessments/${studentAssessmentId}`, studentAssessmentObj)
+    .put(`${apiURL}/api/studentsAssessments/${studentAssessmentId}`, studentAssessmentObj)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
@@ -44,4 +51,5 @@ export {
   updateStudentAssessment,
   deleteStudentAssessment,
   deleteStudentAssessmentByAssessmentId,
+  getStudentAssessmentsByAssessmentId,
 };

@@ -6,8 +6,8 @@ export const StudentNameCard = styled.div`
   align-items: center;
   border: 3px solid black;
   border-radius: 15px;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 120px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;

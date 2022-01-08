@@ -40,6 +40,7 @@ function SingleStudent() {
                 teacherName={assessmentInfo.teacherName}
                 gradeLevelDescription={assessmentInfo.gradeLevelDescription}
                 score={assessmentInfo.score}
+                assessmentDate={assessmentInfo.assessmentDate}
                 standardName={assessmentInfo.standardName}
               />
             ))}

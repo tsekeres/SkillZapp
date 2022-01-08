@@ -3,24 +3,22 @@ import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router-dom';
 import { Form } from 'reactstrap';
 import TakeAssessmentCards from '../components/Cards/TakeAssessmentCards';
-import { getStudentsByClassNameId } from '../helpers/data/studentsData';
+import getTakeAssessmentByAssessmentId from '../helpers/data/takeAssessmentsData';
+// import { getStudentsByClassNameId } from '../helpers/data/studentsData';
 import {
   TakeAssessmentContainer,
   TakeAssessmentCardContainer,
   TitleContainer,
   Button,
 } from './TakeAssessmentElements';
-import { getRubricById } from '../helpers/data/rubricsData';
 import { getStandardById } from '../helpers/data/standardsData';
-import { getClassNameById } from '../helpers/data/classNamesData';
 
 function TakeAssessments({ user }) {
-  const [className, setClassName] = useState(null);
-  const [rubric, setRubric] = useState(null);
+  // const [className, setClassName] = useState(null);
+  const [takeAssessments, setTakeAssessments] = useState(null);
   const [standard, setStandard] = useState(null);
-  const [classObj, setClassObj] = useState(null);
   const {
-    rubricId, standardId, classNameId, id
+    standardId, id
   } = useParams();
   const history = useHistory();
 
@@ -36,35 +34,46 @@ function TakeAssessments({ user }) {
 
   useEffect(() => {
     if (user) {
-      getStudentsByClassNameId(classNameId).then((resp) => setClassName(resp));
-      getRubricById(rubricId).then((rubricObj) => setRubric(rubricObj));
+      // getStudentsByClassNameId(classNameId).then((resp) => setClassName(resp));
       getStandardById(standardId).then((standardObj) => setStandard(standardObj));
-      getClassNameById(classNameId).then((classNameObj) => setClassObj(classNameObj));
+      getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList));
     }
   }, []);
   return (
     <TakeAssessmentContainer>
-      {standard && classObj && rubric
-        && <TitleContainer className='assessment-header'>
-          <h1>{standard.standardName} Assessment</h1>
-          <h1>{classObj.teacherName}</h1>
+      {standard && takeAssessments && (
+        <TitleContainer className='assessment-header'>
+          <h1>{standard.standardName}</h1>
+          <h1>{takeAssessments[0].teacherName}&apos;s Class</h1>
           <h1>{standard.standardDescription}</h1>
           <h1>
-            Choose student&apos;s score for {rubric.rubricName} Assessment
+            Choose student&apos;s score for {takeAssessments[0].rubricName}{' '}
+            Assessment
           </h1>
         </TitleContainer>
-      }
-      <Form id='addClassNameForm' autoComplete='off' >
+      )}
+      <Form id='addClassNameForm' autoComplete='off'>
         <TakeAssessmentCardContainer>
-          {className
-          && className?.map((takeAssessmentInfo, index) => (
-              <TakeAssessmentCards
-                key={index}
-                id={id}
-                user={user}
-                studentName={className.studentName}
-                classNameId={className.classNameId}
-              />
+          {takeAssessments?.map((takeAssessmentInfo, index) => (
+            <TakeAssessmentCards
+              key={index}
+              id={takeAssessmentInfo.studentAssessmentId}
+              studentId={takeAssessmentInfo.studentId}
+              user={user}
+              setTakeAssessments={setTakeAssessments}
+              studentName={takeAssessmentInfo.studentName}
+              classNameId={takeAssessmentInfo.classNameId}
+              assessmentId={takeAssessmentInfo.assessmentId}
+              teacherName={takeAssessmentInfo.teacherName}
+              gradeLevelDescription={takeAssessmentInfo.gradeLevelDescription}
+              standardName={takeAssessmentInfo.standardName}
+              assessmentDate={takeAssessmentInfo.assessmentDate}
+              score={takeAssessmentInfo.score}
+              rubricLevelD={takeAssessmentInfo.rubricLevelD}
+              rubricLevelA={takeAssessmentInfo.rubricLevelA}
+              rubricLevelB={takeAssessmentInfo.rubricLevelB}
+              rubricLevelC={takeAssessmentInfo.rubricLevelC}
+            />
           ))}
         </TakeAssessmentCardContainer>
         <Button

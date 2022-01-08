@@ -12,7 +12,7 @@ export const TakeAssessmentCard = styled.div`
   // shadowOpacity: 0.5;
   // shadowRadius: 2px;
   width: 200px;
-  height: 100px;
+  height: 250px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;
@@ -80,7 +80,7 @@ export const TakeAssessmentCardHeader = styled.div`
   flex-direction: row;
   height: 30%;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 export const ClassCardButtons = styled.div`

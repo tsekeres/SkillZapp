@@ -19,12 +19,12 @@ namespace SkillZapp.Controllers
             _repo = repo;
         }
 
-        [HttpGet("assessment/{assessmentId}")]
-        public IActionResult GetTakeAssessmentByAssessmentId(Guid userId)
+        [HttpGet("{assessmentId}")]
+        public IActionResult GetTakeAssessmentByAssessmentId(Guid assessmentId)
         {
-            _repo.GetTakeAssessmentByAssessmentId(userId);
+            _repo.GetTakeAssessmentByAssessmentId(assessmentId);
 
-            return Ok(_repo.GetTakeAssessmentByAssessmentId(userId));
+            return Ok(_repo.GetTakeAssessmentByAssessmentId(assessmentId));
         }
     }
 }
