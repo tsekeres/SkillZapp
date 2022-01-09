@@ -6,6 +6,7 @@ export const HomeContainer = styled.div`
   height: 100px;
   margin: 10px;
   font-size: 2rem;
+  background: #1a2a2d;
 `;
 
 export const WelcomeContainer = styled.div`

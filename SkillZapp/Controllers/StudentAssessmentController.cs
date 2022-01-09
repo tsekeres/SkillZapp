@@ -44,12 +44,12 @@ namespace SkillZapp.Controllers
             return Ok(_repo.GetStudentAssessmentsByAssessmentId(assessmentId));
         }
 
-        [HttpGet("{score}")]
-        public IActionResult GetStudentAssessmentsByScore(string score)
+        [HttpGet("score/{assessmentId}")]
+        public IActionResult GetStudentAssessmentScoresByAssessmentId(Guid assessmentId)
         {
-            _repo.GetStudentAssessmentsByScore(score);
+            _repo.GetStudentAssessmentScoresByAssessmentId(assessmentId);
 
-            return Ok(_repo.GetStudentAssessmentsByScore(score));
+            return Ok(_repo.GetStudentAssessmentScoresByAssessmentId(assessmentId));
         }
 
         [HttpGet("user/{userId}")]

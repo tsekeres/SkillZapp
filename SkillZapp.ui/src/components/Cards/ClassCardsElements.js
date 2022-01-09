@@ -11,8 +11,8 @@ export const ClassCard = styled.div`
   // shadowColor: #52abab;
   // shadowOpacity: 0.5;
   // shadowRadius: 2px;
-  width: 150px;
-  height: 120px;
+  width: 160px;
+  height: 100px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;
@@ -78,7 +78,7 @@ export const ProductCardImg = styled.img`
 export const ClassCardHeader = styled.div`
   display: flex;
   flex-direction: row;
-  height: 30%;
+  height: 30px;
   width: 100%;
   justify-content: flex-end;
 `;

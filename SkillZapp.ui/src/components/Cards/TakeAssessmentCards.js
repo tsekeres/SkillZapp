@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Input, FormGroup, Label } from 'reactstrap';
+import {
+  Form,
+  Input,
+  FormGroup,
+  Label
+} from 'reactstrap';
 import {
   TakeAssessmentCard,
   TakeAssessmentCardHeader,
@@ -183,53 +188,55 @@ function TakeAssessmentCards({
 
   return (
     <TakeAssessmentCard>
-      <TakeAssessmentCardHeader className='ClassCardHeader'>
+      <TakeAssessmentCardHeader className="ClassCardHeader">
         <h3>{studentName}</h3>
       </TakeAssessmentCardHeader>
-      <TakeAssessmentCardBody className='ClassCard' id='ClassCard'>
-        <FormGroup tag='fieldset'>
-          <legend>Rubric Score</legend>
-          <FormGroup>
-            <Input
-              name='score'
-              type='checkbox'
-              value='Excellent'
-              checked={checkBox1}
-              onChange={handleCheck1}
-            />
-            <Label check>Excellent</Label>
+      <TakeAssessmentCardBody className="ClassCard" id="ClassCard">
+        <Form>
+          <FormGroup tag="fieldset">
+            <legend>Rubric Score</legend>
+            <FormGroup>
+              <Input
+                name="score"
+                type="checkbox"
+                value="Excellent"
+                checked={checkBox1}
+                onChange={handleCheck1}
+              />
+              <Label check>Excellent</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="score"
+                type="checkbox"
+                value="Satisfactory"
+                checked={checkBox2}
+                onChange={handleCheck2}
+              />
+              <Label check>Satisfactory</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="score"
+                type="checkbox"
+                value="Needs Improvement"
+                checked={checkBox3}
+                onChange={handleCheck3}
+              />
+              <Label check>Needs Improvement</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="score"
+                type="checkbox"
+                value="Not Tested"
+                checked={checkBox4}
+                onChange={handleCheck4}
+              />
+              <Label check>Not Tested</Label>
+            </FormGroup>
           </FormGroup>
-          <FormGroup>
-            <Input
-              name='score'
-              type='checkbox'
-              value='Satisfactory'
-              checked={checkBox2}
-              onChange={handleCheck2}
-            />
-            <Label check>Satisfactory</Label>
-          </FormGroup>
-          <FormGroup>
-            <Input
-              name='score'
-              type='checkbox'
-              value='Needs Improvement'
-              checked={checkBox3}
-              onChange={handleCheck3}
-            />
-            <Label check>Needs Improvement</Label>
-          </FormGroup>
-          <FormGroup>
-            <Input
-              name='score'
-              type='checkbox'
-              value='Not Tested'
-              checked={checkBox4}
-              onChange={handleCheck4}
-            />
-            <Label check>Not Tested</Label>
-          </FormGroup>
-        </FormGroup>
+        </Form>
       </TakeAssessmentCardBody>
     </TakeAssessmentCard>
   );

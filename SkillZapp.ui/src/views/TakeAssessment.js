@@ -8,7 +8,8 @@ import getTakeAssessmentByAssessmentId from '../helpers/data/takeAssessmentsData
 import {
   TakeAssessmentContainer,
   TakeAssessmentCardContainer,
-  TitleContainer,
+  TitleContainer1,
+  TitleContainer2,
   Button,
 } from './TakeAssessmentElements';
 import { getStandardById } from '../helpers/data/standardsData';
@@ -21,7 +22,8 @@ function TakeAssessments({ user }) {
     standardId, id
   } = useParams();
   const history = useHistory();
-
+  console.warn(standardId);
+  console.warn(takeAssessments);
   const handleClick = (type) => {
     switch (type) {
       case 'sendit':
@@ -42,15 +44,19 @@ function TakeAssessments({ user }) {
   return (
     <TakeAssessmentContainer>
       {standard && takeAssessments && (
-        <TitleContainer className='assessment-header'>
-          <h1>{standard.standardName}</h1>
-          <h1>{takeAssessments[0].teacherName}&apos;s Class</h1>
-          <h1>{standard.standardDescription}</h1>
-          <h1>
-            Choose student&apos;s score for {takeAssessments[0].rubricName}{' '}
-            Assessment
-          </h1>
-        </TitleContainer>
+        <>
+          <TitleContainer1 className='assessment-header'>
+            <h1>{standard.standardName}</h1>
+            <h1>{takeAssessments[0].teacherName}&apos;s Class</h1>
+            <h1>{standard.standardDescription}</h1>
+          </TitleContainer1>
+          <TitleContainer2 className='assessment-header'>
+            <h1>
+              Choose student&apos;s score for {takeAssessments[0].rubricName}{' '}
+              Assessment
+            </h1>
+          </TitleContainer2>
+        </>
       )}
       <Form id='addClassNameForm' autoComplete='off'>
         <TakeAssessmentCardContainer>
@@ -76,13 +82,13 @@ function TakeAssessments({ user }) {
             />
           ))}
         </TakeAssessmentCardContainer>
-        <Button
-          className='addTakeAssessments'
-          onClick={() => handleClick('sendit')}
-        >
-          Save Assessment
-        </Button>
       </Form>
+      <Button
+        className='addTakeAssessments'
+        onClick={() => handleClick('sendit')}
+      >
+        Save Assessment
+      </Button>
     </TakeAssessmentContainer>
   );
 }

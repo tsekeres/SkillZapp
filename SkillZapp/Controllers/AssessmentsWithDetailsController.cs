@@ -27,5 +27,13 @@ namespace SkillZapp.Controllers
 
             return Ok(_repo.GetAssessmentsWithDetailsByUserId(userId));
         }
+
+        [HttpGet("{assessmentId}")]
+        public IActionResult GetAssessmentsWithDetailsByAssessmentId(Guid assessmentId)
+        {
+            _repo.GetAssessmentsWithDetailsByAssessmentId(assessmentId);
+
+            return Ok(_repo.GetAssessmentsWithDetailsByAssessmentId(assessmentId));
+        }
     }
 }

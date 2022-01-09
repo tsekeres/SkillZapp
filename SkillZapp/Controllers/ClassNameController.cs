@@ -28,11 +28,11 @@ namespace SkillZapp.Controllers
         }
 
         [HttpGet("{classNameId}")]
-        public IActionResult GetClassNameById(Guid classNameId)
+        public IActionResult GetClassNameByClassNameId(Guid classNameId)
         {
-            _repo.GetClassNameById(classNameId);
+            _repo.GetClassNameByClassNameId(classNameId);
 
-            return Ok(_repo.GetClassNameById(classNameId));
+            return Ok(_repo.GetClassNameByClassNameId(classNameId));
         }
 
         [HttpGet("gradeLevels/{gradeLevelId}")]

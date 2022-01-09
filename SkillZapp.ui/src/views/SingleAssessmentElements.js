@@ -25,7 +25,10 @@ export const ChartContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const CardText = styled.div``;
+export const CardText = styled.div`
+  color: #ffb400;
+  margin-bottom: 20px;
+`;
 
 export const SearchBar = styled.img`
   width: 400px;

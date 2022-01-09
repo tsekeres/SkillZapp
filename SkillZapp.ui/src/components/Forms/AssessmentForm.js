@@ -78,23 +78,23 @@ const AssessmentForm = ({
 
     closeModal();
   };
-
+  console.warn(classNames);
   return (
-    <Form id='addAssessmentForm' autoComplete='off' onSubmit={handleSubmit}>
-      <AssessmentFormTitle id='AssessmentFormTitle'>
+    <Form id="addAssessmentForm" autoComplete="off" onSubmit={handleSubmit}>
+      <AssessmentFormTitle id="AssessmentFormTitle">
         {assessmentFormTitle}
       </AssessmentFormTitle>
 
       <Label>Standard:</Label>
       <Select
-        className='item'
-        type='select'
-        name='standardId'
-        placeholder='Standard'
-        id='exampleSelect'
+        className="item"
+        type="select"
+        name="standardId"
+        placeholder="Standard"
+        id="exampleSelect"
         onChange={handleInputChange}
       >
-        <Option value=''>Select Standard</Option>
+        <Option value="">Select Standard</Option>
         {standards?.map((standardObj) => (
           <Option key={standardObj.id} value={standardObj.id}>
             {standardObj.standardName}
@@ -105,14 +105,14 @@ const AssessmentForm = ({
 
       <Label>Rubric:</Label>
       <Select
-        className='item'
-        type='select'
-        name='rubricId'
-        placeholder='Rubric'
-        id='exampleSelect'
+        className="item"
+        type="select"
+        name="rubricId"
+        placeholder="Rubric"
+        id="exampleSelect"
         onChange={handleInputChange}
       >
-        <Option value=''>Select Rubric</Option>
+        <Option value="">Select Rubric</Option>
         {rubrics?.map((rubricObj) => (
           <Option key={rubricObj.id} value={rubricObj.id}>
             {rubricObj.rubricName}
@@ -122,22 +122,23 @@ const AssessmentForm = ({
       </Select>
       <Label>Class Name:</Label>
       <Select
-        className='item'
-        type='select'
-        name='classNameId'
-        placeholder='Class Name'
-        id='exampleSelect'
+        className="item"
+        type="select"
+        name="classNameId"
+        placeholder="Class Name"
+        id="exampleSelect"
         onChange={handleInputChange}
       >
-        <Option value=''>Select Class Name</Option>
+        <Option value="">Select Class Name</Option>
         {classNames?.map((classNameObj) => (
           <Option key={classNameObj.id} value={classNameObj.id}>
             {classNameObj.teacherName}
+            {classNameObj.gradeLevelNumber}
           </Option>
         ))}
         ;
       </Select>
-      <Button className='addAssessment' type='submit'>
+      <Button className="addAssessment" type="submit">
         <ButtonImg src={add}></ButtonImg>
       </Button>
     </Form>

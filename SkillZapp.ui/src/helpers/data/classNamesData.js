@@ -10,7 +10,7 @@ const getAllClassNames = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getClassNameById = (classNameId) => new Promise((resolve, reject) => {
+const getClassNameByClassNameId = (classNameId) => new Promise((resolve, reject) => {
   axios
     .get(`${apiURL}/api/classNames/${classNameId}`)
     .then((response) => resolve(response.data))
@@ -71,7 +71,7 @@ export {
   createClassName,
   updateClassName,
   deleteClassName,
-  getClassNameById,
+  getClassNameByClassNameId,
   getClassNamesByUserId,
   getClassNameByTeacherName,
   getClassNamesWithGradeLevelByUserId,

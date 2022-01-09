@@ -5,18 +5,27 @@ export const TakeAssessmentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  margin-bottom: 100px;
+  text-align: center;
 `;
 
 export const TakeAssessmentCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
+  // padding-bottom: 100px;
   justify-content: center;
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer1 = styled.div`
   color: #ffb400;
   margin-bottom: 20px;
+`;
+
+export const TitleContainer2 = styled.div`
+  color: #ffb400;
+  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 export const SearchBarAssessments = styled.img`
@@ -84,12 +93,17 @@ export const AddAssessmentButton = styled.button`
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb400;
+  border-radius: 10px;
+  height: 80px;
+  width: 300px;
+  font-size: 30px;
+  // background-repeat: no-repeat;
+  border: 3px solid black;
   cursor: pointer;
-  overflow: hidden;
+  // overflow: hidden;
 `;
 
 export const ButtonImg = styled.img`
