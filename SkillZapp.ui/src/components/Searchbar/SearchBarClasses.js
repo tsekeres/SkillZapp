@@ -5,7 +5,12 @@ import Select from 'react-select';
 import { SearchBarBar } from './SearchBarClassesElements';
 import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 
-const SearchBarClasses = ({ user, classNames }) => {
+const SearchBarClasses = ({
+  user,
+  classNames,
+  teacherName,
+  gradeLevelDescription,
+}) => {
   const history = useHistory();
   const [options, setOptions] = useState(null);
 
@@ -28,7 +33,9 @@ const SearchBarClasses = ({ user, classNames }) => {
   }, []);
 
   const handleSelectClick = (e) => {
-    history.replace(`/Classes/${e.value}`);
+    history.replace(
+      `/Classes/${teacherName}/${gradeLevelDescription}/${e.value}`
+    );
     window.location.reload(false);
   };
 
@@ -48,6 +55,8 @@ const SearchBarClasses = ({ user, classNames }) => {
 SearchBarClasses.propTypes = {
   user: PropTypes.any,
   classNames: PropTypes.any,
+  teacherName: PropTypes.any,
+  gradeLevelDescription: PropTypes.any,
 };
 
 export default SearchBarClasses;

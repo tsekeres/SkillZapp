@@ -13,15 +13,20 @@ import {
   Button,
   ButtonImg,
 } from './SingleClassElements';
-import { getAllClassNames, getClassNameWithStudentsByTeacherName } from '../helpers/data/classNamesData';
+import {
+  getAllClassNames,
+  getClassNameByClassNameId,
+  getClassNameWithStudentsByTeacherName
+} from '../helpers/data/classNamesData';
 import getAllGradeLevels from '../helpers/data/gradeLevelsData';
 import deleted from '../Assets/Delete.png';
 
 function SingleClass({ user }) {
+  const [classNameDetails, setClassNameDetails] = useState(null);
   const [className, setClassName] = useState(null);
   const [gradeLevels, setGradeLevels] = useState(null);
   const [classNames, setClassNames] = useState(null);
-  const { teacherName, gradeLevelDescription, id } = useParams();
+  const { id } = useParams();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
@@ -32,6 +37,7 @@ function SingleClass({ user }) {
   }
   useEffect(() => {
     if (id) {
+      getClassNameByClassNameId(id).then((response) => setClassNameDetails(response));
       getClassNameWithStudentsByTeacherName(id).then((resp) => setClassName(resp));
       getAllGradeLevels().then((gradeLevelsList) => setGradeLevels(gradeLevelsList));
       getAllClassNames().then((classNamesList) => setClassNames(classNamesList));
@@ -40,12 +46,12 @@ function SingleClass({ user }) {
 
   return (
     <SingleClassContainer>
-      {className && (
+      {className && classNameDetails && user && (
         <>
           <TitleContainer className="classes-header">
-            <h1>{teacherName}</h1>
+            <h1>{classNameDetails.teacherName}</h1>
             <hr></hr>
-            <h1>{gradeLevelDescription}</h1>
+            <h1>{classNameDetails.gradeLevelDescription}</h1>
           </TitleContainer>
           <AddButtonContainer className="AddButtonContainer">
             <AddStudentButton className="addStudent" onClick={openModal}>
@@ -65,7 +71,7 @@ function SingleClass({ user }) {
               setClassName={setClassName}
               className={className}
               user={user}
-              id={id}
+              classNameId={id}
               closeModal={closeModal}
             />
           </Modal>
@@ -73,7 +79,10 @@ function SingleClass({ user }) {
             {className?.map((studentInfo, index) => (
               <StudentNameCards
                 key={index}
-                id={studentInfo.studentId}
+                user={user}
+                classNameId={id}
+                setClassName={setClassName}
+                studentId={studentInfo.studentId}
                 gradeLevelId={studentInfo.gradeLevelId}
                 studentName={studentInfo.studentName}
                 teacherName={studentInfo.teacherName}

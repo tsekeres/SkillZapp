@@ -27,7 +27,6 @@ function SingleAssessment() {
       GetStudentAssessmentScoresByAssessmentId(id).then((data) => setChartScores(data));
     }
   }, []);
-  console.warn(chartScores);
   return (
     <SingleAssessmentContainer>
       {assessmentDetails && chartScores && (

@@ -19,24 +19,30 @@ import {
   deleteStudent,
   getAllStudentsWithDataByUserId,
 } from '../../helpers/data/studentsData';
+import { getClassNameWithStudentsByTeacherName } from '../../helpers/data/classNamesData';
 
 function StudentNameCards({
   studentName,
   teacherName,
   gradeLevelDescription,
-  id,
+  studentId,
+  classNameId,
   user,
-  setStudentNames
+  setClassName,
+  setStudentNames,
 }) {
   const history = useHistory();
-  // console.warn(id);
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/Students/${studentName}/${teacherName}/${id}`);
+        history.push(`/Students/${studentName}/${teacherName}/${studentId}`);
         break;
       case 'delete':
-        deleteStudent(id).then(() => getAllStudentsWithDataByUserId(user.id).then((resp) => setStudentNames(resp)));
+        if (classNameId) {
+          deleteStudent(studentId).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((resp) => setClassName(resp)));
+        } else {
+          deleteStudent(studentId).then(() => getAllStudentsWithDataByUserId(user.id).then((resp) => setStudentNames(resp)));
+        }
         break;
       default:
         console.warn('nothing selected');
@@ -44,23 +50,26 @@ function StudentNameCards({
   };
 
   return (
-    // this card needs delete student button
     <StudentNameCard className='StudentCard' id='StudentCard'>
-      <StudentNameCardHeader className='StudentNameCardHeader'>
-        <StudentNameCardButtons className='StudentNameCardButtons'>
-          <Button1 id='deleteStudent' onClick={() => handleClick('delete')}>
-            <StudentNameCardDelete
-              className='StudentNameCardDelete'
-              src={deleted}
-            ></StudentNameCardDelete>
-          </Button1>
-        </StudentNameCardButtons>
-      </StudentNameCardHeader>
-      <StudentNameCardBody onClick={() => handleClick('view')}>
-        <CardTitle>{studentName}</CardTitle>
-        <CardText>{teacherName}</CardText>
-        <CardText>{gradeLevelDescription}</CardText>
-      </StudentNameCardBody>
+      {studentId && user && (
+        <>
+          <StudentNameCardHeader className='StudentNameCardHeader'>
+            <StudentNameCardButtons className='StudentNameCardButtons'>
+              <Button1 id='deleteStudent' onClick={() => handleClick('delete')}>
+                <StudentNameCardDelete
+                  className='StudentNameCardDelete'
+                  src={deleted}
+                ></StudentNameCardDelete>
+              </Button1>
+            </StudentNameCardButtons>
+          </StudentNameCardHeader>
+          <StudentNameCardBody onClick={() => handleClick('view')}>
+            <CardTitle>{studentName}</CardTitle>
+            <CardText>{teacherName}</CardText>
+            <CardText>{gradeLevelDescription}</CardText>
+          </StudentNameCardBody>
+        </>
+      )}
     </StudentNameCard>
   );
 }
@@ -69,8 +78,10 @@ StudentNameCards.propTypes = {
   gradeLevelDescription: PropTypes.any,
   studentName: PropTypes.string,
   teacherName: PropTypes.string,
+  setClassName: PropTypes.func,
   setStudentNames: PropTypes.func,
-  id: PropTypes.string,
+  studentId: PropTypes.string,
+  classNameId: PropTypes.any,
   user: PropTypes.any,
   setClassNames: PropTypes.func,
   classNames: PropTypes.any,

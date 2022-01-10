@@ -29,11 +29,11 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from ClassNames
-                        WHERE ClassNameId = @ClassNameId";
+                        WHERE Id = @Id";
 
             var parameters = new
             {
-                ClassNameId = classNameId
+                Id = classNameId
             };
 
             var result = db.QuerySingleOrDefault<ClassName>(sql, parameters);

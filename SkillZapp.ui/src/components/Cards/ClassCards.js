@@ -43,7 +43,7 @@ function ClassCards({
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/Classes/${teacherName}/${gradeLevelDescription}/${id}`);
+        history.push(`/Classes/${id}`);
         break;
       case 'delete':
         deleteClassName(id).then(() => getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList)));
