@@ -10,6 +10,13 @@ const getStudentAssessmentsByAssessmentId = (assessmentId) => new Promise((resol
     .catch((error) => reject(error));
 });
 
+const GetStudentAssessmentScoresByAssessmentId = (assessmentId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${apiURL}/api/ChartScores/scores/${assessmentId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const createStudentAssessment = (studentAssessmentObj) => new Promise((resolve, reject) => {
   axios
     .post(`${apiURL}/api/studentsAssessments`, studentAssessmentObj)
@@ -52,4 +59,5 @@ export {
   deleteStudentAssessment,
   deleteStudentAssessmentByAssessmentId,
   getStudentAssessmentsByAssessmentId,
+  GetStudentAssessmentScoresByAssessmentId,
 };

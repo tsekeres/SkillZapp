@@ -1,4 +1,3 @@
-// need delete buttons
 // needs to be clickable to view single class
 // needs to display teacher name and gradelevel description or number
 import React from 'react';
@@ -7,21 +6,37 @@ import PropTypes from 'prop-types';
 import {
   StudentNameCard,
   StudentNameCardBody,
+  StudentNameCardButtons,
+  StudentNameCardDelete,
+  StudentNameCardHeader,
   CardTitle,
   CardText,
+  Button1,
+
 } from './StudentNameCardsElements';
+import deleted from '../../Assets/Delete.png';
+import {
+  deleteStudent,
+  getAllStudentsWithDataByUserId,
+} from '../../helpers/data/studentsData';
 
 function StudentNameCards({
   studentName,
   teacherName,
   gradeLevelDescription,
-  id
+  id,
+  user,
+  setStudentNames
 }) {
   const history = useHistory();
+  // console.warn(id);
   const handleClick = (type) => {
     switch (type) {
       case 'view':
         history.push(`/Students/${studentName}/${teacherName}/${id}`);
+        break;
+      case 'delete':
+        deleteStudent(id).then(() => getAllStudentsWithDataByUserId(user.id).then((resp) => setStudentNames(resp)));
         break;
       default:
         console.warn('nothing selected');
@@ -30,12 +45,18 @@ function StudentNameCards({
 
   return (
     // this card needs delete student button
-    <StudentNameCard
-      className='StudentCard'
-      id='StudentCard'
-      onClick={() => handleClick('view')}
-    >
-      <StudentNameCardBody>
+    <StudentNameCard className='StudentCard' id='StudentCard'>
+      <StudentNameCardHeader className='StudentNameCardHeader'>
+        <StudentNameCardButtons className='StudentNameCardButtons'>
+          <Button1 id='deleteStudent' onClick={() => handleClick('delete')}>
+            <StudentNameCardDelete
+              className='StudentNameCardDelete'
+              src={deleted}
+            ></StudentNameCardDelete>
+          </Button1>
+        </StudentNameCardButtons>
+      </StudentNameCardHeader>
+      <StudentNameCardBody onClick={() => handleClick('view')}>
         <CardTitle>{studentName}</CardTitle>
         <CardText>{teacherName}</CardText>
         <CardText>{gradeLevelDescription}</CardText>
@@ -48,8 +69,13 @@ StudentNameCards.propTypes = {
   gradeLevelDescription: PropTypes.any,
   studentName: PropTypes.string,
   teacherName: PropTypes.string,
+  setStudentNames: PropTypes.func,
   id: PropTypes.string,
   user: PropTypes.any,
+  setClassNames: PropTypes.func,
+  classNames: PropTypes.any,
+  setGradeLevels: PropTypes.func,
+  gradeLevels: PropTypes.any,
 };
 
 export default StudentNameCards;

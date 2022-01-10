@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AssessmentForm from '../components/Forms/AssessmentForm';
 import AssessmentCards from '../components/Cards/AssessmentCards';
-import { getClassNamesByUserId } from '../helpers/data/classNamesData';
+import { getClassNamesWithGradeLevelByUserId } from '../helpers/data/classNamesData';
 import { getAllStandards } from '../helpers/data/standardsData';
 import { getAllRubrics } from '../helpers/data/rubricsData';
 // import SearchBarAssessments from '../components/Searchbar/SearchBarClasses';
@@ -38,7 +38,7 @@ function Assessments({ user }) {
       getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList));
       getAllStandards().then((standardsList) => setStandards(standardsList));
       getAllRubrics().then((rubricsList) => setRubrics(rubricsList));
-      getClassNamesByUserId(user.id).then((classList) => setClassNames(classList));
+      getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList));
     }
   }, []);
   return (

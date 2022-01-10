@@ -90,6 +90,8 @@ function ClassCards({
           classNames={classNames}
           setGradeLevels={setGradeLevels}
           gradeLevels={gradeLevels}
+          gradeLevelDescription={gradeLevelDescription}
+          teacherName={teacherName}
           id={id}
           user={user}
           closeModal={closeModal}

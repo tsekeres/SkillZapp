@@ -5,6 +5,9 @@ export const ClassContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  margin: 10px;
+  margin-bottom: 100px;
+  background: #1a2a2d;
 `;
 
 export const ClassCardContainer = styled.div`
@@ -12,6 +15,7 @@ export const ClassCardContainer = styled.div`
   flex-wrap: wrap;
   padding-top: 10px;
   justify-content: center;
+  // background: #1a2a2d;
 `;
 
 export const TitleContainer = styled.div`
@@ -22,7 +26,7 @@ export const TitleContainer = styled.div`
 export const SearchBarClasses = styled.img`
   width: 400px;
   height: 15px;
-  background: #ffb400;
+  background-color: #ffb400;
   border: 1px solid black;
   border-radius: 5px;
   // margin-top: 15px;
@@ -66,7 +70,7 @@ export const AddClassButton = styled.button`
   border: 3px solid black;
   border-radius: 10px;
   width: 200px;
-  height: 100px;
+  height: 75px;
   opacity: 0.5;
   margin-bottom: 25px;
   // padding: 10px;

@@ -25,7 +25,8 @@ namespace SkillZapp.DataAccess
 							ON S.ClassNameId = CN.ID
 							JOIN GradeLevels GL
 							ON CN.GradeLevelId = GL.ID
-                            WHERE ClassNameId = @ClassNameId";
+                            WHERE ClassNameId = @ClassNameId
+                            ORDER by StudentName";
 
             var parameters = new
             {

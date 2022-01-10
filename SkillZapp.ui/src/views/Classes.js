@@ -46,7 +46,7 @@ function Classes({ user }) {
             <h1>{user.firstName}&apos;s Classes</h1>
           </TitleContainer>
 
-          <SearchBarClasses user={user} />
+          <SearchBarClasses user={user} classNames={classNames} />
 
           <AddButtonContainer className="AddButtonContainer">
             <AddClassButton className="addClass" onClick={openModal}>

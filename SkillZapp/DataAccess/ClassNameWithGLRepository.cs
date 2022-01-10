@@ -22,8 +22,9 @@ namespace SkillZapp.DataAccess
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT CN.Id, GradeLevelId, UserId, TeacherName, GradeLevelNumber, GradeLevelDescription FROM ClassNames CN
                             JOIN GradeLevels GL
-                           ON CN.GradeLevelId = GL.ID
-                            WHERE UserId =@UserId";
+                            ON CN.GradeLevelId = GL.ID
+                            WHERE UserId = @UserId
+                            ORDER by GradeLevelNumber";
 
             var parameters = new
             {

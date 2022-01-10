@@ -6,6 +6,9 @@ export const SingleAssessmentContainer = styled.div`
   padding-top: 50px;
   align-items: center;
   text-align: center;
+  margin: 10px;
+  margin-bottom: 100px;
+  background: #1a2a2d;
 `;
 
 export const StudentScoreCardContainer = styled.div`
@@ -25,7 +28,10 @@ export const ChartContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const CardText = styled.div``;
+export const CardText = styled.div`
+  color: #ffb400;
+  margin-bottom: 20px;
+`;
 
 export const SearchBar = styled.img`
   width: 400px;

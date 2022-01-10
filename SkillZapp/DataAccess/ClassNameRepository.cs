@@ -25,15 +25,15 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal ClassName GetClassNameById(Guid id)
+        internal ClassName GetClassNameByClassNameId(Guid classNameId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from ClassNames
-                        WHERE Id = @Id";
+                        WHERE ClassNameId = @ClassNameId";
 
             var parameters = new
             {
-                Id = id
+                ClassNameId = classNameId
             };
 
             var result = db.QuerySingleOrDefault<ClassName>(sql, parameters);
@@ -59,7 +59,8 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from ClassNames
-                        WHERE UserId = @UserId";
+                        WHERE UserId = @UserId
+                        ORDER by TeacherName";
 
             var parameters = new
             {

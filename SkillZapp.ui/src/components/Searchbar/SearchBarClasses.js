@@ -5,13 +5,13 @@ import Select from 'react-select';
 import { SearchBarBar } from './SearchBarClassesElements';
 import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 
-const SearchBarClasses = ({ user }) => {
+const SearchBarClasses = ({ user, classNames }) => {
   const history = useHistory();
   const [options, setOptions] = useState(null);
 
   useEffect(() => {
     const optionsArr = [];
-    if (user) {
+    if (user && classNames) {
       getClassNamesByUserId(user.id)
         .then((resultArr) => {
           for (let i = 0; i < resultArr.length; i += 1) {
@@ -47,6 +47,7 @@ const SearchBarClasses = ({ user }) => {
 
 SearchBarClasses.propTypes = {
   user: PropTypes.any,
+  classNames: PropTypes.any,
 };
 
 export default SearchBarClasses;
