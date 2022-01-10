@@ -59,7 +59,8 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from StudentAssessments
-                        WHERE AssessmentId = @AssessmentId";
+                        WHERE AssessmentId = @AssessmentId
+                        ORDER by StudentName";
 
             var parameters = new
             {

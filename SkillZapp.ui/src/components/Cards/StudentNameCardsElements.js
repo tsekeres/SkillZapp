@@ -6,7 +6,7 @@ export const StudentNameCard = styled.div`
   align-items: center;
   border: 3px solid black;
   border-radius: 15px;
-  width: 150px;
+  width: 160px;
   height: 120px;
   margin: 30px;
   padding: 10px;
@@ -63,13 +63,6 @@ export const Button2 = styled.button`
   overflow: hidden;
 `;
 
-export const ProductCardImg = styled.img`
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
 export const StudentNameCardHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -86,7 +79,7 @@ export const StudentNameCardButtons = styled.div`
   height: 100%;
 `;
 
-export const ProductCardEdit = styled.img`
+export const StudentNameCardEdit = styled.img`
   height: 15px;
 `;
 

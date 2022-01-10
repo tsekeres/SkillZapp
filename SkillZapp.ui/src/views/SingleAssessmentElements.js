@@ -6,6 +6,9 @@ export const SingleAssessmentContainer = styled.div`
   padding-top: 50px;
   align-items: center;
   text-align: center;
+  margin: 10px;
+  margin-bottom: 100px;
+  background: #1a2a2d;
 `;
 
 export const StudentScoreCardContainer = styled.div`

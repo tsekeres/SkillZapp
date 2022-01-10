@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   createStudent,
   updateStudent,
+  getAllStudentsWithDataByUserId,
 } from '../../helpers/data/studentsData';
 import {
   StudentFormTitle,
@@ -22,26 +23,29 @@ const StudentForm = ({
   studentFormTitle,
   gradeLevels,
   classNames,
+  gradeLevelId,
+  classNameId,
+  studentName,
+  studentId,
   user,
-  id,
-  className,
   setClassName,
+  setStudentNames,
   closeModal,
 }) => {
   const [student, setStudent] = useState({
-    gradeLevelId: className.gradeLevelId || '',
-    classNameId: className.classNameId || '',
-    studentName: className.studentName || '',
-    id: className.studentId || '',
+    gradeLevelId: gradeLevelId || '',
+    classNameId: classNameId || '',
+    studentName: studentName || '',
+    id: studentId || '',
     userId: user.id || '',
   });
   useEffect(() => {
     let mounted = true;
     const studentObj = {
-      gradeLevelId: className.gradeLevelId || '',
-      classNameId: className.classNameId || '',
-      studentName: className.studentName || '',
-      id: className.studentId || '',
+      gradeLevelId: gradeLevelId || '',
+      classNameId: classNameId || '',
+      studentName: studentName || '',
+      id: studentId || '',
       userId: user.id || '',
     };
     if (mounted) {
@@ -63,7 +67,7 @@ const StudentForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (student.id) {
-      updateStudent(student.id, student).then(() => getClassNameWithStudentsByTeacherName(id).then((classList) => setClassName(classList)));
+      updateStudent(student.id, student).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
       closeModal();
     } else {
       const studentObj = {
@@ -72,11 +76,16 @@ const StudentForm = ({
         studentName: student.studentName || '',
         userId: user.id || '',
       };
-      createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(id).then((classList) => setClassName(classList)));
-
+      createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
+      setStudent({
+        gradeLevelId: '',
+        classNameId: '',
+        studentName: '',
+        id: null,
+        userId: '',
+      });
       closeModal();
-    }
-  };
+    };
 
   return (
     <Form id='addStudentForm' autoComplete='off' onSubmit={handleSubmit}>
@@ -141,9 +150,11 @@ StudentForm.propTypes = {
   gradeLevels: PropTypes.any,
   studentName: PropTypes.string,
   gradeLevelId: PropTypes.string,
+  studentId: PropTypes.string,
   id: PropTypes.string,
   user: PropTypes.any,
   setClassName: PropTypes.func,
+  setStudentNames: PropTypes.func,
   closeModal: PropTypes.func,
   classNames: PropTypes.any,
   className: PropTypes.any,

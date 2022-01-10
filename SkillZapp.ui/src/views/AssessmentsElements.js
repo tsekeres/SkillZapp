@@ -5,6 +5,9 @@ export const AssessmentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  margin: 10px;
+  margin-bottom: 100px;
+  background: #1a2a2d;
 `;
 
 export const AssessmentCardContainer = styled.div`

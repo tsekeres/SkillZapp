@@ -78,7 +78,6 @@ const AssessmentForm = ({
 
     closeModal();
   };
-  console.warn(classNames);
   return (
     <Form id="addAssessmentForm" autoComplete="off" onSubmit={handleSubmit}>
       <AssessmentFormTitle id="AssessmentFormTitle">

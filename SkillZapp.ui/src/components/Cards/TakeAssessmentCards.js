@@ -85,7 +85,7 @@ function TakeAssessmentCards({
     }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
-    } else {
+    } else if (id === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -113,7 +113,7 @@ function TakeAssessmentCards({
     }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
-    } else {
+    } else if (id === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -141,7 +141,7 @@ function TakeAssessmentCards({
     }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
-    } else {
+    } else if (id === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -169,7 +169,7 @@ function TakeAssessmentCards({
     }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
-    } else {
+    } else if (id === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -188,18 +188,18 @@ function TakeAssessmentCards({
 
   return (
     <TakeAssessmentCard>
-      <TakeAssessmentCardHeader className="ClassCardHeader">
+      <TakeAssessmentCardHeader className='ClassCardHeader'>
         <h3>{studentName}</h3>
       </TakeAssessmentCardHeader>
-      <TakeAssessmentCardBody className="ClassCard" id="ClassCard">
+      <TakeAssessmentCardBody className='ClassCard' id='ClassCard'>
         <Form>
-          <FormGroup tag="fieldset">
+          <FormGroup tag='fieldset'>
             <legend>Rubric Score</legend>
             <FormGroup>
               <Input
-                name="score"
-                type="checkbox"
-                value="Excellent"
+                name='score'
+                type='checkbox'
+                value='Excellent'
                 checked={checkBox1}
                 onChange={handleCheck1}
               />
@@ -207,9 +207,9 @@ function TakeAssessmentCards({
             </FormGroup>
             <FormGroup>
               <Input
-                name="score"
-                type="checkbox"
-                value="Satisfactory"
+                name='score'
+                type='checkbox'
+                value='Satisfactory'
                 checked={checkBox2}
                 onChange={handleCheck2}
               />
@@ -217,9 +217,9 @@ function TakeAssessmentCards({
             </FormGroup>
             <FormGroup>
               <Input
-                name="score"
-                type="checkbox"
-                value="Needs Improvement"
+                name='score'
+                type='checkbox'
+                value='Needs Improvement'
                 checked={checkBox3}
                 onChange={handleCheck3}
               />
@@ -227,9 +227,9 @@ function TakeAssessmentCards({
             </FormGroup>
             <FormGroup>
               <Input
-                name="score"
-                type="checkbox"
-                value="Not Tested"
+                name='score'
+                type='checkbox'
+                value='Not Tested'
                 checked={checkBox4}
                 onChange={handleCheck4}
               />

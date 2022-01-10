@@ -27,10 +27,10 @@ function SingleAssessment() {
       GetStudentAssessmentScoresByAssessmentId(id).then((data) => setChartScores(data));
     }
   }, []);
-
+  console.warn(chartScores);
   return (
     <SingleAssessmentContainer>
-      {assessmentDetails && (
+      {assessmentDetails && chartScores && (
         <>
           <TitleContainer className='classes-header'>
             <h1>{assessmentDetails.standardName}</h1>
@@ -40,9 +40,9 @@ function SingleAssessment() {
           <ChartContainer>
             <DonutChart
               key={id}
-              excellent={chartScores.Excellent}
-              satisfactory={chartScores.Satisfactory}
-              needsImprovment={chartScores.needsImprovment}
+              excellent={chartScores.excellent}
+              satisfactory={chartScores.satisfactory}
+              needsImprovment={chartScores.needsImprovement}
               notTested={chartScores.notTested}
               />
           </ChartContainer>

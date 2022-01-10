@@ -29,7 +29,8 @@ namespace SkillZapp.DataAccess
 		                    ON CN.GradeLevelId = GL.ID
 		                    JOIN Standards S
 		                    ON A.StandardId = S.ID
-                            WHERE A.UserId = @UserId";
+                            WHERE A.UserId = @UserId
+                            ORDER by AssessmentDate";
 
             var parameters = new
             {

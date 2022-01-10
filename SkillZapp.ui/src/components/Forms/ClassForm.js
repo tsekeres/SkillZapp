@@ -68,6 +68,12 @@ const ClassForm = ({
         userId: user.id,
       };
       createClassName(classNameObj).then(() => getClassNamesWithGradeLevelByUserId(user.id).then((classList) => setClassNames(classList)));
+      setClassName({
+        gradeLevelId: '',
+        teacherName: '',
+        id: null,
+        userId: '',
+      });
 
       closeModal();
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router-dom';
-import { Form } from 'reactstrap';
+// import { Form } from 'reactstrap';
 import TakeAssessmentCards from '../components/Cards/TakeAssessmentCards';
 import getTakeAssessmentByAssessmentId from '../helpers/data/takeAssessmentsData';
 // import { getStudentsByClassNameId } from '../helpers/data/studentsData';
@@ -22,8 +22,6 @@ function TakeAssessments({ user }) {
     standardId, id
   } = useParams();
   const history = useHistory();
-  console.warn(standardId);
-  console.warn(takeAssessments);
   const handleClick = (type) => {
     switch (type) {
       case 'sendit':
@@ -58,7 +56,7 @@ function TakeAssessments({ user }) {
           </TitleContainer2>
         </>
       )}
-      <Form id='addClassNameForm' autoComplete='off'>
+      <div id='addClassNameForm' autoComplete='off'>
         <TakeAssessmentCardContainer>
           {takeAssessments?.map((takeAssessmentInfo, index) => (
             <TakeAssessmentCards
@@ -82,7 +80,7 @@ function TakeAssessments({ user }) {
             />
           ))}
         </TakeAssessmentCardContainer>
-      </Form>
+      </div>
       <Button
         className='addTakeAssessments'
         onClick={() => handleClick('sendit')}

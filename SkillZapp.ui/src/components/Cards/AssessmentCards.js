@@ -36,7 +36,6 @@ function AssessmentCards({
         history.push(`/Assessments/${id}`);
         break;
       case 'delete':
-        // deleteStudentAssessmentByAssessmentId(id).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
         deleteAssessment(id).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
         break;
       default:
