@@ -42,10 +42,9 @@ function Students({ user }) {
 
   return (
     <StudentContainer>
-      {classNames && gradeLevels && studentNames
-      && (
+      {classNames && gradeLevels && studentNames && user && (
         <>
-          <TitleContainer className='classes-header'>
+          <TitleContainer className="classes-header">
             <h1>All Students</h1>
           </TitleContainer>
           {/* <SearchBarStudents user={user} /> */}
@@ -69,19 +68,18 @@ function Students({ user }) {
               closeModal={closeModal}
             />
           </Modal> */}
-          <StudentCardContainer className='card-container student-view'>
-            {studentNames
-              && studentNames.map((studentInfo, index) => (
-                <StudentNameCards
-                  key={index}
-                  id={studentInfo.studentId}
-                  user={user}
-                  setStudentNames={setStudentNames}
-                  studentName={studentInfo.studentName}
-                  teacherName={studentInfo.teacherName}
-                  gradeLevelDescription={studentInfo.gradeLevelDescription}
-                />
-              ))}
+          <StudentCardContainer className="card-container student-view">
+            {studentNames.map((studentInfo, index) => (
+              <StudentNameCards
+                key={index}
+                user={user}
+                studentId={studentInfo.studentId}
+                setStudentNames={setStudentNames}
+                studentName={studentInfo.studentName}
+                teacherName={studentInfo.teacherName}
+                gradeLevelDescription={studentInfo.gradeLevelDescription}
+              />
+            ))}
           </StudentCardContainer>
         </>
       )}
