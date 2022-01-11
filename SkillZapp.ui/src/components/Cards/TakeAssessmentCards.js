@@ -194,7 +194,7 @@ function TakeAssessmentCards({
       <TakeAssessmentCardBody className='ClassCard' id='ClassCard'>
         <Form>
           <FormGroup tag='fieldset'>
-            <legend>Rubric Score</legend>
+            <legend>Score</legend>
             <FormGroup>
               <Input
                 name='score'

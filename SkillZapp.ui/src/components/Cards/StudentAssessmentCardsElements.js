@@ -2,14 +2,12 @@ import styled from 'styled-components';
 
 export const StudentAssessmentCard = styled.div`
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   align-items: center;
-  border: 3px solid black;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 200px;
   height: 200px;
-  // opacity: 0.5;
-  margin: 10px;
+  margin: 30px;
   padding: 10px;
   background-color: #52abab;
 
@@ -20,6 +18,7 @@ export const StudentAssessmentCard = styled.div`
 
   opacity: ${({ isOpen }) => (isOpen ? '0' : '100%')};
   top: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  box-shadow: 0 8px 16px 0 #1a2a2d;
 `;
 
 export const Modal = styled.div`

@@ -14,6 +14,9 @@ export const SingleAssessmentContainer = styled.div`
 export const StudentScoreCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  background: #ffb400;
+  border-radius: 3%;
+  margin: 30px;
   padding-top: 10px;
   justify-content: center;
 `;

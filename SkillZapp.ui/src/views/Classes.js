@@ -49,8 +49,6 @@ function Classes({ user }) {
           <SearchBarClasses
           user={user}
           classNames={classNames}
-          teacherName={classNames[0].teacherName}
-          gradeLevelDescription={classNames[0].gradeLevelDescription}
           />
 
           <AddButtonContainer className="AddButtonContainer">

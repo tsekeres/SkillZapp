@@ -55,7 +55,7 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path="/Students/:studentName/:teacherName/:id"
+          path="/Students/:classNameId/:studentName/:teacherName/:id"
           user={user}
           component={() => <SingleStudent user={user} />}
         />
