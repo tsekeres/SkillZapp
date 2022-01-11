@@ -4,10 +4,9 @@ export const AssessmentCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black;
   border-radius: 15px;
-  width: 300px;
-  height: 150px;
+  width: 230px;
+  height: 160px;
   margin: 30px;
   padding: 10px;
   background-color: #52abab;
@@ -19,6 +18,7 @@ export const AssessmentCard = styled.div`
 
   opacity: ${({ isOpen }) => (isOpen ? '0' : '100%')};
   top: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  box-shadow: 0 8px 16px 0 #1a2a2d;
 `;
 
 export const Modal = styled.div`

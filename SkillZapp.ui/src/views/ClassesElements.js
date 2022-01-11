@@ -13,6 +13,9 @@ export const ClassContainer = styled.div`
 export const ClassCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  background: #ffb400;
+  border-radius: 3%;
+  margin: 30px;
   padding-top: 10px;
   justify-content: center;
   // background: #1a2a2d;
@@ -41,9 +44,10 @@ position: fixed;
 z-index: 999;
 width: 100%;
 height: 100%;
-background: #fff;
-display: grid;
-align-items: center;
+background: #125f7c;
+display: flex;
+flex-direction: column;
+justify-content: center;
 top: 0;
 left: 0;
 transitionL 0.3s ease-in-out;

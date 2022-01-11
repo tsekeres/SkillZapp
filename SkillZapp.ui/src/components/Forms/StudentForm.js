@@ -7,6 +7,7 @@ import {
   StudentFormTitle,
   Button,
   Form,
+  Row,
   Label,
   ButtonImg,
   Option,
@@ -82,60 +83,67 @@ const StudentForm = ({
   };
 
   return (
-      <Form id='addStudentForm' autoComplete='off' onSubmit={handleSubmit}>
-        {user && (
-          <>
-        <StudentFormTitle id='StudentFormTitle'>
-          {studentFormTitle}
-        </StudentFormTitle>
-        <Label studentName='StudentNameLabel'> Student Name:</Label>
-        <Input
-          name='studentName'
-          id='studentName'
-          value={student.studentName}
-          type='text'
-          placeholder='Enter a Student Name'
-          onChange={handleInputChange}
-        ></Input>
-        <Label>Grade Level:</Label>
-        <Select
-          className='item'
-          type='select'
-          name='gradeLevelId'
-          placeholder='Grade Level'
-          id='exampleSelect'
-          onChange={handleInputChange}
-        >
-          <Option value=''>Select Grade Level</Option>
-          {gradeLevels?.map((gradeLevel) => (
-            <Option key={gradeLevel.id} value={gradeLevel.id}>
-              {gradeLevel.gradeLevelNumber}
-            </Option>
-          ))};
-        </Select>
-        <Label>Teacher Name:</Label>
-        <Select
-          className='item'
-          type='select'
-          name='classNameId'
-          placeholder='Teacher Name'
-          id='exampleSelect'
-          onChange={handleInputChange}
-        >
-          <Option value=''>Select Teacher Name</Option>
-          {classNames?.map((teacherName) => (
-            <Option key={teacherName.id} value={teacherName.id}>
-              {teacherName.teacherName}
-            </Option>
-          ))}
-          ;
-        </Select>
-        <Button className='addStudent' type='submit'>
-          <ButtonImg src={add}></ButtonImg>
-        </Button>
+    <Form id="addStudentForm" autoComplete="off" onSubmit={handleSubmit}>
+      {user && (
+        <>
+          <StudentFormTitle id="StudentFormTitle">
+            {studentFormTitle}
+          </StudentFormTitle>
+          <Label studentName="StudentNameLabel"> Student Name:</Label>
+          <Row>
+            <Input
+              name="studentName"
+              id="studentName"
+              value={student.studentName}
+              type="text"
+              placeholder="Enter a Student Name"
+              onChange={handleInputChange}
+            ></Input>
+          </Row>
+          <Label>Grade Level:</Label>
+          <Row>
+            <Select
+              className="item"
+              type="select"
+              name="gradeLevelId"
+              placeholder="Grade Level"
+              id="exampleSelect"
+              onChange={handleInputChange}
+            >
+              <Option value="">Select Grade Level</Option>
+              {gradeLevels?.map((gradeLevel) => (
+                <Option key={gradeLevel.id} value={gradeLevel.id}>
+                  {gradeLevel.gradeLevelNumber}
+                </Option>
+              ))}
+              ;
+            </Select>
+          </Row>
+          <Label>Teacher Name:</Label>
+          <Row>
+            <Select
+              className="item"
+              type="select"
+              name="classNameId"
+              placeholder="Teacher Name"
+              id="exampleSelect"
+              onChange={handleInputChange}
+            >
+              <Option value="">Select Teacher Name</Option>
+              {classNames?.map((teacherName) => (
+                <Option key={teacherName.id} value={teacherName.id}>
+                  {teacherName.teacherName}
+                </Option>
+              ))}
+              ;
+            </Select>
+          </Row>
+          <Button className="addStudent" type="submit">
+            <ButtonImg src={add}></ButtonImg>
+          </Button>
         </>
-        )}
-      </Form>
+      )}
+    </Form>
   );
 };
 

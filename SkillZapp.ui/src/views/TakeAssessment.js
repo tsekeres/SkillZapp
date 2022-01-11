@@ -44,15 +44,15 @@ function TakeAssessments({ user }) {
       {standard && takeAssessments && (
         <>
           <TitleContainer1 className='assessment-header'>
-            <h1>{standard.standardName}</h1>
-            <h1>{takeAssessments[0].teacherName}&apos;s Class</h1>
-            <h1>{standard.standardDescription}</h1>
+            <h3>{standard.standardName}</h3>
+            <h3>{standard.standardDescription}</h3>
           </TitleContainer1>
           <TitleContainer2 className='assessment-header'>
-            <h1>
+            <h3>{takeAssessments[0].teacherName}&apos;s Class</h3>
+            <h4>
               Choose student&apos;s score for {takeAssessments[0].rubricName}{' '}
               Assessment
-            </h1>
+            </h4>
           </TitleContainer2>
         </>
       )}

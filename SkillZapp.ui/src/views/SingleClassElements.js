@@ -13,7 +13,10 @@ export const SingleClassContainer = styled.div`
 export const StudentCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-top; 10px;
+  background: #ffb400;
+  border-radius: 3%;
+  margin: 30px;
+  padding-top: 10px;
   justify-content: center;
 `;
 
@@ -25,7 +28,7 @@ export const TitleContainer = styled.div`
   align-items: center;
   // justify-content: center;
   color: #ffb400;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 `;
 
 export const Modal = styled.div`
@@ -33,9 +36,10 @@ position: fixed;
 z-index: 999;
 width: 100%;
 height: 100%;
-background: #fff;
-display: grid;
-align-items: center;
+background: #125f7c;
+display: flex;
+flex-direction: column;
+justify-content: center;
 top: 0;
 left: 0;
 transitionL 0.3s ease-in-out;
@@ -48,7 +52,7 @@ export const AddButtonContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 20px;
 `;
 
 export const AddStudentButton = styled.button`

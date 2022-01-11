@@ -35,7 +35,7 @@ function StudentNameCards({
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/Students/${studentName}/${teacherName}/${studentId}`);
+        history.push(`/Students/${classNameId}/${studentName}/${teacherName}/${studentId}`);
         break;
       case 'delete':
         if (classNameId) {

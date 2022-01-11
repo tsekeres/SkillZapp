@@ -15,6 +15,9 @@ export const AssessmentCardContainer = styled.div`
   flex-wrap: wrap;
   padding-top: 10px;
   justify-content: center;
+  background: #ffb400;
+  border-radius: 3%;
+  margin: 30px;
 `;
 
 export const TitleContainer = styled.div`
@@ -40,9 +43,10 @@ position: fixed;
 z-index: 999;
 width: 100%;
 height: 100%;
-background: #fff;
-display: grid;
-align-items: center;
+background: #125f7c;
+display: flex;
+flex-direction: column;
+justify-content: center;
 top: 0;
 left: 0;
 transitionL 0.3s ease-in-out;
@@ -67,6 +71,7 @@ export const AddAssessmentButton = styled.button`
   // flex-direction: row-wrap;
   align-items: center;
   border: 3px solid black;
+  background-color: #52abab;
   border-radius: 10px;
   width: 200px;
   height: 100px;

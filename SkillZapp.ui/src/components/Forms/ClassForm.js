@@ -6,6 +6,7 @@ import {
   ClassFormTitle,
   Button,
   Form,
+  Row,
   Label,
   ButtonImg,
   Option,
@@ -81,36 +82,39 @@ const ClassForm = ({
   // console.warn(className);
 
   return (
-    <Form id='addClassNameForm' autoComplete='off' onSubmit={handleSubmit}>
-      <ClassFormTitle id='ClassFormTitle'>{classFormTitle}</ClassFormTitle>
-      <Label className='ClassNameNameLabel'> Teacher Name:</Label>
-      <Input
-        name='teacherName'
-        id='teacherName'
-        value={className.teacherName}
-        type='text'
-        placeholder='Enter a Teacher Name'
-        onChange={handleInputChange}
-      ></Input>
+    <Form id="addClassNameForm" autoComplete="off" onSubmit={handleSubmit}>
+      <ClassFormTitle id="ClassFormTitle">{classFormTitle}</ClassFormTitle>
+      <Label className="ClassNameNameLabel"> Teacher Name:</Label>
+      <Row>
+        <Input
+          name="teacherName"
+          id="teacherName"
+          value={className.teacherName}
+          type="text"
+          placeholder="Enter a Teacher Name"
+          onChange={handleInputChange}
+        ></Input>
+      </Row>
       <Label>Grade Level:</Label>
-      <Select
-        className='item'
-        type='select'
-        name='gradeLevelId'
-        placeholder='Grade Level'
-        id='exampleSelect'
-        onChange={handleInputChange}
-      >
-        <Option value=''>
-          Select Grade Level
-        </Option>
-        {gradeLevels?.map((gradeLevel) => (
-          <Option key={gradeLevel.id} value={gradeLevel.id}>
-            {gradeLevel.gradeLevelNumber}
-          </Option>
-        ))};
-      </Select>
-      <Button className='addClassName' type='submit'>
+      <Row>
+        <Select
+          className="item"
+          type="select"
+          name="gradeLevelId"
+          placeholder="Grade Level"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          <Option value="">Select Grade Level</Option>
+          {gradeLevels?.map((gradeLevel) => (
+            <Option key={gradeLevel.id} value={gradeLevel.id}>
+              {gradeLevel.gradeLevelNumber}
+            </Option>
+          ))}
+          ;
+        </Select>
+      </Row>
+      <Button className="addClassName" type="submit">
         <ButtonImg src={add}></ButtonImg>
       </Button>
     </Form>

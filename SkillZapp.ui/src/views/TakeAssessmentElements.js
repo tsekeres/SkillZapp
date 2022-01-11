@@ -5,12 +5,17 @@ export const TakeAssessmentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  margin: 10px;
   margin-bottom: 100px;
+  background: #1a2a2d;
   text-align: center;
 `;
 
 export const TakeAssessmentCardContainer = styled.div`
   display: flex;
+  background: #ffb400;
+  border-radius: 3%;
+  margin: 30px;
   flex-wrap: wrap;
   padding-top: 10px;
   // padding-bottom: 100px;

@@ -8,6 +8,7 @@ import {
   AssessmentFormTitle,
   Button,
   Form,
+  Row,
   Label,
   ButtonImg,
   Option,
@@ -85,58 +86,63 @@ const AssessmentForm = ({
       </AssessmentFormTitle>
 
       <Label>Standard:</Label>
-      <Select
-        className="item"
-        type="select"
-        name="standardId"
-        placeholder="Standard"
-        id="exampleSelect"
-        onChange={handleInputChange}
-      >
-        <Option value="">Select Standard</Option>
-        {standards?.map((standardObj) => (
-          <Option key={standardObj.id} value={standardObj.id}>
-            {standardObj.standardName}
-          </Option>
-        ))}
-        ;
-      </Select>
-
+      <Row>
+        <Select
+          className="item"
+          type="select"
+          name="standardId"
+          placeholder="Standard"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          <Option value="">Select Standard</Option>
+          {standards?.map((standardObj) => (
+            <Option key={standardObj.id} value={standardObj.id}>
+              {standardObj.standardName}
+            </Option>
+          ))}
+          ;
+        </Select>
+      </Row>
       <Label>Rubric:</Label>
-      <Select
-        className="item"
-        type="select"
-        name="rubricId"
-        placeholder="Rubric"
-        id="exampleSelect"
-        onChange={handleInputChange}
-      >
-        <Option value="">Select Rubric</Option>
-        {rubrics?.map((rubricObj) => (
-          <Option key={rubricObj.id} value={rubricObj.id}>
-            {rubricObj.rubricName}
-          </Option>
-        ))}
-        ;
-      </Select>
+      <Row>
+        <Select
+          className="item"
+          type="select"
+          name="rubricId"
+          placeholder="Rubric"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          <Option value="">Select Rubric</Option>
+          {rubrics?.map((rubricObj) => (
+            <Option key={rubricObj.id} value={rubricObj.id}>
+              {rubricObj.rubricName}
+            </Option>
+          ))}
+          ;
+        </Select>
+      </Row>
       <Label>Class Name:</Label>
-      <Select
-        className="item"
-        type="select"
-        name="classNameId"
-        placeholder="Class Name"
-        id="exampleSelect"
-        onChange={handleInputChange}
-      >
-        <Option value="">Select Class Name</Option>
-        {classNames?.map((classNameObj) => (
-          <Option key={classNameObj.id} value={classNameObj.id}>
-            {classNameObj.teacherName}
-            {classNameObj.gradeLevelNumber}
-          </Option>
-        ))}
-        ;
-      </Select>
+      <Row>
+        <Select
+          className="item"
+          type="select"
+          name="classNameId"
+          placeholder="Class Name"
+          id="exampleSelect"
+          onChange={handleInputChange}
+        >
+          <Option value="">Select Class Name</Option>
+          {classNames?.map((classNameObj) => (
+            <Option key={classNameObj.id} value={classNameObj.id}>
+              {classNameObj.teacherName}
+              {classNameObj.gradeLevelNumber}
+            </Option>
+          ))}
+          ;
+        </Select>
+      </Row>
       <Button className="addAssessment" type="submit">
         <ButtonImg src={add}></ButtonImg>
       </Button>

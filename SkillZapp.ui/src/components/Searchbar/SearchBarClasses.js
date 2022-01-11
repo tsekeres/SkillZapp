@@ -8,8 +8,6 @@ import { getClassNamesByUserId } from '../../helpers/data/classNamesData';
 const SearchBarClasses = ({
   user,
   classNames,
-  teacherName,
-  gradeLevelDescription,
 }) => {
   const history = useHistory();
   const [options, setOptions] = useState(null);
@@ -34,7 +32,7 @@ const SearchBarClasses = ({
 
   const handleSelectClick = (e) => {
     history.replace(
-      `/Classes/${teacherName}/${gradeLevelDescription}/${e.value}`
+      `/Classes/${e.value}`
     );
     window.location.reload(false);
   };
@@ -55,8 +53,6 @@ const SearchBarClasses = ({
 SearchBarClasses.propTypes = {
   user: PropTypes.any,
   classNames: PropTypes.any,
-  teacherName: PropTypes.any,
-  gradeLevelDescription: PropTypes.any,
 };
 
 export default SearchBarClasses;

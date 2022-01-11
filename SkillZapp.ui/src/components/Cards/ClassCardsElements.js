@@ -4,13 +4,7 @@ export const ClassCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black;
   border-radius: 15px;
-  // elevation: 10px;
-  // shadowOffset: {width: 2, height: 2};
-  // shadowColor: #52abab;
-  // shadowOpacity: 0.5;
-  // shadowRadius: 2px;
   width: 160px;
   height: 100px;
   margin: 30px;
@@ -24,6 +18,7 @@ export const ClassCard = styled.div`
 
   opacity: ${({ isOpen }) => (isOpen ? '0' : '100%')};
   top: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  box-shadow: 0 8px 16px 0 #1a2a2d;
 `;
 
 export const Modal = styled.div`

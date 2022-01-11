@@ -3,18 +3,12 @@ import styled from 'styled-components';
 export const TakeAssessmentCard = styled.div`
   display: flex;
   flex-direction: column;
-  // align-items: center;
-  border: 3px solid black;
+  align-items: center;
   border-radius: 15px;
-  // elevation: 10px;
-  // shadowOffset: {width: 2, height: 2};
-  // shadowColor: #52abab;
-  // shadowOpacity: 0.5;
-  // shadowRadius: 2px;
-  width: 200px;
-  height: 250px;
-  margin: 30px;
-  padding: 10px;
+  width: 170px;
+  height: 280px;
+  margin: 25px;
+  padding: 7px;
   background-color: #52abab;
 
   @media screen and (max-width: 525px) {
@@ -24,6 +18,7 @@ export const TakeAssessmentCard = styled.div`
 
   opacity: ${({ isOpen }) => (isOpen ? '0' : '100%')};
   top: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  box-shadow: 0 8px 16px 0 #1a2a2d;
 `;
 
 export const Modal = styled.div`

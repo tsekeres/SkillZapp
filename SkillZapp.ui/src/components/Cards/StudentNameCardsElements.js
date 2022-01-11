@@ -4,7 +4,6 @@ export const StudentNameCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black;
   border-radius: 15px;
   width: 160px;
   height: 120px;
@@ -19,6 +18,7 @@ export const StudentNameCard = styled.div`
 
   opacity: ${({ isOpen }) => (isOpen ? '0' : '100%')};
   top: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  box-shadow: 0 8px 16px 0 #1a2a2d;
 `;
 
 export const Modal = styled.div`
