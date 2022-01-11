@@ -71,13 +71,13 @@ const StudentForm = ({
         userId: user.id || '',
       };
       createStudent(studentObj).then(() => getClassNameWithStudentsByTeacherName(classNameId).then((classList) => setClassName(classList)));
-      setStudent({
-        gradeLevelId: '',
-        classNameId: '',
-        studentName: '',
-        id: null,
-        userId: '',
-      });
+      // setStudent({
+      //   gradeLevelId: '',
+      //   classNameId: '',
+      //   studentName: '',
+      //   id: null,
+      //   userId: '',
+      // });
       closeModal();
     }
   };

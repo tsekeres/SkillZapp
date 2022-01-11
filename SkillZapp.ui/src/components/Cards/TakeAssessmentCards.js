@@ -83,6 +83,10 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+    setTakeAssessments((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
     } else if (id === '00000000-0000-0000-0000-000000000000') {
@@ -98,7 +102,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Excellent',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then((resp) => getTakeAssessmentByAssessmentId(resp.assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck2 = (e) => {

@@ -13,6 +13,7 @@ export const TakeAssessmentContainer = styled.div`
 
 export const TakeAssessmentCardContainer = styled.div`
   display: flex;
+  // align-items: center;
   background: #ffb400;
   border-radius: 3%;
   margin: 30px;

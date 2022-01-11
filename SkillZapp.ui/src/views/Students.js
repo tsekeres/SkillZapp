@@ -39,7 +39,6 @@ function Students({ user }) {
       getClassNamesWithGradeLevelByUserId(user.id).then((classNamesList) => setClassNames(classNamesList));
     }
   }, []);
-
   return (
     <StudentContainer>
       {classNames && gradeLevels && studentNames && user && (
