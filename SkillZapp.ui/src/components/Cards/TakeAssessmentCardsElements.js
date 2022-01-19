@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const TakeAssessmentCard = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
+  // justify-content: center;
   border-radius: 15px;
   width: 170px;
   height: 280px;

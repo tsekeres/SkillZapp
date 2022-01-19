@@ -73,6 +73,7 @@ function Students({ user }) {
               <StudentNameCards
                 key={index}
                 user={user}
+                classNameId={studentInfo.classNameId}
                 studentId={studentInfo.studentId}
                 setStudentNames={setStudentNames}
                 studentName={studentInfo.studentName}

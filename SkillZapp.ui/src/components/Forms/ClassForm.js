@@ -17,7 +17,6 @@ import add from '../../Assets/Add.png';
 const ClassForm = ({
   classFormTitle,
   gradeLevels,
-  // classNames,
   teacherName,
   id,
   gradeLevelId,
@@ -25,7 +24,6 @@ const ClassForm = ({
   setClassNames,
   closeModal,
 }) => {
-  // console.warn(teacherName);
   const [className, setClassName] = useState({
     gradeLevelId: gradeLevelId || '',
     teacherName: teacherName || '',
@@ -79,7 +77,6 @@ const ClassForm = ({
       closeModal();
     }
   };
-  // console.warn(className);
 
   return (
     <Form id="addClassNameForm" autoComplete="off" onSubmit={handleSubmit}>

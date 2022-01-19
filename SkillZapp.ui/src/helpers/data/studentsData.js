@@ -45,21 +45,6 @@ const deleteStudent = (studentId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const getClassNameByTeacherName = (teacherName) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames/${teacherName}`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
-
-// const searchClassesList = (teacherName) => new Promise((resolve, reject) => {
-//   GetClassNamesByUserId(userId).then((classNamesArray) => {
-//     const searchItems = classNamesArray.filter((class) => class.teacherName.includes(teacherName));
-//     resolve(searchItems);
-//   }).catch((error) => reject(error));
-// });
-
 export {
   createStudent,
   updateStudent,
@@ -67,8 +52,4 @@ export {
   getAllStudentsWithDataByUserId,
   getStudentsByClassNameId,
   getSingleStudentWithAssessmentsByStudentId,
-  // getClassNamesByUserId,
-  // getClassNameByTeacherName,
-  // getClassNamesWithGradeLevelByUserId,
-  // searchClassesList,
 };

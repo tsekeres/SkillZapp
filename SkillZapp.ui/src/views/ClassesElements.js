@@ -18,7 +18,6 @@ export const ClassCardContainer = styled.div`
   margin: 30px;
   padding-top: 10px;
   justify-content: center;
-  // background: #1a2a2d;
 `;
 
 export const TitleContainer = styled.div`

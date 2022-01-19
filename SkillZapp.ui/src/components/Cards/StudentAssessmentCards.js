@@ -1,6 +1,3 @@
-// needs each card to have a delete button
-// needs to be clickable to view single class
-// needs to display teacher name and gradelevel description or number
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -21,7 +18,6 @@ function StudentAssessmentCards({
   const [date] = useState(assessmentDate.split('T'));
 
   return (
-    // this card needs delete student button
     <StudentAssessmentCard className="AssessmentCard" id="AssessmentCard">
       <StudentAssessmentCardBody>
         <CardTitle>{studentName}</CardTitle>

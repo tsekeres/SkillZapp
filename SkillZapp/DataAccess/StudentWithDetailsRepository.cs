@@ -21,7 +21,7 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT U.Id as UserId, STU.Id as StudentId, TeacherName, StudentName,
-		                        GradeLevelNumber, GradeLevelDescription FROM Users U
+		                        GradeLevelNumber, GradeLevelDescription, STU.ClassNameId as ClassNameId FROM Users U
 		                        JOIN Students STU
 		                        ON U.Id = STU.UserId
 		                        JOIN ClassNames CN

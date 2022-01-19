@@ -74,30 +74,3 @@ SingleAssessment.propTypes = {
 };
 
 export default SingleAssessment;
-// export const data({
-//   excellent,
-//   satisfactory,
-//   needsImprovment,
-//   notTested,
-// }) {
-//   labels: ['Excellent', 'Satisfactory', 'Needs Improvement', 'Not Tested']
-//   datasets: [
-//     {
-//       label: 'Score',
-//       data: [excellent, satisfactory, needsImprovment, notTested],
-//       backgroundColor: [
-//         '#125f7c',
-//         '#52abab',
-//         'c0f3d5',
-//         'ffb400',
-//       ],
-//       borderColor: [
-//         '#1a2a2d',
-//         '#1a2a2d',
-//         '#1a2a2d',
-//         '#1a2a2d',
-//       ],
-//       borderWidth: 1,
-//     },
-//   ],
-// };
