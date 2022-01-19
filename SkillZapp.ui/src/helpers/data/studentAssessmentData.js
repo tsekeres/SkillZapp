@@ -45,14 +45,6 @@ const deleteStudentAssessmentByAssessmentId = (assessmentId) => new Promise((res
     .catch((error) => reject(error));
 });
 
-// const getClassNameByTeacherName = (teacherName) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .get(`${apiURL}/api/classNames/${teacherName}`)
-//       .then((response) => resolve(response.data))
-//       .catch((error) => reject(error));
-//   });
-
 export {
   createStudentAssessment,
   updateStudentAssessment,

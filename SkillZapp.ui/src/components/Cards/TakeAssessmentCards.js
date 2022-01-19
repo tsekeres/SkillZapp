@@ -83,10 +83,6 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    setTakeAssessments((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
     if (id !== '00000000-0000-0000-0000-000000000000') {
       updateStudentAssessment(finAssess.id, finAssess);
     } else if (id === '00000000-0000-0000-0000-000000000000') {
@@ -102,7 +98,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Excellent',
       };
-      createStudentAssessment(studentAssessmentObj).then((resp) => getTakeAssessmentByAssessmentId(resp.assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck2 = (e) => {
@@ -130,7 +126,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Satisfactory',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck3 = (e) => {
@@ -158,7 +154,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Needs Improvement',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck4 = (e) => {
@@ -186,7 +182,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Not Tested',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
 
@@ -197,7 +193,6 @@ function TakeAssessmentCards({
       </TakeAssessmentCardHeader>
       <TakeAssessmentCardBody className='ClassCard' id='ClassCard'>
         <Form>
-          <FormGroup tag='fieldset'>
             <legend>Score</legend>
             <FormGroup>
               <Input
@@ -239,7 +234,6 @@ function TakeAssessmentCards({
               />
               <Label check>Not Tested</Label>
             </FormGroup>
-          </FormGroup>
         </Form>
       </TakeAssessmentCardBody>
     </TakeAssessmentCard>

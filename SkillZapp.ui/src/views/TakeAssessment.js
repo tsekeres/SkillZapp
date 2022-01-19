@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router-dom';
-// import { Form } from 'reactstrap';
 import TakeAssessmentCards from '../components/Cards/TakeAssessmentCards';
 import getTakeAssessmentByAssessmentId from '../helpers/data/takeAssessmentsData';
-// import { getStudentsByClassNameId } from '../helpers/data/studentsData';
 import {
   TakeAssessmentContainer,
   TakeAssessmentCardContainer,
@@ -15,7 +13,6 @@ import {
 import { getStandardById } from '../helpers/data/standardsData';
 
 function TakeAssessments({ user }) {
-  // const [className, setClassName] = useState(null);
   const [takeAssessments, setTakeAssessments] = useState(null);
   const [standard, setStandard] = useState(null);
   const {
@@ -34,7 +31,6 @@ function TakeAssessments({ user }) {
 
   useEffect(() => {
     if (user) {
-      // getStudentsByClassNameId(classNameId).then((resp) => setClassName(resp));
       getStandardById(standardId).then((standardObj) => setStandard(standardObj));
       getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList));
     }

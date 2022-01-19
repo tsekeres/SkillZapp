@@ -24,7 +24,7 @@ function SingleStudent() {
       getSingleStudentWithAssessmentsByStudentId(id).then((resp) => setStudentAssessments(resp));
     }
   }, []);
-  console.warn(classNameId);
+
   const handleClick = (type) => {
     switch (type) {
       case 'back':

@@ -1,5 +1,3 @@
-// needs to be clickable to view single class
-// needs to display teacher name and gradelevel description or number
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -48,7 +46,7 @@ function StudentNameCards({
         console.warn('nothing selected');
     }
   };
-
+  console.warn(classNameId);
   return (
     <StudentNameCard className='StudentCard' id='StudentCard'>
       {studentId && user && (

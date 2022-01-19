@@ -39,6 +39,7 @@ function Students({ user }) {
       getClassNamesWithGradeLevelByUserId(user.id).then((classNamesList) => setClassNames(classNamesList));
     }
   }, []);
+
   return (
     <StudentContainer>
       {classNames && gradeLevels && studentNames && user && (
@@ -72,6 +73,7 @@ function Students({ user }) {
               <StudentNameCards
                 key={index}
                 user={user}
+                classNameId={studentInfo.classNameId}
                 studentId={studentInfo.studentId}
                 setStudentNames={setStudentNames}
                 studentName={studentInfo.studentName}

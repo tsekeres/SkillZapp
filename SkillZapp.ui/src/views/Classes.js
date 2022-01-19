@@ -9,13 +9,11 @@ import {
   TitleContainer,
   AddButtonContainer,
   AddClassButton,
-  // AddClassButtonImg,
   ClassCardContainer,
   Modal,
   Button,
   ButtonImg,
 } from './ClassesElements';
-// import add from '../Assets/Add.png';
 import deleted from '../Assets/Delete.png';
 import getAllGradeLevels from '../helpers/data/gradeLevelsData';
 

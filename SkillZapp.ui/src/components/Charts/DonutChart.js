@@ -5,7 +5,7 @@ import {
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-// ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DonutChart = ({
   excellent,

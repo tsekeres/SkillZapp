@@ -20,9 +20,6 @@ function Home({ user }) {
         <UserName className='nav-id-info'>
           {user ? (
             <div className='user-info'>
-              {/* <div>
-                <img className='profilePic' src={user.profilePicURL}></img>
-              </div> */}
               <div className='userInfo'>
                 <div>{user.firstName}</div>
               </div>

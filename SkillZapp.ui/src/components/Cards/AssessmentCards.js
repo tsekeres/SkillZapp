@@ -1,11 +1,7 @@
-// needs each card to have a delete button
-// needs to be clickable to view single class
-// needs to display teacher name and gradelevel description or number
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteAssessment, getAssessmentsWithDetailsByUserId } from '../../helpers/data/assessmentsData';
-// import { deleteStudentAssessmentByAssessmentId } from '../../helpers/data/studentAssessmentData';
 import deleted from '../../Assets/Delete.png';
 import {
   AssessmentCard,
@@ -44,16 +40,9 @@ function AssessmentCards({
   };
 
   return (
-    // this card needs delete assessment button
     <AssessmentCard className='AssessmentCard' id='AssessmentCard'>
       <AssessmentCardHeader className='AssessmentCardHeader'>
         <AssessmentCardButtons className='AssessmentCardButtons'>
-          {/* <Button1 id='editSingleClass' onClick={openModal}>
-            <AssessmentCardEdit
-              className='AssessmentCardEdit'
-              src={edit}
-            ></AssessmentCardEdit>
-          </Button1> */}
           <Button1 id='deleteClass' onClick={() => handleClick('delete')}>
             <AssessmentCardDelete
               className='AssessmentCardDelete'
