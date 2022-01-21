@@ -7,7 +7,7 @@ namespace SkillZapp.Models
 {
     public class StudentAssessment
     {
-        public Guid Id { get; set; }
+        public Guid StudentAssessmentId { get; set; }
         public Guid StudentId { get; set; }
         public Guid ClassNameId { get; set; }
         public Guid AssessmentId { get; set; }

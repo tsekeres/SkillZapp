@@ -16,7 +16,7 @@ import getTakeAssessmentByAssessmentId from '../../helpers/data/takeAssessmentsD
 
 function TakeAssessmentCards({
   user,
-  id,
+  studentAssessmentId,
   classNameId,
   studentName,
   studentId,
@@ -32,6 +32,7 @@ function TakeAssessmentCards({
   // rubricLevelC,
   // rubricLevelD,
 }) {
+  console.warn(assessmentId);
   const [checkBox1, setCheckBox1] = useState(false);
   const [checkBox2, setCheckBox2] = useState(false);
   const [checkBox3, setCheckBox3] = useState(false);
@@ -39,7 +40,7 @@ function TakeAssessmentCards({
   const [finAssess, setFinAssess] = useState({
     studentId: studentId || '',
     classNameId: classNameId || '',
-    id: id || '',
+    studentAssessmentId: studentAssessmentId || '',
     userId: user.id || '',
     assessmentId: assessmentId || '',
     studentName: studentName || '',
@@ -54,7 +55,7 @@ function TakeAssessmentCards({
     const studentAssessmentObj = {
       studentId: studentId || '',
       classNameId: classNameId || '',
-      id: id || '',
+      studentAssessmentId: studentAssessmentId || '',
       userId: user.id || '',
       assessmentId: assessmentId || '',
       studentName: studentName || '',
@@ -83,9 +84,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -98,7 +99,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Excellent',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck2 = (e) => {
@@ -111,9 +112,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -126,7 +127,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Satisfactory',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck3 = (e) => {
@@ -139,9 +140,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -154,7 +155,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Needs Improvement',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
   const handleCheck4 = (e) => {
@@ -167,9 +168,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -182,7 +183,7 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Not Tested',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
     }
   };
 
@@ -241,7 +242,7 @@ function TakeAssessmentCards({
 }
 
 TakeAssessmentCards.propTypes = {
-  id: PropTypes.any,
+  studentAssessmentId: PropTypes.any,
   classNameId: PropTypes.any,
   studentName: PropTypes.any,
   user: PropTypes.any,

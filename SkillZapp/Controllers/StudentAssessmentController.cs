@@ -68,11 +68,11 @@ namespace SkillZapp.Controllers
         }
 
         [HttpPost]
-        public void CreateStudentAssessment(StudentAssessment studentAssessment)
+        public IActionResult CreateStudentAssessment(StudentAssessment studentAssessment)
         {
             _repo.AddStudentAssessment(studentAssessment);
 
-            //return Created($"/api/students/{studentAssessment.Id}", studentAssessment);
+            return Created($"/api/students/{studentAssessment.StudentAssessmentId}", studentAssessment);
         }
 
         [HttpDelete("{studentAssessmentId}")]

@@ -32,7 +32,6 @@ function Assessments({ user }) {
   function closeModal() {
     setIsOpen(false);
   }
-
   useEffect(() => {
     if (user) {
       getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList));
@@ -80,7 +79,7 @@ function Assessments({ user }) {
               && assessments?.map((assessmentInfo, index) => (
                 <AssessmentCards
                   key={index}
-                  id={assessmentInfo.id}
+                  assessmentId={assessmentInfo.assessmentId}
                   user={user}
                   setAssessments={setAssessments}
                   studentName={assessmentInfo.studentName}

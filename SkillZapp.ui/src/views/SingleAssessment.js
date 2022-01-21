@@ -19,12 +19,12 @@ function SingleAssessment() {
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [scoredAssessments, setScoredAssessments] = useState(null);
   const [chartScores, setChartScores] = useState(null);
-  const { id } = useParams();
+  const { assessmentId } = useParams();
   useEffect(() => {
-    if (id) {
-      getStudentAssessmentsByAssessmentId(id).then((resp) => setScoredAssessments(resp));
-      getAssessmentsWithDetailsByAssessmentId(id).then((response) => setAssessmentDetails(response));
-      GetStudentAssessmentScoresByAssessmentId(id).then((data) => setChartScores(data));
+    if (assessmentId) {
+      getStudentAssessmentsByAssessmentId(assessmentId).then((resp) => setScoredAssessments(resp));
+      getAssessmentsWithDetailsByAssessmentId(assessmentId).then((response) => setAssessmentDetails(response));
+      GetStudentAssessmentScoresByAssessmentId(assessmentId).then((data) => setChartScores(data));
     }
   }, []);
   return (
@@ -38,7 +38,7 @@ function SingleAssessment() {
           </TitleContainer>
           <ChartContainer>
             <DonutChart
-              key={id}
+              key={assessmentId}
               excellent={chartScores.excellent}
               satisfactory={chartScores.satisfactory}
               needsImprovment={chartScores.needsImprovement}
@@ -70,7 +70,7 @@ function SingleAssessment() {
 }
 
 SingleAssessment.propTypes = {
-  id: PropTypes.any,
+  assessmentId: PropTypes.any,
 };
 
 export default SingleAssessment;

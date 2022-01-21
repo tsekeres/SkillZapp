@@ -73,7 +73,7 @@ namespace SkillZapp.Controllers
         {
             _repo.CreateAssessment(assessment);
 
-            return Created($"/api/assessments/{assessment.Id}", assessment);
+            return Created($"/api/assessments/{assessment.AssessmentId}", assessment);
         }
 
         [HttpDelete("{assessmentId}")]

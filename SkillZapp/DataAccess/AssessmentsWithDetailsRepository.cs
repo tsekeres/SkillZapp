@@ -20,7 +20,7 @@ namespace SkillZapp.DataAccess
         internal IEnumerable<AssessmentsWithDetails> GetAssessmentsWithDetailsByUserId(Guid userId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT A.Id, A.UserId, A.StandardId, A.AssessmentDate,
+            var sql = @"SELECT A.AssessmentId, A.UserId, A.StandardId, A.AssessmentDate,
                         ClassNameId, RubricId, CN.TeacherName, GL.GradeLevelDescription,
                         S.StandardName FROM Assessments A
 		                    JOIN ClassNames CN
@@ -44,7 +44,7 @@ namespace SkillZapp.DataAccess
         internal AssessmentsWithDetails GetAssessmentsWithDetailsByAssessmentId(Guid assessmentId)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"SELECT A.Id, A.UserId, A.StandardId, A.AssessmentDate,
+            var sql = @"SELECT A.AssessmentId, A.UserId, A.StandardId, A.AssessmentDate,
                         ClassNameId, RubricId, CN.TeacherName, GL.GradeLevelDescription,
                         S.StandardName FROM Assessments A
 		                    JOIN ClassNames CN
@@ -53,7 +53,7 @@ namespace SkillZapp.DataAccess
 		                    ON CN.GradeLevelId = GL.ID
 		                    JOIN Standards S
 		                    ON A.StandardId = S.ID
-                            WHERE A.Id = @AssessmentId";
+                            WHERE A.AssessmentId = @AssessmentId";
 
             var parameters = new
             {
