@@ -16,7 +16,7 @@ import {
 
 function AssessmentCards({
   user,
-  id,
+  assessmentId,
   teacherName,
   gradeLevelDescription,
   standardName,
@@ -24,15 +24,14 @@ function AssessmentCards({
   setAssessments,
 }) {
   const history = useHistory();
-
   const [date] = useState(assessmentDate.split('T'));
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/Assessments/${id}`);
+        history.push(`/Assessments/${assessmentId}`);
         break;
       case 'delete':
-        deleteAssessment(id).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
+        deleteAssessment(assessmentId).then(() => getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
         break;
       default:
         console.warn('nothing selected');
@@ -63,7 +62,7 @@ function AssessmentCards({
 
 AssessmentCards.propTypes = {
   user: PropTypes.any,
-  id: PropTypes.any,
+  assessmentId: PropTypes.any,
   teacherName: PropTypes.any,
   gradeLevelDescription: PropTypes.any,
   standardName: PropTypes.any,

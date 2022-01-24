@@ -25,15 +25,15 @@ namespace SkillZapp.DataAccess
             return result;
         }
 
-        internal Assessment GetAssessmentById(Guid id)
+        internal Assessment GetAssessmentById(Guid assessmentId)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT * from Assessments
-                        WHERE Id = @Id";
+                        WHERE AssessmentId = @AssessmentId";
 
             var parameters = new
             {
-                Id = id
+                AssessmentId = assessmentId
             };
 
             var result = db.QuerySingleOrDefault<Assessment>(sql, parameters);
@@ -100,37 +100,37 @@ namespace SkillZapp.DataAccess
         internal Guid CreateAssessment(Assessment assessment)
         {
             using var db = new SqlConnection(_connectionString);
-            Guid id = new Guid();
+            Guid assessmentId = new Guid();
             var sql = @"INSERT INTO [dbo].[Assessments]
                         ([StandardId], 
                          [ClassNameId],
                          [RubricId],
                          [UserId])
-                        OUTPUT inserted.Id
+                        OUTPUT inserted.AssessmentId
                         VALUES
                        (@StandardId,
                         @ClassNameId,
                         @RubricId,
                         @UserId)";
 
-            id = db.ExecuteScalar<Guid>(sql, assessment);
-            if (!id.Equals(Guid.Empty))
+            assessmentId = db.ExecuteScalar<Guid>(sql, assessment);
+            if (!assessmentId.Equals(Guid.Empty))
             {
-                assessment.Id = id;
+                assessment.AssessmentId = assessmentId;
             }
-            return id;
+            return assessmentId;
         }
 
-        internal bool DeleteAssessment(Guid id)
+        internal bool DeleteAssessment(Guid assessmentId)
         {
             bool returnVal = false;
             using var db = new SqlConnection(_connectionString);
             var sql = @"DELETE FROM Assessments
-                        OUTPUT Deleted.Id
-                        WHERE Id = @Id";
+                        OUTPUT Deleted.AssessmentId
+                        WHERE AssessmentId = @AssessmentId";
             var parameters = new
             {
-                Id = id
+                AssessmentId = assessmentId
             };
 
             var result = db.Query(sql, parameters);
@@ -141,7 +141,7 @@ namespace SkillZapp.DataAccess
             return returnVal;
         }
 
-        internal Assessment UpdateAssessment(Guid id, Assessment assessment)
+        internal Assessment UpdateAssessment(Guid assessmentId, Assessment assessment)
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"UPDATE Assessments
@@ -150,9 +150,9 @@ namespace SkillZapp.DataAccess
                             StandardId = @StandardNameId,
                             ClassNameId = @ClassNameId
                         OUTPUT Inserted.*
-                        WHERE Id = @Id";
+                        WHERE AssessmentId = @AssessmentId";
 
-            assessment.Id = id;
+            assessment.AssessmentId = assessmentId;
             var updatedAssessment = db.QuerySingleOrDefault<Assessment>(sql, assessment);
 
             return updatedAssessment;

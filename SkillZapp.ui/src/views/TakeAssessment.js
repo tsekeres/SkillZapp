@@ -16,7 +16,7 @@ function TakeAssessments({ user }) {
   const [takeAssessments, setTakeAssessments] = useState(null);
   const [standard, setStandard] = useState(null);
   const {
-    standardId, id
+    standardId, assessmentId
   } = useParams();
   const history = useHistory();
   const handleClick = (type) => {
@@ -28,11 +28,11 @@ function TakeAssessments({ user }) {
         console.warn('nothing selected');
     }
   };
-
+  console.warn(takeAssessments);
   useEffect(() => {
     if (user) {
       getStandardById(standardId).then((standardObj) => setStandard(standardObj));
-      getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList));
+      getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList));
     }
   }, []);
   return (
@@ -57,7 +57,7 @@ function TakeAssessments({ user }) {
           {takeAssessments?.map((takeAssessmentInfo, index) => (
             <TakeAssessmentCards
               key={index}
-              id={takeAssessmentInfo.studentAssessmentId}
+              studentAssessmentId={takeAssessmentInfo.studentAssessmentId}
               studentId={takeAssessmentInfo.studentId}
               user={user}
               setTakeAssessments={setTakeAssessments}

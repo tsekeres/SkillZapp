@@ -67,13 +67,13 @@ function Routes({ user }) {
         />
         <Route
           exact
-          path="/Assessments/:id"
+          path="/Assessments/:assessmentId"
           user={user}
           component={() => <SingleAssessment user={user} />}
         />
         <Route
           exact
-          path="/TakeAssessment/:standardId/:classNameId/:id"
+          path="/TakeAssessment/:standardId/:classNameId/:assessmentId"
           user={user}
           component={() => <TakeAssessment user={user} />}
         />

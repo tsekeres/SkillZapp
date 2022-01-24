@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Form,
-  Input,
-  FormGroup,
-  Label
+  Form, Input, FormGroup, Label
 } from 'reactstrap';
 import {
   TakeAssessmentCard,
   TakeAssessmentCardHeader,
   TakeAssessmentCardBody,
 } from './TakeAssessmentCardsElements';
-import { updateStudentAssessment, createStudentAssessment } from '../../helpers/data/studentAssessmentData';
+import {
+  updateStudentAssessment,
+  createStudentAssessment,
+} from '../../helpers/data/studentAssessmentData';
 import getTakeAssessmentByAssessmentId from '../../helpers/data/takeAssessmentsData';
 
 function TakeAssessmentCards({
   user,
-  id,
+  studentAssessmentId,
   classNameId,
   studentName,
   studentId,
@@ -39,7 +39,7 @@ function TakeAssessmentCards({
   const [finAssess, setFinAssess] = useState({
     studentId: studentId || '',
     classNameId: classNameId || '',
-    id: id || '',
+    studentAssessmentId: studentAssessmentId || '',
     userId: user.id || '',
     assessmentId: assessmentId || '',
     studentName: studentName || '',
@@ -54,7 +54,7 @@ function TakeAssessmentCards({
     const studentAssessmentObj = {
       studentId: studentId || '',
       classNameId: classNameId || '',
-      id: id || '',
+      studentAssessmentId: studentAssessmentId || '',
       userId: user.id || '',
       assessmentId: assessmentId || '',
       studentName: studentName || '',
@@ -83,9 +83,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -98,7 +98,20 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Excellent',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      setFinAssess({
+        studentId: '',
+        classNameId: '',
+        studentAssessmentId: '',
+        userId: '',
+        assessmentId: '',
+        studentName: '',
+        teacherName: '',
+        gradeLevelDescription: '',
+        standardName: '',
+        assessmentDate: '',
+        score: '',
+      });
     }
   };
   const handleCheck2 = (e) => {
@@ -111,9 +124,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -126,7 +139,20 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Satisfactory',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      setFinAssess({
+        studentId: '',
+        classNameId: '',
+        studentAssessmentId: '',
+        userId: '',
+        assessmentId: '',
+        studentName: '',
+        teacherName: '',
+        gradeLevelDescription: '',
+        standardName: '',
+        assessmentDate: '',
+        score: '',
+      });
     }
   };
   const handleCheck3 = (e) => {
@@ -139,9 +165,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -154,7 +180,20 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Needs Improvement',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      setFinAssess({
+        studentId: '',
+        classNameId: '',
+        studentAssessmentId: '',
+        userId: '',
+        assessmentId: '',
+        studentName: '',
+        teacherName: '',
+        gradeLevelDescription: '',
+        standardName: '',
+        assessmentDate: '',
+        score: '',
+      });
     }
   };
   const handleCheck4 = (e) => {
@@ -167,9 +206,9 @@ function TakeAssessmentCards({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    if (id !== '00000000-0000-0000-0000-000000000000') {
-      updateStudentAssessment(finAssess.id, finAssess);
-    } else if (id === '00000000-0000-0000-0000-000000000000') {
+    if (studentAssessmentId !== '00000000-0000-0000-0000-000000000000') {
+      updateStudentAssessment(finAssess.studentAssessmentId, finAssess);
+    } else if (studentAssessmentId === '00000000-0000-0000-0000-000000000000') {
       const studentAssessmentObj = {
         studentId: finAssess.studentId || '',
         classNameId: finAssess.classNameId || '',
@@ -182,7 +221,20 @@ function TakeAssessmentCards({
         assessmentDate: finAssess.assessmentDate || '',
         score: 'Not Tested',
       };
-      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(id).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      createStudentAssessment(studentAssessmentObj).then(() => getTakeAssessmentByAssessmentId(assessmentId).then((takeAssessList) => setTakeAssessments(takeAssessList)));
+      setFinAssess({
+        studentId: '',
+        classNameId: '',
+        studentAssessmentId: '',
+        userId: '',
+        assessmentId: '',
+        studentName: '',
+        teacherName: '',
+        gradeLevelDescription: '',
+        standardName: '',
+        assessmentDate: '',
+        score: '',
+      });
     }
   };
 
@@ -193,47 +245,47 @@ function TakeAssessmentCards({
       </TakeAssessmentCardHeader>
       <TakeAssessmentCardBody className='ClassCard' id='ClassCard'>
         <Form>
-            <legend>Score</legend>
-            <FormGroup>
-              <Input
-                name='score'
-                type='checkbox'
-                value='Excellent'
-                checked={checkBox1}
-                onChange={handleCheck1}
-              />
-              <Label check>Excellent</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name='score'
-                type='checkbox'
-                value='Satisfactory'
-                checked={checkBox2}
-                onChange={handleCheck2}
-              />
-              <Label check>Satisfactory</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name='score'
-                type='checkbox'
-                value='Needs Improvement'
-                checked={checkBox3}
-                onChange={handleCheck3}
-              />
-              <Label check>Needs Improvement</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name='score'
-                type='checkbox'
-                value='Not Tested'
-                checked={checkBox4}
-                onChange={handleCheck4}
-              />
-              <Label check>Not Tested</Label>
-            </FormGroup>
+          <legend>Score</legend>
+          <FormGroup>
+            <Input
+              name='score'
+              type='checkbox'
+              value='Excellent'
+              checked={checkBox1}
+              onChange={handleCheck1}
+            />
+            <Label check>Excellent</Label>
+          </FormGroup>
+          <FormGroup>
+            <Input
+              name='score'
+              type='checkbox'
+              value='Satisfactory'
+              checked={checkBox2}
+              onChange={handleCheck2}
+            />
+            <Label check>Satisfactory</Label>
+          </FormGroup>
+          <FormGroup>
+            <Input
+              name='score'
+              type='checkbox'
+              value='Needs Improvement'
+              checked={checkBox3}
+              onChange={handleCheck3}
+            />
+            <Label check>Needs Improvement</Label>
+          </FormGroup>
+          <FormGroup>
+            <Input
+              name='score'
+              type='checkbox'
+              value='Not Tested'
+              checked={checkBox4}
+              onChange={handleCheck4}
+            />
+            <Label check>Not Tested</Label>
+          </FormGroup>
         </Form>
       </TakeAssessmentCardBody>
     </TakeAssessmentCard>
@@ -241,7 +293,7 @@ function TakeAssessmentCards({
 }
 
 TakeAssessmentCards.propTypes = {
-  id: PropTypes.any,
+  studentAssessmentId: PropTypes.any,
   classNameId: PropTypes.any,
   studentName: PropTypes.any,
   user: PropTypes.any,

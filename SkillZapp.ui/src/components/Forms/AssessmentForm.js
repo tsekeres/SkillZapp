@@ -26,17 +26,18 @@ const AssessmentForm = ({
   classNames,
   classNameId,
   user,
-  id,
+  assessmentId,
   closeModal,
   setAssessments,
 }) => {
+  // console.warn(standardId);
   const history = useHistory();
   const [assessment, setAssessment] = useState({
     standardId: standardId || '',
     classNameId: classNameId || '',
     rubricId: rubricId || '',
     assessmentDate: assessmentDate || '',
-    id: id || '',
+    assessmentId: assessmentId || '',
     userId: user.id || '',
   });
   useEffect(() => {
@@ -46,7 +47,7 @@ const AssessmentForm = ({
       classNameId: classNameId || '',
       rubricId: rubricId || '',
       assessmentDate: assessmentDate || '',
-      id: id || '',
+      assessmentId: assessmentId || '',
       userId: user.id || '',
     };
     if (mounted) {
@@ -56,7 +57,7 @@ const AssessmentForm = ({
       mounted = false;
       return mounted;
     };
-  }, [standardId, classNameId, rubricId, id]);
+  }, [standardId, classNameId, rubricId]);
 
   const handleInputChange = (e) => {
     setAssessment((prevState) => ({
@@ -74,7 +75,7 @@ const AssessmentForm = ({
       rubricId: assessment.rubricId,
       userId: user.id,
     };
-    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.standardId}/${resp.classNameId}/${resp.id}`))
+    createAssessment(assessmentObj).then((resp) => history.push(`/TakeAssessment/${resp.standardId}/${resp.classNameId}/${resp.assessmentId}`))
       .then(getAssessmentsWithDetailsByUserId(user.id).then((assessList) => setAssessments(assessList)));
 
     closeModal();
@@ -160,7 +161,7 @@ AssessmentForm.propTypes = {
   standardId: PropTypes.any,
   standards: PropTypes.any,
   user: PropTypes.any,
-  id: PropTypes.string,
+  assessmentId: PropTypes.string,
   setClassNames: PropTypes.func,
   setStandards: PropTypes.func,
   setRubrics: PropTypes.func,
