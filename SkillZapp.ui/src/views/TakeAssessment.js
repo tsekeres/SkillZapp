@@ -28,7 +28,7 @@ function TakeAssessments({ user }) {
         console.warn('nothing selected');
     }
   };
-  console.warn(standardId);
+  console.warn(takeAssessments);
   useEffect(() => {
     if (user) {
       getStandardById(standardId).then((standardObj) => setStandard(standardObj));

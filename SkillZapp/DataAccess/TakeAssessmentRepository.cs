@@ -21,8 +21,8 @@ namespace SkillZapp.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
             var sql = @"SELECT CN.Id as ClassNameId, S.Id as StudentId, S.UserId, CN.TeacherName, S.StudentName, 
-            GL.Id as GradeLevelId, GradeLevelNumber, GL.GradeLevelDescription, SA.StudentAssessmentId, 
-            SA.AssessmentId as Test, A.AssessmentId, ST.StandardName, SA.Score, A.AssessmentDate, R.RubricName, R.RubricLevelA, 
+            GL.Id as GradeLevelId, GradeLevelNumber, GL.GradeLevelDescription, 
+            A.AssessmentId, ST.StandardName, A.AssessmentDate, R.RubricName, R.RubricLevelA, 
             R.RubricLevelB, R.RubricLevelC, R.RubricLevelD FROM Assessments A
                             JOIN ClassNames CN
 							ON A.ClassNameId = CN.ID
@@ -30,8 +30,6 @@ namespace SkillZapp.DataAccess
 							ON CN.GradeLevelId = GL.ID
 							JOIN Students S
 							ON CN.Id = S.ClassNameId
-							LEFT JOIN StudentAssessments SA
-							ON S.Id = SA.StudentId
 							JOIN Rubrics R
 							ON A.RubricId = R.Id
 							JOIN Standards ST
