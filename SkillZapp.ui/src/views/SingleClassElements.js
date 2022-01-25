@@ -23,12 +23,8 @@ export const StudentCardContainer = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
-  // flex-wrap: row-wrap;
   align-items: center;
-  // justify-content: center;
   color: #ffb400;
-  // margin-bottom: 20px;
 `;
 
 export const Modal = styled.div`

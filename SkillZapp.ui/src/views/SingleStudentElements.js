@@ -3,9 +3,8 @@ import styled from 'styled-components';
 export const SingleStudentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
   align-items: center;
-  text-align: center;
+  padding-top: 50px;
   margin: 10px;
   margin-bottom: 100px;
   background: #1a2a2d;
@@ -13,18 +12,18 @@ export const SingleStudentContainer = styled.div`
 
 export const AssessmentCardContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   background: #ffb400;
   border-radius: 3%;
-  margin: 50px;
-  align-items: center;
-  padding-top: 50px;
-  // width: 600px;
-  // height: 1000px;
-  // padding-bottom: 125px;
+  margin: 30px;
+  padding-top: 10px;
+  justify-content: center;
 `;
 
 export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #ffb400;
   margin-bottom: 20px;
 `;
